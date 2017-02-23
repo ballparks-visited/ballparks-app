@@ -1,4 +1,5 @@
 var userDAO = require('./models/DAO/userDAO');
+var facebookService = require('./models/service/facebookService');
 
 module.exports = function(app) {
 
@@ -32,18 +33,24 @@ module.exports = function(app) {
 	});
 
 	app.post('/api/v1/users', function(req, res) {
-		userDAO.upsertUserByFBId(req.body,
-		{
-			"success": function(user) {
-				console.log("success");
-				res.send(user);
-				res.end();
-			},
-			"error": function(err) {
-				console.log(err);
-				res.json(err);
-				res.end();
-			}
+		var user = req.body;
+		facebookService.getFBLongLivedToken(user.access_token)
+		.then(function(longToken) {
+			user.access_token = longToken;
+			userDAO.upsertUserByFBId(user,
+			{
+				"success": function(result) {
+					console.log("success");
+					res.send(result);
+					res.end();
+
+				},
+				"error": function(err) {
+					console.log(err);
+					res.json(err);
+					res.end();
+				}
+			});
 		});
 	});
 

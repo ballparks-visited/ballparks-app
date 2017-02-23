@@ -8,18 +8,18 @@ var methodOverride = require('method-override');
 // configuration ===========================================
 	
 // config files
-var db = require('./config/db');
+var config = require('./config/config');
 var port = process.env.PORT || 8080; // set our port
 
 
 // Create the database connection 
 console.log('starting mongo connection...');
-mongoose.connect(db.url); 
+mongoose.connect(config.mongo_url); 
 
 // CONNECTION EVENTS
 // When successfully connected
 mongoose.connection.on('connected', function () {
-	console.log('Mongoose default connection open to ' + db.url);
+	console.log('Mongoose default connection open to ' + config.mongo_url);
 }); 
 // If the connection throws an error
 mongoose.connection.on('error',function (err) {
