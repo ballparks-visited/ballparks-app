@@ -1,4 +1,4 @@
-var config = require('../../../config/config');
+var config = require('../../config/config');
 var FB = require('fb');
 var fb = new FB.Facebook({appId: config.appId, appSecret: config.appSecret});
 var PromiseIO = require('promised-io/promise');
