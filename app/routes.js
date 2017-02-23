@@ -1,6 +1,4 @@
 var userController = require('./controller/userController');
-var userDAO = require('./dao/userDAO');
-var facebookService = require('./service/facebookService');
 
 module.exports = function(app) {
 
@@ -20,16 +18,15 @@ module.exports = function(app) {
 	// });
 
 	app.get('/api/v1/users', function(req, res) {
-		userDAO.readUsers(0, 10, {
-			"success": function(user) {
-				res.send(user);
-				res.end();
-			},
-			"error": function(err) {
-				console.log(err);
-				res.json(err);
-				res.end();
-			}
+		userController.getUsers()
+		.then(function(userResult) {
+			res.send(userResult);
+			res.end();
+		},
+		function(err) {
+			console.error(err);
+			res.send(err);
+			res.end();
 		});
 	});
 

@@ -14,18 +14,32 @@ function addNewUser(user) {
 	facebookService.getFBLongLivedToken(user.access_token)
 	.then(function(longToken) {
 		user.access_token = longToken;
-		userDAO.upsertUserByFBId(user,
-		{
-			"success": function(result) {
-				deferred.resolve(result);
-			},
-			"error": function(err) {
-				deferred.reject(err);
-			}
-		});
+		return userDAO.upsertUserByFBId(user);
+	})
+	.then(function(result) {
+			deferred.resolve(result);
+		},
+		function(err) {
+			deferred.reject(err);
+		}
+	);
+
+	return deferred;
+}
+
+function getUsers() {
+	var deferred = new Deferred();
+
+	userDAO.readUsers(0, 10)
+	.then(function(users) {
+		deferred.resolve(users);
+	},
+	function(err) {
+		deferred.reject(err);
 	});
 
 	return deferred;
 }
 
 module.exports.addNewUser = addNewUser;
+module.exports.getUsers = getUsers;
