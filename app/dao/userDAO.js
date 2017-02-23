@@ -1,4 +1,6 @@
 var mongoose = require('mongoose');
+var PromiseIO = require('promised-io/promise');
+var Deferred = PromiseIO.Deferred;
 
 var isInTest = typeof global.it === 'function';
 
@@ -30,31 +32,39 @@ var UserModel = mongoose.model('User', UserSchema);
 /* ====================================================================================================== */
 
 // UPSERT user by facebook id
-function upsertUserByFBId(user, callbacks) {
+function upsertUserByFBId(user) {
+	var deferred = new Deferred();
+	
 	var query = {'fb_id': user.fb_id};
-	return UserModel.findOneAndUpdate(query, user, {new:true, upsert:true}, function(err, f){
+	UserModel.findOneAndUpdate(query, user, {new:true, upsert:true}, function(err, f) {
 		if (!err) {
 			if(!isInTest) console.log("[ADD]   User created with id: " + f._id);
-			callbacks.success(f);
+			deferred.resolve(f);
 		} else {
 			if(!isInTest) console.log(err);
-			callbacks.error(err);
+			deferred.reject(err);
 		}
 	});
+
+	return deferred;
 }
 
 //READ all users
-function readUsers(skip, count, callbacks){
-	return UserModel.find()
+function readUsers(skip, count) {
+	var deferred = new Deferred();
+
+	UserModel.find()
 	.sort('-dateCreated').skip(skip).limit(count).exec('find', function (err, users) {
 		if (!err) {
 			if(!isInTest) console.log('[GET]   Get users: ' + users.length);
-			callbacks.success(users);
+			deferred.resolve(users);
 		} else {
 			if(!isInTest) console.log(err);
-			callbacks.error(err);
+			deferred.reject(err);
 		}
 	});
+
+	return deferred;
 }
 
 //READ user by id
