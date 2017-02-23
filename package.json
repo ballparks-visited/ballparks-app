@@ -6,6 +6,8 @@
 		"mongoose" : "~4.7.0",
 		"body-parser" : "~1.4.2",
 		"method-override" : "~2.0.2",
-		"bower": "~1.8.0"
+		"bower": "~1.8.0",
+		"fb": "~1.1.1",
+		"promised-io": "~0.3.5"
 	}
 }
