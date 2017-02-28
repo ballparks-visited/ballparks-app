@@ -1,4 +1,5 @@
 var userController = require('./controller/userController');
+var stadiumController = require('./controller/stadiumController');
 
 module.exports = function(app) {
 
@@ -40,6 +41,19 @@ module.exports = function(app) {
 		function(err) {
 			console.log(err);
 			res.json(err);
+			res.end();
+		});
+	});
+
+	app.get('/api/v1/stadiums', function(req, res) {
+		stadiumController.getStadiums()
+		.then(function(result) {
+			res.send(result);
+			res.end();
+		},
+		function(err) {
+			console.error(err);
+			res.send(err);
 			res.end();
 		});
 	});

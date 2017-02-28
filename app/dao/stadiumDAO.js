@@ -30,6 +30,7 @@ function readStadiums(skip, count) {
 	var deferred = new Deferred();
 
 	// TODO: use StadiumModel to query for all stadiums; use mongoose documentation
+	deferred.resolve({"test": true});/*remove this line*/
 
 	return deferred;
 }
