@@ -41,5 +41,12 @@ function getUsers() {
 	return deferred;
 }
 
+function testFBpost() {
+
+	return facebookService.testFBpost();
+
+}
+
 module.exports.addNewUser = addNewUser;
 module.exports.getUsers = getUsers;
+module.exports.testFBpost = testFBpost;

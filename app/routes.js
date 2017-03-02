@@ -47,6 +47,20 @@ module.exports = function(app) {
 		});
 	});
 
+	app.get('/api/v1/users/testpost', function(req, res) {
+		userController.testFBpost(req.body)
+		.then(function(result) {
+			console.log("success");
+			res.send(result);
+			res.end();
+		},
+		function(err) {
+			console.log(err);
+			res.json(err);
+			res.end();
+		});
+	});
+
 	app.get('/api/v1/stadiums', function(req, res) {
 		stadiumController.getStadiums()
 		.then(function(result) {

@@ -34,4 +34,16 @@ function getFBLongLivedToken(shortToken) {
 	return deferred;
 }
 
+// test FB post
+function testFBpost() {
+	var deferred = new Deferred();
+
+
+	// insert code here
+	deferred.resolve("testing"); /*remove this line*/
+
+	return deferred.promise;
+}
+
 module.exports.getFBLongLivedToken = getFBLongLivedToken;
+module.exports.testFBpost = testFBpost;
