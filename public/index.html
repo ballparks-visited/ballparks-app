@@ -4,30 +4,35 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 
-	<!--with this active, it messes with my reference to custom.css-->
-	<!--<base href="/">-->
+	<base href="/">
 
 	<title>Ballparks I've Visited</title>
 
 	<!-- CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="custom.css">
+	<link rel="stylesheet" href="libs/bootstrap/dist/css/bootstrap.min.css">
+	<link rel="stylesheet" href="css/style.css"> <!-- custom styles -->
+
 	<!-- JS -->
-	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="libs/angular/angular.min.js"></script>
+	<script src="libs/angular-route/angular-route.min.js"></script>
+	<script src="libs/angular-facebook/lib/angular-facebook.js"></script>
 	
-	
-	<!-- dev-->
-	<!--skewer -->
-	<script src="http://localhost:8080/skewer"></script>
-	<!--googlemap-->
-	<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+	<script src="libs/jquery/dist/jquery.min.js"></script>
+	<script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
+
+	<!-- ANGULAR CUSTOM -->
+	<script src="js/app.js"></script>
+	<script src="js/appRoutes.js"></script>
+	<script src="js/services/UserService.js"></script>
+	<script src="js/services/FacebookService.js"></script>
+	<script src="js/controllers/MainCtrl.js"></script>
+	<script src="js/controllers/HeaderController.js"></script>
+	<script src="js/controllers/UserCtrl.js"></script>
 </head>
-<body >
-  
-  <div class="hidden-xs">&nbsp;</div>
-	<div class="container-fluid">
-		<nav class="navbar navbar-inverse navbar-collapse">
+<body ng-app="ballparksApp" >
+	<div class="hidden-xs">&nbsp;</div>
+	<div class="container">
+		<nav class="navbar navbar-inverse navbar-collapse" ng-controller="HeaderController">
 			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
@@ -43,405 +48,16 @@
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="ballpark-nav">
 					<ul class="nav navbar-nav">
-						<li><a href="index.html">My Ballparks</a></li>
-						<li><a href="#">Add a Ballpark</a></li>
+						<li ng-class="{ active: isActive('/')}"><a href="/">Login</a></li>
+						<li ng-class="{ active: isActive('/users')}"><a href="/users">Users</a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
 		</nav>
+
+		<!-- ANGULAR DYNAMIC CONTENT -->
+		<div ng-view></div>
+
 	</div>
-	 <!-- /.container -->
-		<div class="row">
-		  
-			<div class="col-md-12" style="padding: 0px 30px 5px">
-				<h1>Ballparks I've Visited </h1>	
-			</div>
-		</div>
-		<div class="row">
-		  <div class="col-md-12" style="padding: 0px 30px 5px">
-		    <div id="map" style="width:device-width;height:50vh;background:white"></div>
-
-		  </div>
-		  <div>
-		 <script>
-		  function myMap() {
-
-		  var mapOptions = {
-		  center: new google.maps.LatLng(39.8282, -98.5795),
-		  zoom: 4,
-		  mapTypeId: google.maps.MapTypeId.Map
-		  }
-		  
-		  var map = new google.maps.Map(document.getElementById("map"), mapOptions);
-
-		  var marker1 = new google.maps.Marker({
-		  position:{lat: 29.7573, lng: -95.3555},
-		  map: map,
-		  title: 'Minute Maid Ballpark',
-		  icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/flag.png'
-		  });
-
-		  var marker2 = new google.maps.Marker({
-		  position:{lat: 32.7513, lng: -97.0825},
-		  map: map,
-		  title: 'Globe Life Park',
-		  icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/flag.png'
-		  });
-
-		  var marker3 = new google.maps.Marker({
-		  position:{lat: 47.5914, lng: -122.3323},
-		  map: map,
-		  title: 'Safeco Field',
-		  icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/flag.png'
-		  });
-		  
-		  var marker4 = new google.maps.Marker({
-		  position:{lat: 37.456, lng: -122.122},
-		  map: map,
-		  title: 'Oakland Coliseum',
-		  icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/flag.png'
-		  });
-
-		  var marker5 = new google.maps.Marker({
-		  position:{lat: 33.2643, lng: -112.41},
-		  map: map,
-		  title: 'Chase Field',
-		  icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/flag.png'
-		  });
-		  
-		  var marker6 = new google.maps.Marker({
-		  position:{lat: 39.172, lng: -76.3718},
-		  map: map,
-		  title: 'Oriole Park',
-		  icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/flag.png'
-		  });
-		  }
-		  </script>
-		<!--Use my unique API key from Google Maps, not sure if i can share this key or use a group key?-->
-		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADkUgIOwOomWHUGQk_0Gsk4uEgHEoz_uw&callback=myMap"></script>
-		<!--
-		    To use this code on your website, get a free API key from Google.
-		    Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
-		  -->
-
-		 <!-- Page Content -->
-		 <div class="container" style="padding: 50px 25px 50px">
-
-		   <div class="row">
-		     
-		     <div class="col-lg col-md-4 col-xs-2 col-border">
-                       <a class="thumbnail" href="#" >
-			 <!--can't figure how to use relative path name for the image file, in bootstrap-->
-			 <img src="http://ballparknerd.com/wp-content/uploads/2016/03/23-Minute-Maid-Park.jpg">
-                      </a>
-		     </div>
-		     <div class="col-lg col-md-2 col-xs-4">
-		       <dl>
-			 <dt>Minute Maid Ballpark</dt>
-			 Visited on 2/6/2014
-			 &lt;Stadium Details&gt;
-			 </dl>
-		     </div>
-
-		     <div class="col-lg col-md-4  col-xs-2 col-border">
-                       <a class="thumbnail" href="#" >
-			 <img  src="http://ballparknerd.com/wp-content/uploads/2016/03/24-Globe-Life-Park.jpg">
-                       </a>
-		     </div>
-		     <div class="col-lg col-md-2 col-xs-4">
-		       <dl>
-			 <dt>Globe Life Park</dt>
-			 Visited on 6/24/2015
-			 &lt;Stadium Details&gt;
-		       </dl>
-		     </div>
-		 <!--1st row-->
-		 </div>
-		   
-		 <div class="row">  
-		     <div class="col-lg col-md-4 col-xs-2 col-border">
-                       <a class="thumbnail" href="#" >
-			 <!--can't figure how to use relative path name for the image file, in bootstrap-->
-			 <img src="http://ballparknerd.com/wp-content/uploads/2016/03/04-Safeco-Field.jpg">
-                      </a>
-		     </div>
-		     <div class="col-lg col-md-2 col-xs-4">
-		       <dl>
-			 <dt>Safeco Field</dt>
-			 Visited on 2/14/2000
-			 &lt;Stadium Details&gt;
-			 </dl>
-		     </div>
-
-		     <div class="col-lg col-md-4  col-xs-2 col-border">
-                       <a class="thumbnail" href="#" >
-			 <img  src="http://ballparknerd.com/wp-content/uploads/2016/03/29-O.Co-Coliseum-300x225.jpg">
-                       </a>
-		     </div>
-		     <div class="col-lg col-md-2 col-xs-4">
-		       <dl>
-			 <dt>Oakland Coliseum</dt>
-			 Visited on 9/14/1989
-			 &lt;Stadium Details&gt;
-		       </dl>
-		     </div>
-		 </div>
-
-		  <div class="row">  
-		     <div class="col-lg col-md-4 col-xs-2 col-border">
-                       <a class="thumbnail" href="#" >
-			 <!--can't figure how to use relative path name for the image file, in bootstrap-->
-			 <img src="http://ballparknerd.com/wp-content/uploads/2016/03/26-Chase-Field-300x161.jpg">
-                      </a>
-		     </div>
-		     <div class="col-lg col-md-2 col-xs-4">
-		       <dl>
-			 <dt>Chase Field</dt>
-			 Visited on 11/19/2005
-			 &lt;Stadium Details&gt;
-			 </dl>
-		     </div>
-
-		     <div class="col-lg col-md-4  col-xs-2 col-border">
-                       <a class="thumbnail" href="#" >
-			 <img  src="http://ballparknerd.com/wp-content/uploads/2016/03/02-Camden-Yards.jpg">
-                       </a>
-		     </div>
-		     <div class="col-lg col-md-2 col-xs-4">
-		       <dl>
-			 <dt>Oriole Park at Camden Yards</dt>
-			 Visited on 3/22/1998
-			 &lt;Stadium Details&gt;
-		       </dl>
-		     </div>
-		  </div>
-		</div>
-		  
-		 <div class="container-fluid">
-		   <div class="row">
-		     
-		     <div class="col-md-3">
-		      
-		     </div>
-
-		      <div id="searchbutton" class="col-md-6">
-		      <button  type="button" class="btn btn-primary btn-lg btn-block" onclick="$('#searchinput').show();$('#dropbutton').show();$('#searchbutton').hide();">+Add A Ballpark</button>
-		    </div>
-		     
-		    <div id="searchinput" class="col-md-6" style="display:none;">
-		      <form class="form-wrapper cf">
-  			<input  type="text" style="width: 730px; device-width; height: 75px;" placeholder="Search by Name..." list="datalist">
-			<datalist id="datalist">
-			  <option value="Fenway Park">
-			  <option value="AT&T Park">
-			  <option value="Busch Stadium">
-			  <option value="Chase Field">
-			  <option value="Citi Field">
-			  <option value="Citizens Bank Park">
-			  <option value="Comerica Park">
-			  <option value="Coors Field">
-			  <option value="Great American Ball Park">
-			</datalist>
-			<button id="dropbutton" type="button" data-toggle="dropdown" style="display:none;">Search by
-			  <span class="caret"></span></button>
-			<ul class="dropdown-menu">
-			  <li><a href="#">Name</a></li>
-			  <li><a href="#">City</a></li>
-			  <li><a href="#">Alias</a></li>
-			</ul>
-		      </form>
-		    </div>
-
-		   
-		    <!--end row-->
-		   </div>
-		 </div>
-		  
-		  <div class="row">
-		    <div class="col-md-12" style="padding: 0px 30px 5px">
-		      <h1>My Friends </h1>	
-		    </div>
-		  </div>
-		  
-		  <!--Container for friends-->
-		  <div class="container-fluid">
-		    <div class="row">
-		      
-		      <div class<div class="col-lg col-md-1 col-xs-1 col-border">
-		       <div class="widewrapper">
-		       <a class="thumbnail" href="viewfriend.html" >
-			 <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-		       </a>
-		       </div>
-		     </div>
-		     
-		     <div class="col-lg col-md-1 col-xs-1">
-		       <h2><b>6 Stadiums</b></h2>
-		     </div>
-
-		      <div class="col-lg col-md-1 col-xs-1 col-border">
-			<div class="widewrapper">
-			  <a class="thumbnail" href="#" > 
-			    <!--can't figure how to use relative path name for the image file, in bootstrap-->
-			    <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-			 </a>
-			</div>
-		      </div>
-		      
-		     <div class="col-lg col-md-1 col-xs-1">
-		       <h2><b>8 Stadiums</b></h2>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1 col-border">
-		       <div class="widewrapper">
-			 <a class="thumbnail" href="#" >
-			   <!--can't figure how to use relative path name for the image file, in bootstrap-->
-			   <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-			 </a>
-		       </div>
-		     </div>
-		     
-		     <div class="col-lg col-md-1 col-xs-1">
-		       <h2><b>14 Stadiums</b></h2>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1 col-border">
-		       <div class="widewrapper">
-			 <a class="thumbnail" href="#" >
-			 <!--can't figure how to use relative path name for the image file, in bootstrap-->
-			 <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-			 </a>
-		       </div>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1">
-		       <h2><b>25 Stadiums</b></h2>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1 col-border">
-		       <div class="widewrapper">
-			 <a class="thumbnail" href="#" >
-			 <!--can't figure how to use relative path name for the image file, in bootstrap-->
-			 <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-			 </a>
-		       </div>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1">
-		       <h2><b>50 Stadiums</b></h2>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1 col-border">
-		       <div class="widewrapper">
-			 <a class="thumbnail" href="#" >
-			 <!--can't figure how to use relative path name for the image file, in bootstrap-->
-			 <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-			 </a>
-		       </div>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1">
-		       <h2><b>100 Stadiums</b></h2>
-		     </div>
-		     
-		  <!--end of row-->
-		    </div>
-		    <!--start of 2nd row-->
-		    <div class<div class="col-lg col-md-1 col-xs-1 col-border">
-		       <div class="widewrapper">
-		       <a class="thumbnail" href="#" >
-			 <!--can't figure how to use relative path name for the image file, in bootstrap-->
-			 <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-		       </a>
-		       </div>
-		     </div>
-		     
-		     <div class="col-lg col-md-1 col-xs-1">
-		       <h2><b>8 Stadiums</b></h2>
-		     </div>
-
-		      <div class="col-lg col-md-1 col-xs-1 col-border">
-			<div class="widewrapper">
-			  <a class="thumbnail" href="#" > 
-			    <!--can't figure how to use relative path name for the image file, in bootstrap-->
-			    <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-			 </a>
-			</div>
-		      </div>
-		      
-		     <div class="col-lg col-md-1 col-xs-1">
-		       <h2><b>12 Stadiums</b></h2>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1 col-border">
-		       <div class="widewrapper">
-			 <a class="thumbnail" href="#" >
-			   <!--can't figure how to use relative path name for the image file, in bootstrap-->
-			   <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-			 </a>
-		       </div>
-		     </div>
-		     
-		     <div class="col-lg col-md-1 col-xs-1">
-		       <h2><b>14 Stadiums</b></h2>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1 col-border">
-		       <div class="widewrapper">
-			 <a class="thumbnail" href="#" >
-			 <!--can't figure how to use relative path name for the image file, in bootstrap-->
-			 <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-			 </a>
-		       </div>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1">
-		       <h2><b>25 Stadiums</b></h2>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1 col-border">
-		       <div class="widewrapper">
-			 <a class="thumbnail" href="#" >
-			 <!--can't figure how to use relative path name for the image file, in bootstrap-->
-			 <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-			 </a>
-		       </div>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1">
-		       <h2><b>50 Stadiums</b></h2>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1 col-border">
-		       <div class="widewrapper">
-			 <a class="thumbnail" href="#" >
-			 <!--can't figure how to use relative path name for the image file, in bootstrap-->
-			 <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-			 </a>
-		       </div>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1">
-		       <h2><b>100 Stadiums</b></h2>
-		     </div>
-		     <!--end of 2nd row-->
-		     
-		  <!--end of container-->    
-		  </div>
-		  
-		    
-
-
-
-		  <hr>
-
-		   <!-- Footer -->
-		   <footer>
-		     <div class="row">
-                       <div class="col-lg-12">
-			 <p>Copyright &copy; Your Website 2017</p>
-                       </div>
-		     </div>
-		   </footer>
 </body>
 </html>
