@@ -55,9 +55,8 @@ function readStadiums(skip, count) {
 
 
 
-module.exports.upsertStadiumsByFBId = upsertUserByFBId;
-module.exports.readStadiums = readUsers;
-module.exports.readStadiumsrById = readUserById;
+
+module.exports.readStadiums = readStadiums;
 // module.exports.deleteStadium = deleteStadium;
 
 /* ====================================================================================================== */

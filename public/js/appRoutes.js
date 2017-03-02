@@ -14,7 +14,7 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 		})
 		.when('/friends', {
 			templateUrl: 'views/friends.html',
-			controller: 'FriendCtrl'
+			controller: 'FriendController'
 		})
 		;
 
