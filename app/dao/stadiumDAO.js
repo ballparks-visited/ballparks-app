@@ -36,20 +36,123 @@ new mongooseRestEndpoints.endpoint('/api/Stadium', 'Stadium').register(app);
 /* ====================================================================================================== */
 
 
-//READ all stadiums
-function readStadiums(skip, count) {
+// UPSERT Stadiums by facebook id
+function upsertStadiumsByFBId(user) {
 	var deferred = new Deferred();
-
-	// TODO: use StadiumModel to query for all stadiums; use mongoose documentation
-	deferred.resolve({"test": true});/*remove this line*/
+	
+	var query = {'fb_id': user.fb_id};
+	StadiumModel.findOneAndUpdate(query, user, {new:true, upsert:true}, function(err, f) {
+		if (!err) {
+			if(!isInTest) console.log("[ADD]   User created with id: " + f._id);
+			deferred.resolve(f);
+		} else {
+			if(!isInTest) console.log(err);
+			deferred.reject(err);
+		}
+	});
 
 	return deferred;
 }
 
+//READ all Stadiums
+function readStadiums(skip, count) {
+	var deferred = new Deferred();
 
-module.exports.readStadiums = readStadiums;
+	StadiumModel.find()
+	.sort('-dateCreated').skip(skip).limit(count).exec('find', function (err, users) {
+		if (!err) {
+			if(!isInTest) console.log('[GET]   Get users: ' + users.length);
+			deferred.resolve(users);
+		} else {
+			if(!isInTest) console.log(err);
+			deferred.reject(err);
+		}
+	});
+
+	return deferred;
+}
+
+//READ Stadiums by id
+function readStadiumsById(id, callbacks){
+	return StadiumModel.findById(id, function (err, user) {
+		if (!err) {
+			if(!isInTest) console.log('[GET]   Get user: ' + user._id);
+			callbacks.success(user);
+		} else {
+			if(!isInTest) console.log(err);
+			callbacks.error(err);
+		}
+	});
+}
+
+
+//DELETE Stadium
+// function deleteStadium(id, callbacks){
+// 	return StadiumModel.findById(id, function (err, f) {
+// 		if (!err) {
+// 			return f.remove(function (err) {
+// 				if (!err) {
+// 					if(!isInTest) console.log("[DEL]    Deleted user: " + f._id);
+// 					callbacks.success(f);
+// 				} else {
+// 					if(!isInTest) console.log(err);
+// 					callbacks.error(err);
+// 				}
+// 			});
+// 		} else {
+// 			if(!isInTest) console.log(err);
+// 			callbacks.error(err);
+// 		}
+// 	});
+// }
+
+module.exports.upsertStadiumsByFBId = upsertUserByFBId;
+module.exports.readStadiums = readUsers;
+module.exports.readStadiumsrById = readUserById;
+// module.exports.deleteStadium = deleteStadium;
 
 /* ====================================================================================================== */
 /* ======================================= [ Private Functions ] ======================================== */
 /* ====================================================================================================== */
+
+/*
+
+//CREATE new Stadium
+function createStadium(user, callbacks){
+	var f = new StadiumModel({
+		name:           user.name,
+		description:    user.description,	
+	});
+	f.save(function (err) {
+		if (!err) {
+			if(!isInTest) console.log("[ADD]   User created with id: " + f._id);
+			callbacks.success(f);
+		} else {
+			if(!isInTest) console.log(err);
+			callbacks.error(err);
+		}
+	});
+}
+//UPDATE Stadium
+function updateUser(id, user, callbacks){
+	return StadiumModel.findById(id, function (err, f) {
+		if (!err) {
+			if (user.name) f.name = user.name;
+			if (user.description) f.description = user.description;
+			return f.save(function (err) {
+				if (!err) {
+					if(!isInTest) console.log("[UDP]   Updated user: " + f._id);
+					callbacks.success(f);
+				} else {
+					if(!isInTest) console.log(err);
+					callbacks.error(err);
+				}
+			});
+		} else {
+			if(!isInTest) console.log(err);
+			callbacks.error(err);
+		}
+	});
+}
+*/
 
