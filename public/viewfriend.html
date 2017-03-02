@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!--with this active it messes my reference with custom.css-->
+	<!--<base href="/">-->
+
+	<title>Friend's Visited Ballparks</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="custom.css">
+	<!-- JS -->
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	
+	<!-- dev-->
+	<!--skewer -->
+	<script src="http://localhost:8080/skewer"></script>
+	<!--googlemap-->
+	<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+</head>
+<body >
+  
+  <div class="hidden-xs">&nbsp;</div>
+	<div class="container-fluid">
+		<nav class="navbar navbar-inverse navbar-collapse">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ballpark-nav" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/">Ballparks I've Visited</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="ballpark-nav">
+					<ul class="nav navbar-nav">
+						<li><a href="index.html">My Ballparks</a></li>
+						<li><a href="#">Add a Ballpark</a></li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+	</div>
+	 <!-- /.container -->
+		<div class="row">
+		  
+			<div class="col-md-12" style="padding: 0px 30px 5px">
+				<h1>John Doe's Ballparks </h1>	
+			</div>
+		</div>
+		<div id="map" style="width:device-width;height:50vh;background:white"></div>
+	
+		<script>
+		  function myMap() {
+
+		  var mapOptions = {
+		  center: new google.maps.LatLng(39.8282, -98.5795),
+		  zoom: 4,
+		  mapTypeId: google.maps.MapTypeId.Map
+		  }
+		  
+		  var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+
+		  var marker1 = new google.maps.Marker({
+		  position:{lat: 41.94837, lng: -87.655334},
+		  map: map,
+		  title: 'Fenway Park',
+		  icon: 'images/baseball.png'
+		  });
+
+		  var marker2 = new google.maps.Marker({
+		  position:{lat: 40.829659, lng: -73.926186},
+		  map: map,
+		  title: 'Yankee Stadium',
+		  icon: 'images/baseball.png'
+		  });
+
+		  var marker3 = new google.maps.Marker({
+		  position:{lat: 33.528839, lng: -112.263901},
+		  map: map,
+		  title: 'University of Phoenix Stadium',
+		  icon: 'images/baseball.png'
+		  });
+		  
+		  var marker4 = new google.maps.Marker({
+		  position:{lat: 41.697578, lng: -86.228096},
+		  map: map,
+		  title: 'Arlotta Stadium',
+		  icon: 'images/baseball.png'
+		  });
+
+		  var marker5 = new google.maps.Marker({
+		  position:{lat: 32.976746, lng: -97.693474},
+		  map: map,
+		  title: 'Porcupine Stadium',
+		  icon: 'images/baseball.png'
+		  });
+		  
+		  var marker6 = new google.maps.Marker({
+		  position:{lat: 34.161327, lng: -118.167648},
+		  map: map,
+		  title: 'Rose Bowl',
+		  icon: 'images/baseball.png'
+		  });
+		  }
+		  </script>
+		<!--Use my unique API key from Google Maps, not sure if i can share this key or use a group key?-->
+		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADkUgIOwOomWHUGQk_0Gsk4uEgHEoz_uw&callback=myMap"></script>
+		<!--
+		    To use this code on your website, get a free API key from Google.
+		    Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+		  -->
+
+		 <!-- Page Content -->
+		 <div class="container" style="padding: 50px 25px 50px">
+
+		   <div class="row">
+		     
+		     <div class="col-lg col-md-4 col-xs-2 col-border">
+                       <a class="thumbnail" href="#" >
+			 <!--can't figure how to use relative path name for the image file, in bootstrap-->
+			 <img src="http://ballparknerd.com/wp-content/uploads/2016/03/23-Minute-Maid-Park.jpg">
+                      </a>
+		     </div>
+		     <div class="col-lg col-md-2 col-xs-4">
+		       <dl>
+			 <dt>Random Ballpark</dt>
+			 Visited on 2/6/2014
+			 &lt;Stadium Details&gt;
+			 </dl>
+		     </div>
+
+		     <div class="col-lg col-md-4  col-xs-2 col-border">
+                       <a class="thumbnail" href="#" >
+			 <img  src="http://ballparknerd.com/wp-content/uploads/2016/03/24-Globe-Life-Park.jpg">
+                       </a>
+		     </div>
+		     <div class="col-lg col-md-2 col-xs-4">
+		       <dl>
+			 <dt>Random Park</dt>
+			 Visited on 6/24/2015
+			 &lt;Stadium Details&gt;
+		       </dl>
+		     </div>
+		 <!--1st row-->
+		 </div>
+		   
+		 <div class="row">  
+		     <div class="col-lg col-md-4 col-xs-2 col-border">
+                       <a class="thumbnail" href="#" >
+			 <!--can't figure how to use relative path name for the image file, in bootstrap-->
+			 <img src="http://ballparknerd.com/wp-content/uploads/2016/03/04-Safeco-Field.jpg">
+                      </a>
+		     </div>
+		     <div class="col-lg col-md-2 col-xs-4">
+		       <dl>
+			 <dt>Random Ballpark Field</dt>
+			 Visited on 2/14/2000
+			 &lt;Stadium Details&gt;
+			 </dl>
+		     </div>
+
+		     <div class="col-lg col-md-4  col-xs-2 col-border">
+                       <a class="thumbnail" href="#" >
+			 <img  src="http://ballparknerd.com/wp-content/uploads/2016/03/29-O.Co-Coliseum-300x225.jpg">
+                       </a>
+		     </div>
+		     <div class="col-lg col-md-2 col-xs-4">
+		       <dl>
+			 <dt>Random Ballpark </dt>
+			 Visited on 9/14/1989
+			 &lt;Stadium Details&gt;
+		       </dl>
+		     </div>
+		 </div>
+
+		  <div class="row">  
+		     <div class="col-lg col-md-4 col-xs-2 col-border">
+                       <a class="thumbnail" href="#" >
+			 <!--can't figure how to use relative path name for the image file, in bootstrap-->
+			 <img src="http://ballparknerd.com/wp-content/uploads/2016/03/26-Chase-Field-300x161.jpg">
+                      </a>
+		     </div>
+		     <div class="col-lg col-md-2 col-xs-4">
+		       <dl>
+			 <dt>Random Balparks</dt>
+			 Visited on 11/19/2005
+			 &lt;Stadium Details&gt;
+			 </dl>
+		     </div>
+
+		     <div class="col-lg col-md-4  col-xs-2 col-border">
+                       <a class="thumbnail" href="#" >
+			 <img  src="http://ballparknerd.com/wp-content/uploads/2016/03/02-Camden-Yards.jpg">
+                       </a>
+		     </div>
+		     <div class="col-lg col-md-2 col-xs-4">
+		       <dl>
+			 <dt>Random Ballparks</dt>
+			 Visited on 3/22/1998
+			 &lt;Stadium Details&gt;
+		       </dl>
+		     </div>
+		  </div>
+		</div>
+		 
+
+		  <hr>
+
+		   <!-- Footer -->
+		   <footer>
+		     <div class="row">
+                       <div class="col-lg-12">
+			 <p>Copyright &copy; Your Website 2017</p>
+                       </div>
+		     </div>
+		   </footer>
+</body>
+</html>
