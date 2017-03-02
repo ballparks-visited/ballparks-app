@@ -11,7 +11,12 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 		.when('/users', {
 			templateUrl: 'views/user.html',
 			controller: 'UserController'
-		});
+		})
+		.when('/friends', {
+			templateUrl: 'views/friends.html',
+			controller: 'FriendCtrl'
+		})
+		;
 
 	$locationProvider.html5Mode(true);
 
