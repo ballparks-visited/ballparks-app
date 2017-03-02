@@ -1,5 +1,5 @@
 body{
-    background: #d2691e;
+    background: #87563a;
     color: #FFFFFF;
     text-align: center;
 }
@@ -16,7 +16,13 @@ body{
     font-weight: bold;
 }
 
+.container{
+    width:100%;
+}
 
+.park{
+    background:#f5f5dc; 
+}
 /*search button*/
     a {
         color: #ccc;
