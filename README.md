@@ -13,3 +13,5 @@
  - install bower components: ``` bower install ```
  - start the server: ``` node server.js ```
  - open your browser and go to http://localhost:8080/
+
+test
