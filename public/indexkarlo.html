@@ -57,66 +57,75 @@
 				<h1>Ballparks I've Visited </h1>	
 			</div>
 		</div>
-		<div class="row">
+	<!--	<div class="row">
 		  <div class="col-md-12" style="padding: 0px 30px 5px">
 		    <div id="map" style="width:device-width;height:50vh;background:white"></div>
-
 		  </div>
 		  <div>
-		 <script>
-		  function myMap() {
-
-		  var mapOptions = {
-		  center: new google.maps.LatLng(39.8282, -98.5795),
-		  zoom: 4,
-		  mapTypeId: google.maps.MapTypeId.Map
-		  }
+		  -->
 		  
-		  var map = new google.maps.Map(document.getElementById("map"), mapOptions);
+			<!-- Map -->
+			<div class="container">
+			<div class="row">
+			  <div class="col-sm-12" style="padding:30px;">
+					<div id="map" style="width:device-width;height:50vh;"></div>
+			  </div>
+			</div>
+			</div>
+				 <script>
+				  function myMap() {
 
-		  var marker1 = new google.maps.Marker({
-		  position:{lat: 29.7573, lng: -95.3555},
-		  map: map,
-		  title: 'Minute Maid Ballpark',
-		  icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/flag.png'
-		  });
+				  var mapOptions = {
+				  center: new google.maps.LatLng(39.8282, -98.5795),
+				  zoom: 4,
+				  mapTypeId: google.maps.MapTypeId.Map
+				  }
+				  
+				  var map = new google.maps.Map(document.getElementById("map"), mapOptions);
 
-		  var marker2 = new google.maps.Marker({
-		  position:{lat: 32.7513, lng: -97.0825},
-		  map: map,
-		  title: 'Globe Life Park',
-		  icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/flag.png'
-		  });
+				  var marker1 = new google.maps.Marker({
+				  position:{lat: 29.7573, lng: -95.3555},
+				  map: map,
+				  title: 'Minute Maid Ballpark',
+				  icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/flag.png'
+				  });
 
-		  var marker3 = new google.maps.Marker({
-		  position:{lat: 47.5914, lng: -122.3323},
-		  map: map,
-		  title: 'Safeco Field',
-		  icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/flag.png'
-		  });
-		  
-		  var marker4 = new google.maps.Marker({
-		  position:{lat: 37.456, lng: -122.122},
-		  map: map,
-		  title: 'Oakland Coliseum',
-		  icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/flag.png'
-		  });
+				  var marker2 = new google.maps.Marker({
+				  position:{lat: 32.7513, lng: -97.0825},
+				  map: map,
+				  title: 'Globe Life Park',
+				  icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/flag.png'
+				  });
 
-		  var marker5 = new google.maps.Marker({
-		  position:{lat: 33.2643, lng: -112.41},
-		  map: map,
-		  title: 'Chase Field',
-		  icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/flag.png'
-		  });
-		  
-		  var marker6 = new google.maps.Marker({
-		  position:{lat: 39.172, lng: -76.3718},
-		  map: map,
-		  title: 'Oriole Park',
-		  icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/flag.png'
-		  });
-		  }
-		  </script>
+				  var marker3 = new google.maps.Marker({
+				  position:{lat: 47.5914, lng: -122.3323},
+				  map: map,
+				  title: 'Safeco Field',
+				  icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/flag.png'
+				  });
+				  
+				  var marker4 = new google.maps.Marker({
+				  position:{lat: 37.456, lng: -122.122},
+				  map: map,
+				  title: 'Oakland Coliseum',
+				  icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/flag.png'
+				  });
+
+				  var marker5 = new google.maps.Marker({
+				  position:{lat: 33.2643, lng: -112.41},
+				  map: map,
+				  title: 'Chase Field',
+				  icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/flag.png'
+				  });
+				  
+				  var marker6 = new google.maps.Marker({
+				  position:{lat: 39.172, lng: -76.3718},
+				  map: map,
+				  title: 'Oriole Park',
+				  icon: 'https://maps.gstatic.com/mapfiles/ms2/micons/flag.png'
+				  });
+				  }
+				  </script>
 		<!--Use my unique API key from Google Maps, not sure if i can share this key or use a group key?-->
 		<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADkUgIOwOomWHUGQk_0Gsk4uEgHEoz_uw&callback=myMap"></script>
 		<!--
@@ -125,56 +134,84 @@
 		  -->
 
 		 <!-- Page Content -->
-		 <div class="container" style="padding: 50px 25px 50px">
+		 <div class="container">
 
 		    <div class="col-lg-4 col-md-6 col-xs-12">
+			<div class="park">
 			 
-				<div class="col-lg-4 col-md-6 col-xs-12 col-border">
-					<div class="row">
-						<div class="col-lg col-md-8 col-xs-12 col-border">
-						   <a class="thumbnail" href="#" >
-							<!--can't figure how to use relative path name for the image file, in bootstrap-->
-							<img src="http://ballparknerd.com/wp-content/uploads/2016/03/23-Minute-Maid-Park.jpg">
-							</a>
-						</div>
+				<div class="row">
+					<div class="col-xs-12">
+						<h1>Minute Maid Ballpark</h1>
+					</div>				
+				</div>
+				
+				<div class="row">
+					<div class="col-lg col-md-8 col-xs-12 col-border">
+						
+						<a class="thumbnail" href="#" >
+						 <!--can't figure how to use relative path name for the image file, in bootstrap-->
+						 <img src="http://ballparknerd.com/wp-content/uploads/2016/03/23-Minute-Maid-Park.jpg">
+						</a>
 					</div>
+					
 					<div class="col-lg col-md-4 col-xs-12">
-				 
-					<dl>
-						 <dt>Minute Maid Ballpark</dt>
-						 Visited on 2/6/2014
-						 &lt;Stadium Details&gt;
-					</dl>
+					 
+						<dl>
+							 Visited on 2/6/2014
+							 &lt;Stadium Details&gt;
+						</dl>
 					</div>
 				</div>
+			</div>	
+			</div>
 
-		     <div class="col-lg-4 col-md-6  col-xs-2 col-border">
-                <a class="thumbnail" href="#" >
-				<img  src="http://ballparknerd.com/wp-content/uploads/2016/03/24-Globe-Life-Park.jpg">
-                </a>
-		     </div>
-		     
-			 <div class="col-lg-4 col-md-6 col-xs-12">
-				 <dl>
-					 <dt>Globe Life Park</dt>
-					 Visited on 6/24/2015
-					 &lt;Stadium Details&gt;
-				 </dl>
-		     </div>
-	<!--	 
-		     <div class="col-lg-4 col-md-6 col-xs-12 col-border">
-                       <a class="thumbnail" href="#" >
-			 
-			 <img src="http://ballparknerd.com/wp-content/uploads/2016/03/04-Safeco-Field.jpg">
-                      </a>
-		     </div>
 		     <div class="col-lg-4 col-md-6 col-xs-12">
-		       <dl>
-			 <dt>Safeco Field</dt>
-			 Visited on 2/14/2000
-			 &lt;Stadium Details&gt;
-			 </dl>
-		     </div>
+				
+				<div class="row">
+					<div class="col-xs-12">
+						<h1>Globe Life Park</h1>
+					</div>				
+				</div>
+				<div class="row">
+					<div class="col-lg col-md-8 col-xs-12 col-border">
+						<a class="thumbnail" href="#" >
+						<img  src="http://ballparknerd.com/wp-content/uploads/2016/03/24-Globe-Life-Park.jpg">
+						</a>
+					</div>
+				
+
+		     
+					 <div class="col-lg col-md-4 col-xs-12">
+						 <dl>
+							 Visited on 6/24/2015
+							 &lt;Stadium Details&gt;
+						 </dl>
+					 </div>
+				</div>
+			 </div>
+	
+		     <div class="col-lg-4 col-md-6 col-xs-12">
+				
+				<div class="row">
+					<div class="col-xs-12">
+						<h1>Safeco Field</h1>
+					</div>				
+				</div>
+				<div class="row">
+					<div class="col-lg col-md-8 col-xs-12 col-border">
+                       <a class="thumbnail" href="#" >
+			 			<img src="http://ballparknerd.com/wp-content/uploads/2016/03/04-Safeco-Field.jpg">
+                       </a>
+					</div>
+		     
+					<div class="col-lg-4 col-md-6 col-xs-12">
+					   <dl>
+						 Visited on 2/14/2000
+						 &lt;Stadium Details&gt;
+					   </dl>
+					</div>
+				</div>
+			</div>
 
 		     <div class="col-lg-4 col-md-6  col-xs-12 col-border">
                        <a class="thumbnail" href="#" >
