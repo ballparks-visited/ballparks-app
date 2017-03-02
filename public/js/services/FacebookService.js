@@ -14,6 +14,12 @@ app.factory("FacebookService",function($q, Facebook) {
 		});
 		return deferred.promise;
 	};
+	service.getFriends = function() {
+		var deferred = $q.defer();
+		
+		deferred.resolve("hello world");
 
+		return deferred.promise;
+	};
 	return service;
 });
