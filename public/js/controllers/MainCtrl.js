@@ -21,7 +21,10 @@ app.controller('MainController', function($scope, UserService, FacebookService, 
 					var userData = userResponse;
 					angular.extend(userData, loginResponse.authResponse);
 
-					UserService.saveUser(userData);
+					return UserService.saveUser(userData);
+				})
+				.then(function(jwt) {
+					console.log(jwt.data);
 				})
 			;
 		},
