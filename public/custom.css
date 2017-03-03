@@ -1,5 +1,5 @@
 body{
-    background: #87563a;
+    background: #f5f5dc;
     color: #FFFFFF;
     text-align: center;
 }
@@ -20,8 +20,14 @@ body{
     width:100%;
 }
 
+
+#map{
+height:60vh;
+margin:0 15px 15px 15px;
+}
+
 .park{
-    background:#f5f5dc; 
+    background: #87563a;
 }
 /*search button*/
     a {
