@@ -51,27 +51,16 @@
 		</nav>
 	</div>
 	 <!-- /.container -->
-		<div class="row">
-		  
-			<div class="col-md-12" style="padding: 0px 30px 5px">
-				<h1>Ballparks I've Visited </h1>	
-			</div>
-		</div>
-	<!--	<div class="row">
-		  <div class="col-md-12" style="padding: 0px 30px 5px">
-		    <div id="map" style="width:device-width;height:50vh;background:white"></div>
-		  </div>
-		  <div>
-		  -->
-		  
-			<!-- Map -->
+
+ 			<!-- Map -->
 			<div class="container">
-			<div class="row">
-			  <div class="col-sm-12" style="padding:30px;">
-					<div id="map" style="width:device-width;height:50vh;"></div>
-			  </div>
+				<div class="row">
+					<div class="col-sm-12" id="map-container">
+						<div id="map"></div>
+					</div>
+				</div>
 			</div>
-			</div>
+			
 				 <script>
 				  function myMap() {
 
@@ -166,6 +155,7 @@
 			</div>
 
 		     <div class="col-lg-4 col-md-6 col-xs-12">
+			 <div class="park">
 				
 				<div class="row">
 					<div class="col-xs-12">
@@ -189,9 +179,10 @@
 					 </div>
 				</div>
 			 </div>
+			 </div>
 	
 		     <div class="col-lg-4 col-md-6 col-xs-12">
-				
+			 <div class="park">				
 				<div class="row">
 					<div class="col-xs-12">
 						<h1>Safeco Field</h1>
@@ -212,46 +203,97 @@
 					</div>
 				</div>
 			</div>
+			</div>
 
-		     <div class="col-lg-4 col-md-6  col-xs-12 col-border">
-                       <a class="thumbnail" href="#" >
-			 <img  src="http://ballparknerd.com/wp-content/uploads/2016/03/29-O.Co-Coliseum-300x225.jpg">
-                       </a>
-		     </div>
-		     <div class="col-lg-4 col-md-6 col-xs-12">
-		       <dl>
-			 <dt>Oakland Coliseum</dt>
-			 Visited on 9/14/1989
-			 &lt;Stadium Details&gt;
-		       </dl>
-		     </div>
-		 
-		     <div class="col-lg-4 col-md-4 col-xs-12 col-border">
-                       <a class="thumbnail" href="#" >
+			<div class="col-lg-4 col-md-6 col-xs-12">
+			<div class="park">
 			 
-			 <img src="http://ballparknerd.com/wp-content/uploads/2016/03/26-Chase-Field-300x161.jpg">
-                      </a>
-		     </div>
-		     <div class="col-lg col-md-2 col-xs-4">
-		       <dl>
-			 <dt>Chase Field</dt>
-			 Visited on 11/19/2005
-			 &lt;Stadium Details&gt;
-			 </dl>
-		     </div>
+				<div class="row">
+					<div class="col-xs-12">
+						<h1>Oakland Coliseum</h1>
+					</div>				
+				</div>
+				
+				<div class="row">
+					<div class="col-lg col-md-8 col-xs-12 col-border">
+						
+						<a class="thumbnail" href="#" >
+						 <!--can't figure how to use relative path name for the image file, in bootstrap-->
+						 <img  src="http://ballparknerd.com/wp-content/uploads/2016/03/29-O.Co-Coliseum-300x225.jpg">
+						</a>
+					</div>
+					
+					<div class="col-lg col-md-4 col-xs-12">
+					 
+						<dl>
+							 Visited on 9/14/1989
+							 &lt;Stadium Details&gt;
+						</dl>
+					</div>
+				</div>
+			</div>	
+			</div>
+			
+			<div class="col-lg-4 col-md-6 col-xs-12">
+			<div class="park">
+			 
+				<div class="row">
+					<div class="col-xs-12">
+						<h1>Chase Field</h1>
+					</div>				
+				</div>
+				
+				<div class="row">
+					<div class="col-lg col-md-8 col-xs-12 col-border">
+						
+						<a class="thumbnail" href="#" >
+						 <!--can't figure how to use relative path name for the image file, in bootstrap-->
+						 <img src="http://ballparknerd.com/wp-content/uploads/2016/03/26-Chase-Field-300x161.jpg">
+						</a>
+					</div>
+					
+					<div class="col-lg col-md-4 col-xs-12">
+					 
+						<dl>
+							 Visited on 11/19/2005
+							 &lt;Stadium Details&gt;
+						</dl>
+					</div>
+				</div>
+			</div>	
+			</div>
+			
+			<div class="col-lg-4 col-md-6 col-xs-12">
+			<div class="park">
+			 
+				<div class="row">
+					<div class="col-xs-12">
+						<h1>Oriole Park at Camden Yards</h1>
+					</div>				
+				</div>
+				
+				<div class="row">
+					<div class="col-lg col-md-8 col-xs-12 col-border">
+						
+						<a class="thumbnail" href="#" >
+						 <!--can't figure how to use relative path name for the image file, in bootstrap-->
+						 <img  src="http://ballparknerd.com/wp-content/uploads/2016/03/02-Camden-Yards.jpg">
+						</a>
+					</div>
+					
+					<div class="col-lg col-md-4 col-xs-12">
+					 
+						<dl>
+							 Visited on 3/22/1998
+							 &lt;Stadium Details&gt;
+						</dl>
+					</div>
+				</div>
+			</div>	
+			</div>
 
-		     <div class="col-lg col-md-4  col-xs-12 col-border">
-                       <a class="thumbnail" href="#" >
-			 <img  src="http://ballparknerd.com/wp-content/uploads/2016/03/02-Camden-Yards.jpg">
-                       </a>
-		     </div>
-		     <div class="col-lg col-md-2 col-xs-4">
-		       <dl>
-			 <dt>Oriole Park at Camden Yards</dt>
-			 Visited on 3/22/1998
-			 &lt;Stadium Details&gt;
-		       </dl>
-		     </div>
+	<!-- ----------- END OF PARKS ------------ -->
+
 		  </div>
 		</div>
 		  
@@ -297,7 +339,7 @@
 		  
 		  <div class="row">
 		    <div class="col-md-12" style="padding: 0px 30px 5px">
-		      <h1>My Friends </h1>	
+		      <h2>My Friends </h2>	
 		    </div>
 		  </div>
 		  
