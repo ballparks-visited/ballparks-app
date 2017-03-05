@@ -135,7 +135,7 @@
 				</div>
 				
 				<div class="row">
-					<div class="col-lg col-md-8 col-xs-12 col-border">
+					<div class="col-lg col-md-8 col-xs-12 ">
 						
 						<a class="thumbnail" href="#" >
 						 <!--can't figure how to use relative path name for the image file, in bootstrap-->
@@ -163,7 +163,7 @@
 					</div>				
 				</div>
 				<div class="row">
-					<div class="col-lg col-md-8 col-xs-12 col-border">
+					<div class="col-lg col-md-8 col-xs-12 ">
 						<a class="thumbnail" href="#" >
 						<img  src="http://ballparknerd.com/wp-content/uploads/2016/03/24-Globe-Life-Park.jpg">
 						</a>
@@ -189,7 +189,7 @@
 					</div>				
 				</div>
 				<div class="row">
-					<div class="col-lg col-md-8 col-xs-12 col-border">
+					<div class="col-lg col-md-8 col-xs-12 ">
                        <a class="thumbnail" href="#" >
 			 			<img src="http://ballparknerd.com/wp-content/uploads/2016/03/04-Safeco-Field.jpg">
                        </a>
@@ -215,7 +215,7 @@
 				</div>
 				
 				<div class="row">
-					<div class="col-lg col-md-8 col-xs-12 col-border">
+					<div class="col-lg col-md-8 col-xs-12 ">
 						
 						<a class="thumbnail" href="#" >
 						 <!--can't figure how to use relative path name for the image file, in bootstrap-->
@@ -244,7 +244,7 @@
 				</div>
 				
 				<div class="row">
-					<div class="col-lg col-md-8 col-xs-12 col-border">
+					<div class="col-lg col-md-8 col-xs-12 ">
 						
 						<a class="thumbnail" href="#" >
 						 <!--can't figure how to use relative path name for the image file, in bootstrap-->
@@ -273,7 +273,7 @@
 				</div>
 				
 				<div class="row">
-					<div class="col-lg col-md-8 col-xs-12 col-border">
+					<div class="col-lg col-md-8 col-xs-12 ">
 						
 						<a class="thumbnail" href="#" >
 						 <!--can't figure how to use relative path name for the image file, in bootstrap-->
@@ -293,50 +293,52 @@
 			</div>
 
 	<!-- ----------- END OF PARKS ------------ -->
-
+	<!-- START OF SEARCH BUTTON -->
 		  </div>
 		</div>
-		  
-		 <div class="container-fluid">
-		   <div class="row">
-		     
-		     <div class="col-md-3">
-		      
-		     </div>
+
+		<div class="container-fluid">
+		  <div class="search-button">
+		    <div class="row">
+
+		      <div class="col-md-3">
+
+		      </div>
 
 		      <div id="searchbutton" class="col-md-6">
-		      <button  type="button" class="btn btn-primary btn-lg btn-block" onclick="$('#searchinput').show();$('#dropbutton').show();$('#searchbutton').hide();">+Add A Ballpark</button>
-		    </div>
-		     
-		    <div id="searchinput" class="col-md-6" style="display:none;">
-		      <form class="form-wrapper cf">
-  			<input  type="text" style="width: 730px; device-width; height: 75px;" placeholder="Search by Name..." list="datalist">
-			<datalist id="datalist">
-			  <option value="Fenway Park">
-			  <option value="AT&T Park">
-			  <option value="Busch Stadium">
-			  <option value="Chase Field">
-			  <option value="Citi Field">
-			  <option value="Citizens Bank Park">
-			  <option value="Comerica Park">
-			  <option value="Coors Field">
-			  <option value="Great American Ball Park">
-			</datalist>
-			<button id="dropbutton" type="button" data-toggle="dropdown" style="display:none;">Search by
-			  <span class="caret"></span></button>
-			<ul class="dropdown-menu">
-			  <li><a href="#">Name</a></li>
-			  <li><a href="#">City</a></li>
-			  <li><a href="#">Alias</a></li>
-			</ul>
-		      </form>
-		    </div>
+			<button  type="button" class="btn btn-primary btn-lg btn-block" onclick="$('#searchinput').show();$('#dropbutton').show();$('#searchbutton').hide();">+Add A Ballpark</button>
+		      </div>
 
-		   
-		    <!--end row-->
-		   </div>
-		 </div>
-		  
+		      <div id="searchinput" class="col-md-6" style="display:none;">
+			<form class="form-wrapper cf">
+			  <input  type="text" style="width: 730px; device-width; height: 75px;" placeholder="Search by Name..." list="datalist">
+			  <datalist id="datalist">
+			    <option value="Fenway Park">
+			    <option value="AT&T Park">
+			    <option value="Busch Stadium">
+			    <option value="Chase Field">
+			    <option value="Citi Field">
+			    <option value="Citizens Bank Park">
+			    <option value="Comerica Park">
+			    <option value="Coors Field">
+			    <option value="Great American Ball Park">
+			  </datalist>
+			  <button id="dropbutton" type="button" data-toggle="dropdown" style="display:none;">Search by
+			    <span class="caret"></span></button>
+			  <ul class="dropdown-menu">
+			    <li><a href="#">Name</a></li>
+			    <li><a href="#">City</a></li>
+			    <li><a href="#">Alias</a></li>
+
+			  </ul>
+			</form>
+		      </div>
+		      <!-- END OF SEARCH-BUTTON -->
+		      <!--end row-->
+		    </div>
+		  </div>
+		</div>
+
 		  <div class="row">
 		    <div class="col-md-12" style="padding: 0px 30px 5px">
 		      <h2>My Friends </h2>	
@@ -355,11 +357,11 @@
 		       </div>
 		     </div>
 		     
-		     <div class="col-lg col-md-1 col-xs-1">
+		     <div class="col-lg col-md-1 col-xs-1 col-border">
 		       <h2><b>6 Stadiums</b></h2>
 		     </div>
 
-		      <div class="col-lg col-md-1 col-xs-1 col-border">
+		      <div class="col-lg col-md-1 col-xs-1 col-border ">
 			<div class="widewrapper">
 			  <a class="thumbnail" href="#" > 
 			    <!--can't figure how to use relative path name for the image file, in bootstrap-->
@@ -368,7 +370,7 @@
 			</div>
 		      </div>
 		      
-		     <div class="col-lg col-md-1 col-xs-1">
+		     <div class="col-lg col-md-1 col-xs-1 col-border">
 		       <h2><b>8 Stadiums</b></h2>
 		     </div>
 
@@ -381,7 +383,7 @@
 		       </div>
 		     </div>
 		     
-		     <div class="col-lg col-md-1 col-xs-1">
+		     <div class="col-lg col-md-1 col-xs-1 col-border">
 		       <h2><b>14 Stadiums</b></h2>
 		     </div>
 
@@ -394,7 +396,7 @@
 		       </div>
 		     </div>
 
-		     <div class="col-lg col-md-1 col-xs-1">
+		     <div class="col-lg col-md-1 col-xs-1 col-border">
 		       <h2><b>25 Stadiums</b></h2>
 		     </div>
 
@@ -407,7 +409,7 @@
 		       </div>
 		     </div>
 
-		     <div class="col-lg col-md-1 col-xs-1">
+		     <div class="col-lg col-md-1 col-xs-1 col-border">
 		       <h2><b>50 Stadiums</b></h2>
 		     </div>
 
@@ -509,10 +511,6 @@
 		  <!--end of container-->    
 		  </div>
 		  
-		    
-
-
-
 		  <hr>
 
 		   <!-- Footer -->
