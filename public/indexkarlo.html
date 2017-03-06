@@ -26,9 +26,12 @@
 <body >
   
   <div class="hidden-xs">&nbsp;</div>
-	<div class="container-fluid">
+   <!-- BODY 1st-col -->
+      <div class="col-lg-9 col-md-10 col-xs-11">
+	<!-- <div class="container"> -->
+	  <div class="row">
+     
 		<nav class="navbar navbar-inverse navbar-collapse">
-			<div class="container-fluid">
 				<!-- Brand and toggle get grouped for better mobile display -->
 				<div class="navbar-header">
 					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ballpark-nav" aria-expanded="false">
@@ -48,18 +51,17 @@
 					</ul>
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->
-		</nav>
-	</div>
+	  </nav>
 	 <!-- /.container -->
 
  			<!-- Map -->
-			<div class="container">
+			<!-- <div class="container"> -->
 				<div class="row">
 					<div class="col-sm-12" id="map-container">
 						<div id="map"></div>
 					</div>
 				</div>
-			</div>
+			<!-- </div> -->
 			
 				 <script>
 				  function myMap() {
@@ -123,11 +125,11 @@
 		  -->
 
 		 <!-- Page Content -->
-		 <div class="container">
+		 <!-- <div class="container"> -->
 
 		    <div class="col-lg-4 col-md-6 col-xs-12">
 			<div class="park">
-			 
+
 				<div class="row">
 					<div class="col-xs-12">
 						<h1>Minute Maid Ballpark</h1>
@@ -294,24 +296,19 @@
 
 	<!-- ----------- END OF PARKS ------------ -->
 	<!-- START OF SEARCH BUTTON -->
-		  </div>
-		</div>
+		  <!-- </div> -->
 
 		<div class="container-fluid">
 		  <div class="search-button">
 		    <div class="row">
 
-		      <div class="col-md-3">
-
-		      </div>
-
-		      <div id="searchbutton" class="col-md-6">
+		      <div id="searchbutton" class="col-lg-12 col-md-12 col-xs-12" style="padding-top: 15px">
 			<button  type="button" class="btn btn-primary btn-lg btn-block" onclick="$('#searchinput').show();$('#dropbutton').show();$('#searchbutton').hide();">+Add A Ballpark</button>
 		      </div>
 
-		      <div id="searchinput" class="col-md-6" style="display:none;">
+		      <div id="searchinput" class="col-lg-12 col-md-12 col-xs-12" style="padding-top: 15px; display:none;">
 			<form class="form-wrapper cf">
-			  <input  type="text" style="width: 730px; device-width; height: 75px;" placeholder="Search by Name..." list="datalist">
+			  <input  type="text" style="width: 750px; height: 75px;" placeholder="Search by Name..." list="datalist">
 			  <datalist id="datalist">
 			    <option value="Fenway Park">
 			    <option value="AT&T Park">
@@ -334,12 +331,15 @@
 			</form>
 		      </div>
 		      <!-- END OF SEARCH-BUTTON -->
-		      <!--end row-->
 		    </div>
 		  </div>
 		</div>
-
-		  <div class="row">
+	</div>
+	<!--END of BODY 1st-col  -->
+  
+	<!-- START of BODY 2nd-col -->
+ <div class="col-lg-3 col-md-2 col-xs-1">
+    <div class="row">
 		    <div class="col-md-12" style="padding: 0px 30px 5px">
 		      <h2>My Friends </h2>	
 		    </div>
@@ -349,7 +349,7 @@
 		  <div class="container-fluid">
 		    <div class="row">
 		      
-		      <div class<div class="col-lg col-md-1 col-xs-1 col-border">
+		      <div class="col-lg-12 col-md-12 col-xs-12 col-border">
 		       <div class="widewrapper">
 		       <a class="thumbnail" href="viewfriend.html" >
 			 <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
@@ -357,169 +357,76 @@
 		       </div>
 		     </div>
 		     
-		     <div class="col-lg col-md-1 col-xs-1 col-border">
+		     <div class="col-lg-12 col-md-12 col-xs-12 col-border">
 		       <h2><b>6 Stadiums</b></h2>
 		     </div>
 
-		      <div class="col-lg col-md-1 col-xs-1 col-border ">
-			<div class="widewrapper">
-			  <a class="thumbnail" href="#" > 
-			    <!--can't figure how to use relative path name for the image file, in bootstrap-->
-			    <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-			 </a>
-			</div>
-		      </div>
-		      
-		     <div class="col-lg col-md-1 col-xs-1 col-border">
-		       <h2><b>8 Stadiums</b></h2>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1 col-border">
+		      <div class="col-lg-12 col-md-12 col-xs-12 col-border">
 		       <div class="widewrapper">
-			 <a class="thumbnail" href="#" >
-			   <!--can't figure how to use relative path name for the image file, in bootstrap-->
-			   <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-			 </a>
-		       </div>
-		     </div>
-		     
-		     <div class="col-lg col-md-1 col-xs-1 col-border">
-		       <h2><b>14 Stadiums</b></h2>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1 col-border">
-		       <div class="widewrapper">
-			 <a class="thumbnail" href="#" >
-			 <!--can't figure how to use relative path name for the image file, in bootstrap-->
-			 <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-			 </a>
-		       </div>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1 col-border">
-		       <h2><b>25 Stadiums</b></h2>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1 col-border">
-		       <div class="widewrapper">
-			 <a class="thumbnail" href="#" >
-			 <!--can't figure how to use relative path name for the image file, in bootstrap-->
-			 <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-			 </a>
-		       </div>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1 col-border">
-		       <h2><b>50 Stadiums</b></h2>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1 col-border">
-		       <div class="widewrapper">
-			 <a class="thumbnail" href="#" >
-			 <!--can't figure how to use relative path name for the image file, in bootstrap-->
-			 <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-			 </a>
-		       </div>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1">
-		       <h2><b>100 Stadiums</b></h2>
-		     </div>
-		     
-		  <!--end of row-->
-		    </div>
-		    <!--start of 2nd row-->
-		    <div class<div class="col-lg col-md-1 col-xs-1 col-border">
-		       <div class="widewrapper">
-		       <a class="thumbnail" href="#" >
-			 <!--can't figure how to use relative path name for the image file, in bootstrap-->
+		       <a class="thumbnail" href="viewfriend.html" >
 			 <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
 		       </a>
 		       </div>
 		     </div>
 		     
-		     <div class="col-lg col-md-1 col-xs-1">
-		       <h2><b>8 Stadiums</b></h2>
+		     <div class="col-lg-12 col-md-12 col-xs-12 col-border">
+		       <h2><b>10 Stadiums</b></h2>
 		     </div>
 
-		      <div class="col-lg col-md-1 col-xs-1 col-border">
-			<div class="widewrapper">
-			  <a class="thumbnail" href="#" > 
-			    <!--can't figure how to use relative path name for the image file, in bootstrap-->
-			    <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-			 </a>
-			</div>
-		      </div>
-		      
-		     <div class="col-lg col-md-1 col-xs-1">
-		       <h2><b>12 Stadiums</b></h2>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1 col-border">
+		      <div class="col-lg-12 col-md-12 col-xs-12 col-border">
 		       <div class="widewrapper">
-			 <a class="thumbnail" href="#" >
-			   <!--can't figure how to use relative path name for the image file, in bootstrap-->
-			   <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-			 </a>
+		       <a class="thumbnail" href="viewfriend.html" >
+			 <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
+		       </a>
 		       </div>
 		     </div>
 		     
-		     <div class="col-lg col-md-1 col-xs-1">
+		     <div class="col-lg-12 col-md-12 col-xs-12 col-border">
 		       <h2><b>14 Stadiums</b></h2>
 		     </div>
 
-		     <div class="col-lg col-md-1 col-xs-1 col-border">
+		      <div class="col-lg-12 col-md-12 col-xs-12 col-border">
 		       <div class="widewrapper">
-			 <a class="thumbnail" href="#" >
-			 <!--can't figure how to use relative path name for the image file, in bootstrap-->
+		       <a class="thumbnail" href="viewfriend.html" >
 			 <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-			 </a>
+		       </a>
 		       </div>
 		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1">
-		       <h2><b>25 Stadiums</b></h2>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1 col-border">
-		       <div class="widewrapper">
-			 <a class="thumbnail" href="#" >
-			 <!--can't figure how to use relative path name for the image file, in bootstrap-->
-			 <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-			 </a>
-		       </div>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1">
-		       <h2><b>50 Stadiums</b></h2>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1 col-border">
-		       <div class="widewrapper">
-			 <a class="thumbnail" href="#" >
-			 <!--can't figure how to use relative path name for the image file, in bootstrap-->
-			 <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-			 </a>
-		       </div>
-		     </div>
-
-		     <div class="col-lg col-md-1 col-xs-1">
-		       <h2><b>100 Stadiums</b></h2>
-		     </div>
-		     <!--end of 2nd row-->
 		     
-		  <!--end of container-->    
+		     <div class="col-lg-12 col-md-12 col-xs-12 col-border">
+		       <h2><b>20 Stadiums</b></h2>
+		     </div>
+
+		      <div class="col-lg-12 col-md-12 col-xs-12 col-border">
+		       <div class="widewrapper">
+		       <a class="thumbnail" href="viewfriend.html" >
+			 <img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
+		       </a>
+		       </div>
+		     </div>
+		     
+		     <div class="col-lg-12 col-md-12 col-xs-12 col-border">
+		       <h2><b>30 Stadiums</b></h2>
+		     </div>
+		     
+		     <!--end of row-->   
 		  </div>
-		  
+
+	</div>
+  <!-- end of body 2nd-col -->
+  </div>
+<!-- end of body row -->
+</div>
 		  <hr>
 
 		   <!-- Footer -->
 		   <footer>
 		     <div class="row">
-                       <div class="col-lg-12">
+                       <div class="col-lg-12 col-md-12 col-xs-12">
 			 <p>Copyright &copy; Your Website 2017</p>
                        </div>
 		     </div>
 		   </footer>
+
 </body>
 </html>
