@@ -16,6 +16,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 			templateUrl: 'views/friends.html',
 			controller: 'FriendController'
 		})
+		.when('/my-ballparks', {
+			templateUrl: 'views/my-ballparks.html',
+			controller: 'MyBallparksController'
+		})
 		;
 
 	$locationProvider.html5Mode(true);
