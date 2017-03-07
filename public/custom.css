@@ -1,9 +1,86 @@
 body{
     background: #f5f5dc;
-    color: #FFFFFF;
-    text-align: center;
+    color: ##6b5038;
 }
 
+h1, h2, h3, h4, h5 {
+ text-align: center;
+}
+
+.navbar, .navbar-inverse {
+    background: #005511;
+}
+
+.navbar-inverse, .navbar-header .navbar-brand, .navbar-inverse .navbar-nav>li>a, .navbar-header .navbar-brand>a {
+    color:#FFFFFF;
+}
+
+.navbar-inverse .navbar-nav>li>a:hover, .navbar-header .navbar-brand>a:hover {
+    color:#DDD;
+}
+
+.container{
+    width:100%;
+}
+
+#main {
+    padding:0;
+}
+
+#bodywrap {
+margin-bottom: 15px;
+}
+
+#map{
+height:60vh;
+margin-bottom: 15px;
+}
+
+#friendtitle{
+color: #fff;
+background: #87563a;
+}
+
+#friendsrow {
+padding-top: 5px;
+}
+
+#friendsrow [class*="col-md-12"] {
+padding-top: 10px;
+border-bottom: 2px solid #99CCDD;
+}
+
+#friendwrap{
+color: #fff;
+background: #546b40;
+padding: 0;
+}
+
+#friendwrap h2{
+font-size: medium;
+text-align: top;
+}
+
+#park {
+    background: #87563a;
+    margin-bottom: 5%;
+    padding: 0 3%;
+    height: 100%;
+    color: #ffffff;
+    font-size: large;
+}
+
+#park img {
+    width: 100%;
+    height:auto;
+}
+
+#friend-stadium-total, #friend-stadium-total h2 {
+margin-top:0;
+padding-top:2%;
+}
+
+/*search button*/
 .btn-primary:hover,
 .btn-primary:focus,
 .btn-primary:active,
@@ -16,20 +93,6 @@ body{
     font-weight: bold;
 }
 
-.container{
-    width:100%;
-}
-
-
-#map{
-height:60vh;
-margin:0 15px 15px 15px;
-}
-
-.park{
-    background: #87563a;
-}
-/*search button*/
     a {
         color: #ccc;
     }
@@ -154,3 +217,47 @@ margin:0 15px 15px 15px;
 }
 /*end of search button*/
 
+/*==================================================
+=            Bootstrap 3 Media Queries             =
+==================================================*/
+
+    /*==========  Mobile First Method  ==========*/
+
+    /* Custom, iPhone Retina */ 
+    @media only screen and (min-width : 320px) {
+        
+    }
+
+    /* Extra Small Devices, Phones */ 
+    @media only screen and (min-width : 480px) {
+
+    }
+
+    /* Small Devices, Tablets */
+    @media only screen and (min-width : 768px) {
+
+	
+    }
+
+    /* Medium Devices, Desktops */
+    @media only screen and (min-width : 992px) {
+	#main{
+	    margin-right: 15px;
+	}
+	#bodywrap{
+	    padding-right: 15px;
+	}
+
+	#park{
+	    height: 35vh;
+	}
+
+	#park img {
+
+	}
+    }
+
+    /* Large Devices, Wide Screens */
+    @media only screen and (min-width : 1200px) {
+
+    }
