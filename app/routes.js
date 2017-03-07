@@ -74,6 +74,10 @@ module.exports = function(app) {
 		});
 	});
 
+	app.get('/test', function(req, res) {
+		res.sendfile('./public/indexkarlo.html');
+	});
+
 	// frontend routes =========================================================
 	// route to handle all angular requests
 	app.get('*', function(req, res) {

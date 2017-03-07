@@ -1,42 +1,33 @@
-app.controller('MainController', function($scope, UserService, FacebookService, Facebook) {
+app.controller('MainController', function($scope, $window, UserService, FacebookService, AuthService, Facebook) {
 
-	$scope.loginStatus = 'Waiting';
-	
 	$scope.login = function() {
-		// From now on you can use the Facebook service just as Facebook api says
-		Facebook.login(function(response) {
-			var loginResponse = response;
-
+		FacebookService.login()
+		.then(function(response) {
+			loginResponse = response;
+			return FacebookService.getUserData();
+		})
+		.then(function(response) {
 			console.log(response);
-			$scope.loginStatus = 'Logged In';
+			$scope.last_name = response.last_name;
+			return response;
+		})
+		.then(function(userResponse) {
+			// save the user
+			var userData = userResponse;
+			angular.extend(userData, loginResponse.authResponse);
 
-			FacebookService.getUserData() 
-				.then(function(response) {
-					console.log(response);
-					$scope.last_name = response.last_name;
-					return response;
-				})
-				.then(function(userResponse) {
-					// save the user
-					var userData = userResponse;
-					angular.extend(userData, loginResponse.authResponse);
+			return UserService.saveUser(userData);
+		})
+		.then(function(jwt) {
+			AuthService.setToken(jwt.data);
 
-					return UserService.saveUser(userData);
-				})
-				.then(function(jwt) {
-					console.log(jwt.data);
-				})
-			;
-		},
-		{
-			scope: 'publish_actions', 
-			return_scopes: true
+			// redirect to main page
+			$window.location.href = '/my-ballparks'
 		});
 	};
 
 	$scope.logout = function() {
 		Facebook.logout(function(response) {
-			$scope.loginStatus = "Logged Out";
 		});
 	};
 
