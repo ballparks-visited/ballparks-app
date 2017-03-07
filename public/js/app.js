@@ -1,6 +1,7 @@
 var app = angular.module('ballparksApp', [
 	'ngRoute',
-	'facebook'
+	'facebook',
+	'ngMap'
 ])
 .config(function(FacebookProvider) {
 	// Set your appId through the setAppId method or
