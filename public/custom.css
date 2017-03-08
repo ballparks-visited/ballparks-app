@@ -120,18 +120,7 @@ margin-top:0;
 padding-top:2%;
 }
 
-/*search button*/
-.btn-primary:hover,
-.btn-primary:focus,
-.btn-primary:active,
-.btn-primary{
-    
-    color: white;
-    background-color: red;
-    border-color: black;
-    font-size:40px;
-    font-weight: bold;
-}
+/*==========================search button=============================*/
 
     a {
         color: #ccc;
