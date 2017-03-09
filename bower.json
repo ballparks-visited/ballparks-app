@@ -6,6 +6,7 @@
     "angular": "latest",
     "angular-route": "latest",
     "angular-facebook": "latest",
-    "ngmap": "~1.17.8"
+    "ngmap": "~1.17.8",
+    "angular-jwt": "~0.1.9"
   }
 }
