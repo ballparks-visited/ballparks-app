@@ -1,4 +1,4 @@
-app.factory("AuthService",function($q, FacebookService, UserService) {
+app.factory("AuthService",function($q, UserService, jwtHelper) {
 	var service = {};
 	var token;
 
@@ -29,6 +29,10 @@ app.factory("AuthService",function($q, FacebookService, UserService) {
 			this.token = localStorage.getItem('stadium-jwt');
 		}
 		return this.token;
+	};
+
+	service.getUserID = function() {
+		return jwtHelper.decodeToken(service.getToken()).fb_id;
 	};
 	
 	/* ====================================================================================================== */
