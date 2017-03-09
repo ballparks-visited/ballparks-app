@@ -37,11 +37,19 @@ function getFBLongLivedToken(shortToken) {
 // test FB post
 function testFBpost() {
 	var deferred = new Deferred();
-
-
+	var token = "EAASFdgki4BQBAEV3VmCaHrMzYoNJ7OlJf8s20hZCeHaxlggsMAQ2VCVMCwFHsPIXmsVWZCUsZBJrAW1lVL2rw2dWfz2dCXBjUXlbn9Vr6Gj5zR8NaFFDgqyjNz3H9MdQbeqQtGMFeFZAWSK3xnhR35TBnnjoNf8ZD";
+	var fbID = "151169545402855";
+	fb.setAccessToken(token);
 	// insert code here
-	deferred.resolve("testing"); /*remove this line*/
-
+	fb.api(fbID + '/feed', 'post', { message: 'Test post' }, function (res) {
+		if(!res || res.error) {
+			console.log(!res ? 'error occurred' : res.error);
+			deferred.reject(res.error);
+		}
+		
+		console.log(res);	
+		deferred.resolve(res.id); /*remove this line*/
+	});
 	return deferred.promise;
 }
 
