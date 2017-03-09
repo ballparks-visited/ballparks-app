@@ -1,0 +1,644 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<!--with this active, it messes with my reference to custom.css-->
+	<!--<base href="/">-->
+
+	<title>Ballparks I've Visited</title>
+
+	<!-- CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+	<link rel="stylesheet" type="text/css" href="custom.css">
+	<!-- JS -->
+	<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<!-- Fonts -->
+	<link href="https://fonts.googleapis.com/css?family=Eczar" rel="stylesheet">
+	
+	
+	<!-- dev-->
+	<!--skewer -->
+	<script src="http://localhost:8080/skewer"></script>
+	<!--googlemap-->
+	<script src="https://maps.googleapis.com/maps/api/js?callback=myMap"></script>
+</head>
+<body >
+
+	<!----------------------------------------------------
+	*                     Navigation                     *
+	----------------------------------------------------->
+  
+	<div class="hidden-xs">&nbsp;</div>
+	<div class="container-fluid">
+		<nav class="navbar navbar-inverse navbar-collapse">
+			<div class="container-fluid">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header" id="header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#ballpark-nav" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="/">Ballparks I've Visited</a>
+				</div>
+
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="collapse navbar-collapse" id="ballpark-nav">
+					<ul class="nav navbar-nav">
+						<li><a href="index.html">My Ballparks</a></li>
+						<li><a href="#">Add a Ballpark</a></li>
+					</ul>
+				</div><!-- /.navbar-collapse -->
+			</div><!-- /.container-fluid -->
+		</nav>
+	</div>
+	 <!-- /.container -->
+
+	 
+	 
+	<!----------------------------------------------------
+	*                       Body                        *
+	----------------------------------------------------->
+	<div class="container-fluid" id="main">
+		<div class="col-md-9 col-sm-12" id="bodywrap"> <!-- Column for map, park info, & add park button -->
+		
+		<!----------------------------------------------------
+		*                        Map                         *
+		----------------------------------------------------->
+			<div class="row">
+				<div class="col-sm-12" id="map-container">
+					<div id="map"></div>
+				</div>
+			</div>
+			
+		
+
+		<!----------------------------------------------------
+		*               Display of Park Info                 *
+		----------------------------------------------------->
+			
+			<div id="container-fluid">
+				<div class="row" id="parkbg">
+					<div class="col-lg-4 col-md-6 col-xs-12" > <!-- Park info box -->
+						<div class="container" id="park">
+							<div class="row">
+								<div class="col-xs-12">
+									<h1>Minute Maid Ballpark</h1>
+								</div>				
+							</div>
+							
+							<div class="row">
+								<div class="col-md-8 col-xs-12 col-border" id="park-image-box">
+									
+									<a class="thumbnail" href="#" >
+									 <!--can't figure how to use relative path name for the image file, in bootstrap-->
+									 <img class="img-responsive" src="http://ballparknerd.com/wp-content/uploads/2016/03/23-Minute-Maid-Park.jpg">
+									</a>
+								</div>
+								
+								<div class="col-md-4 col-xs-12">
+								 
+									<dl>
+										 Visited on 2/6/2014
+										 &lt;Stadium Details&gt;
+									</dl>
+								</div>
+							</div>
+						</div>
+					</div>	
+				
+					<div class="col-lg-4 col-md-6 col-xs-12" > <!-- Park info box -->
+						<div class="container" id="park">
+							<div class="row">
+								<div class="col-xs-12">
+									<h1>Minute Maid Ballpark</h1>
+								</div>				
+							</div>
+							
+							<div class="row">
+								<div class="col-lg col-md-8 col-xs-12 col-border" id="park-image-box">
+									
+									<a class="thumbnail" href="#" >
+									 <!--can't figure how to use relative path name for the image file, in bootstrap-->
+									 <img class="img-responsive" src="http://ballparknerd.com/wp-content/uploads/2016/03/23-Minute-Maid-Park.jpg">
+									</a>
+								</div>
+								
+								<div class="col-lg col-md-4 col-xs-12">
+								 
+									<dl>
+										 Visited on 2/6/2014
+										 &lt;Stadium Details&gt;
+									</dl>
+								</div>
+							</div>
+						</div>
+					</div>		
+				
+					<div class="col-lg-4 col-md-6 col-xs-12">
+						<div class="container" id="park">
+							<div class="row">
+								<div class="col-xs-12">
+									<h1>Globe Life Park</h1>
+								</div>				
+							</div>
+							<div class="row">
+								<div class="col-lg col-md-8 col-xs-12 col-border" id="park-image-box">
+									<a class="thumbnail" href="#" >
+									<img class="img-responsive" src="http://ballparknerd.com/wp-content/uploads/2016/03/24-Globe-Life-Park.jpg">
+									</a>
+								</div>
+							
+
+						 
+								 <div class="col-lg col-md-4 col-xs-12">
+									 <dl>
+										 Visited on 6/24/2015
+										 &lt;Stadium Details&gt;
+									 </dl>
+								 </div>
+							</div>
+						</div>
+					 </div>
+					
+					<div class="col-lg-4 col-md-6 col-xs-12">
+						<div class="container" id="park">
+							<div class="row">
+								<div class="col-xs-12">
+									<h1>Safeco Field</h1>
+								</div>				
+							</div>
+							<div class="row">
+								<div class="col-lg col-md-8 col-xs-12 col-border" id="park-image-box">
+								   <a class="thumbnail" href="#" >
+									<img class="img-responsive" src="http://ballparknerd.com/wp-content/uploads/2016/03/04-Safeco-Field.jpg">
+								   </a>
+								</div>
+						 
+								<div class="col-lg-4 col-md-6 col-xs-12">
+								   <dl>
+									 Visited on 2/14/2000
+									 &lt;Stadium Details&gt;
+								   </dl>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-lg-4 col-md-6 col-xs-12">
+						<div class="container" id="park">
+							<div class="row">
+								<div class="col-xs-12">
+									<h1>Oakland Coliseum</h1>
+								</div>				
+							</div>
+							
+							<div class="row">
+								<div class="col-lg col-md-8 col-xs-12 col-border" id="park-image-box">
+									
+									<a class="thumbnail" href="#" >
+									 <!--can't figure how to use relative path name for the image file, in bootstrap-->
+									 <img class="img-responsive" src="http://ballparknerd.com/wp-content/uploads/2016/03/29-O.Co-Coliseum-300x225.jpg">
+									</a>
+								</div>
+								
+								<div class="col-lg col-md-4 col-xs-12">
+								 
+									<dl>
+										 Visited on 9/14/1989
+										 &lt;Stadium Details&gt;
+									</dl>
+								</div>
+							</div>
+						</div>	
+					</div>
+						
+					<div class="col-lg-4 col-md-6 col-xs-12">
+						<div class="container" id="park">
+							<div class="row">
+								<div class="col-xs-12">
+									<h1>Chase Field</h1>
+								</div>				
+							</div>
+							
+							<div class="row">
+								<div class="col-lg col-md-8 col-xs-12 col-border">
+									
+									<a class="thumbnail" href="#" >
+									 <!--can't figure how to use relative path name for the image file, in bootstrap-->
+									 <img class="img-responsive" src="http://ballparknerd.com/wp-content/uploads/2016/03/26-Chase-Field-300x161.jpg">
+									</a>
+								</div>
+								
+								<div class="col-lg col-md-4 col-xs-12">
+								 
+									<dl>
+										 Visited on 11/19/2005
+										 &lt;Stadium Details&gt;
+									</dl>
+								</div>
+							</div>
+						</div>	
+					</div>
+						
+					<div class="col-lg-4 col-md-6 col-xs-12">
+						<div class="container" id="park">
+							<div class="row">
+								<div class="col-xs-12">
+									<h1>Oriole Park at Camden Yards</h1>
+								</div>				
+							</div>
+							
+							<div class="row">
+								<div class="col-lg col-md-8 col-xs-12 col-border">
+									<a class="thumbnail" href="#" >
+									 <!--can't figure how to use relative path name for the image file, in bootstrap-->
+									 <img  class="img-responsive" src="http://ballparknerd.com/wp-content/uploads/2016/03/02-Camden-Yards.jpg">
+									</a>
+								</div>
+								
+								<div class="col-lg col-md-4 col-xs-12">
+								 
+									<dl>
+										 Visited on 3/22/1998
+										 &lt;Stadium Details&gt;
+									</dl>
+								</div>
+							</div>
+						</div>	
+					</div>
+				</div> <!-- end of park list row -->
+			</div> <!-- end of park list container -->
+
+			
+			<!----------------------------------------------------
+			*                   Search Button                    *
+			----------------------------------------------------->
+
+			<div class="container-fluid">
+				<div class="row">
+					<div class="col-md-3"></div> <!-- Blank space left of button -->
+
+					<div id="searchbutton" class="col-md-6">
+						<button  type="button" class="btn btn-primary btn-lg btn-block" onclick="$('#searchinput').show();$('#dropbutton').show();$('#searchbutton').hide();">+Add A Ballpark</button>
+					</div>
+				 
+					<div id="searchinput" class="col-md-6" style="display:none;">
+						<form class="form-wrapper cf">
+							<input  type="text" style="width: 75%; device-width; height: 72px;" placeholder="Search by Name..." list="datalist">
+							<datalist id="datalist">
+								<option value="Fenway Park">
+								<option value="AT&T Park">
+								<option value="Busch Stadium">
+								<option value="Chase Field">
+								<option value="Citi Field">
+								<option value="Citizens Bank Park">
+								<option value="Comerica Park">
+								<option value="Coors Field">
+								<option value="Great American Ball Park">
+							</datalist>
+							<button id="dropbutton" type="button" data-toggle="dropdown" style="display:none;width: 25%">Search by
+							<span class="caret"></span></button>
+							<ul class="dropdown-menu dropdown-menu-right">
+							  <li><a href="#">Name</a></li>
+							  <li><a href="#">City</a></li>
+							  <li><a href="#">Alias</a></li>
+							</ul>
+						</form>
+					</div>
+					<div class="col-md-3"></div> <!-- Blank space right of button -->
+				</div> <!--end row-->
+			</div> <!-- end Search Button container-fluid -->
+		</div> <!-- end of map, parks list, and search -->
+		
+		<!----------------------------------------------------
+		*                   Friends List                     *
+		----------------------------------------------------->
+		<div class="col-md-3 col-sm-12" id="friendwrap"> 
+			<!--Container for friends-->
+			<div class="container">
+				<div class="row" id="friendtitle">
+					<div class="col-md-12" style="padding: 0px 30px 5px">
+					<h1>My Friends </h1>	
+					</div>
+				</div>
+		  
+				<div class="row no-gutter" id="friendsrow">			
+					<div class="col-md-12 col-sm-3 col-xs-4 col-border vertical-align" > <!-- friend box -->
+						<div class="col-xs-4" id="friendbox">
+							<div id="friend-photo">
+								<div class="widewrapper">
+									<a class="thumbnail" href="viewfriend.html" >
+										<!--can't figure how to use relative path name for the image file, in bootstrap-->
+										<img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-xs-8" id="friend-stadium-total">
+							<div class="container">
+								<div class="row no-gutter">
+									<div class="col-xs-2"><span class="glyphicon glyphicon-globe"></span></div>
+									<div class="col-xs-10" id="visited-text"><h2><b> 6 Stadiums</b></h2><br></div>
+								</div>
+								<div class="row no-gutter">
+									<div class="col-xs-2"><span class="glyphicon glyphicon-resize-small"></span></div>
+									<div class="col-xs-10" id="visited-text"><h2> 2 Common</h2></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-12 col-sm-3 col-xs-4 col-border vertical-align" > <!-- friend box -->
+						<div class="col-xs-4" id="friendbox">
+							<div id="friend-photo">
+								<div class="widewrapper">
+									<a class="thumbnail" href="viewfriend.html" >
+										<!--can't figure how to use relative path name for the image file, in bootstrap-->
+										<img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-xs-8" id="friend-stadium-total">
+							<div class="container">
+								<div class="row no-gutter">
+									<div class="col-xs-2"><span class="glyphicon glyphicon-globe"></span></div>
+									<div class="col-xs-10" id="visited-text"><h2><b> 6 Stadiums</b></h2><br></div>
+								</div>
+								<div class="row no-gutter">
+									<div class="col-xs-2"><span class="glyphicon glyphicon-resize-small"></span></div>
+									<div class="col-xs-10" id="visited-text"><h2> 2 Common</h2></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-12 col-sm-3 col-xs-4 col-border vertical-align" > <!-- friend box -->
+						<div class="col-xs-4" id="friendbox">
+							<div id="friend-photo">
+								<div class="widewrapper">
+									<a class="thumbnail" href="viewfriend.html" >
+										<!--can't figure how to use relative path name for the image file, in bootstrap-->
+										<img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-xs-8" id="friend-stadium-total">
+							<div class="container">
+								<div class="row no-gutter">
+									<div class="col-xs-2"><span class="glyphicon glyphicon-globe"></span></div>
+									<div class="col-xs-10" id="visited-text"><h2><b> 6 Stadiums</b></h2><br></div>
+								</div>
+								<div class="row no-gutter">
+									<div class="col-xs-2"><span class="glyphicon glyphicon-resize-small"></span></div>
+									<div class="col-xs-10" id="visited-text"><h2> 2 Common</h2></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-12 col-sm-3 col-xs-4 col-border vertical-align" > <!-- friend box -->
+						<div class="col-xs-4" id="friendbox">
+							<div id="friend-photo">
+								<div class="widewrapper">
+									<a class="thumbnail" href="viewfriend.html" >
+										<!--can't figure how to use relative path name for the image file, in bootstrap-->
+										<img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-xs-8" id="friend-stadium-total">
+							<div class="container">
+								<div class="row no-gutter">
+									<div class="col-xs-2"><span class="glyphicon glyphicon-globe"></span></div>
+									<div class="col-xs-10" id="visited-text"><h2><b> 6 Stadiums</b></h2><br></div>
+								</div>
+								<div class="row no-gutter">
+									<div class="col-xs-2"><span class="glyphicon glyphicon-resize-small"></span></div>
+									<div class="col-xs-10" id="visited-text"><h2> 2 Common</h2></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-12 col-sm-3 col-xs-4 col-border vertical-align" > <!-- friend box -->
+						<div class="col-xs-4" id="friendbox">
+							<div id="friend-photo">
+								<div class="widewrapper">
+									<a class="thumbnail" href="viewfriend.html" >
+										<!--can't figure how to use relative path name for the image file, in bootstrap-->
+										<img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-xs-8" id="friend-stadium-total">
+							<div class="container">
+								<div class="row no-gutter">
+									<div class="col-xs-2"><span class="glyphicon glyphicon-globe"></span></div>
+									<div class="col-xs-10" id="visited-text"><h2><b> 6 Stadiums</b></h2><br></div>
+								</div>
+								<div class="row no-gutter">
+									<div class="col-xs-2"><span class="glyphicon glyphicon-resize-small"></span></div>
+									<div class="col-xs-10" id="visited-text"><h2> 2 Common</h2></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-12 col-sm-3 col-xs-4 col-border vertical-align" > <!-- friend box -->
+						<div class="col-xs-4" id="friendbox">
+							<div id="friend-photo">
+								<div class="widewrapper">
+									<a class="thumbnail" href="viewfriend.html" >
+										<!--can't figure how to use relative path name for the image file, in bootstrap-->
+										<img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-xs-8" id="friend-stadium-total">
+							<div class="container">
+								<div class="row no-gutter">
+									<div class="col-xs-2"><span class="glyphicon glyphicon-globe"></span></div>
+									<div class="col-xs-10" id="visited-text"><h2><b> 6 Stadiums</b></h2><br></div>
+								</div>
+								<div class="row no-gutter">
+									<div class="col-xs-2"><span class="glyphicon glyphicon-resize-small"></span></div>
+									<div class="col-xs-10" id="visited-text"><h2> 2 Common</h2></div>
+								</div>
+							</div>
+						</div>
+					</div>
+			 
+					<div class="col-md-12 col-sm-3 col-xs-4 col-border vertical-align" > <!-- friend box -->
+						<div class="col-xs-4" id="friendbox">
+							<div id="friend-photo">
+								<div class="widewrapper">
+									<a class="thumbnail" href="viewfriend.html" >
+										<!--can't figure how to use relative path name for the image file, in bootstrap-->
+										<img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-xs-8" id="friend-stadium-total">
+							<div class="container">
+								<div class="row no-gutter">
+									<div class="col-xs-2"><span class="glyphicon glyphicon-globe"></span></div>
+									<div class="col-xs-10" id="visited-text"><h2><b> 6 Stadiums</b></h2><br></div>
+								</div>
+								<div class="row no-gutter">
+									<div class="col-xs-2"><span class="glyphicon glyphicon-resize-small"></span></div>
+									<div class="col-xs-10" id="visited-text"><h2> 2 Common</h2></div>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-md-12 col-sm-3 col-xs-4 col-border"> <!-- friend box -->
+						<div class="col-sm-4 col-xs-6">
+							<div id="friend-photo">
+								<div class="widewrapper">
+									<a class="thumbnail" href="viewfriend.html" >
+										<!--can't figure how to use relative path name for the image file, in bootstrap-->
+										<img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-sm-8 col-xs-6" id="friend-stadium-total">
+							<h2><b>12 Stadiums</b></h2>
+						</div>
+					</div>
+
+					<div class="col-md-12 col-sm-3 col-xs-4 col-border"> <!-- friend box -->
+						<div class="col-sm-4 col-xs-6">
+							<div id="friend-photo">
+								<div class="widewrapper">
+									<a class="thumbnail" href="viewfriend.html" >
+										<!--can't figure how to use relative path name for the image file, in bootstrap-->
+										<img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-sm-8 col-xs-6" id="friend-stadium-total">
+							<h2><b>14 Stadiums</b></h2>
+						</div>
+					</div>
+
+					<div class="col-md-12 col-sm-3 col-xs-4 col-border"> <!-- friend box -->
+						<div class="col-sm-4 col-xs-6">
+							<div id="friend-photo">
+								<div class="widewrapper">
+									<a class="thumbnail" href="viewfriend.html" >
+										<!--can't figure how to use relative path name for the image file, in bootstrap-->
+										<img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-sm-8 col-xs-6" id="friend-stadium-total">
+							<h2><b>25 Stadiums</b></h2>
+						</div>
+					</div>
+
+					<div class="col-md-12 col-sm-3 col-xs-4 col-border"> <!-- friend box -->
+						<div class="col-sm-4 col-xs-6">
+							<div id="friend-photo">
+								<div class="widewrapper">
+									<a class="thumbnail" href="viewfriend.html" >
+										<!--can't figure how to use relative path name for the image file, in bootstrap-->
+										<img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-sm-8 col-xs-6" id="friend-stadium-total">
+							<h2><b>50 Stadiums</b></h2>
+						</div>
+					</div>
+
+					<div class="col-md-12 col-sm-3 col-xs-4 col-border"> <!-- friend box -->
+						<div class="col-sm-4 col-xs-6">
+							<div id="friend-photo">
+								<div class="widewrapper">
+									<a class="thumbnail" href="viewfriend.html" >
+										<!--can't figure how to use relative path name for the image file, in bootstrap-->
+										<img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
+									</a>
+								</div>
+							</div>
+						</div>
+						
+						<div class="col-sm-8 col-xs-6" id="friend-stadium-total">
+							<h2><b>100 Stadiums</b></h2>
+						</div>
+					</div>
+				</div> <!--end of Friends row-->	      
+			</div> <!--end of Friends container-->
+		</div> <!-- end of friends section column --> 
+	</div>
+	    
+
+
+		<!----------------------------------------------------
+		*                      Footer                        *
+		----------------------------------------------------->
+		  <hr>
+		   <footer>
+		     <div class="row">
+                       <div class="col-lg-12">
+			 <p>Copyright &copy; Your Website 2017</p>
+                       </div>
+		     </div>
+		   </footer>
+		   
+		<!----------------------------------------------------
+		*              Script to Generate Map                *
+		----------------------------------------------------->
+	<script>
+        function myMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+			zoom: 4,
+			center: {lat: 39, lng: -98}
+        });
+        
+		var layer = new google.maps.FusionTablesLayer({
+          query: {
+            select: '\'Geocodable address\'',
+            from: '1J0jSUlTa0CDeVxK_bmz6CLpDba-vts6ZN9NGAHwi'
+          }
+        });
+        layer.setMap(map);
+        }
+
+    </script>
+		  <!--Use my unique API key from Google Maps, not sure if i can share this key or use a group key?-->
+		  <script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyADkUgIOwOomWHUGQk_0Gsk4uEgHEoz_uw&callback=myMap"></script>
+		  <!--
+				To use this code on your website, get a free API key from Google.
+				Read more at: https://www.w3schools.com/graphics/google_maps_basic.asp
+			  -->
+			  
+</body>
+</html>
