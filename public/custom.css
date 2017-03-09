@@ -40,7 +40,7 @@ h1, h2, h3, h4, h5 {
     /* background-color: red; */
     background-color: #7d0000;
     border-color: black;
-    font-size:40px;
+    font-size:x-large;
     font-weight: bold;
 }
 
@@ -146,7 +146,7 @@ h1, h2, h3, h4, h5 {
 
 #friend-stadium-total span {
 	display:inline-block;
-	font-size: x-large;
+	font-size: small;
 	text-align:center;
 	vertical-align:middle;
 }
@@ -313,7 +313,13 @@ a {
 
     /* Small Devices, Tablets */
     @media only screen and (min-width : 768px) {
-
+		#visited-text{
+			font-size: medium;
+		}
+	
+		#friend-stadium-total span {
+			font-size: medium;
+		}
 	
     }
 
@@ -337,6 +343,15 @@ a {
 		#friend-stadium-total, #friend-stadium-total h2 {
 			padding: 0;
 		}
+		
+		#visited-text{
+			font-size: large;
+		}
+	
+		#friend-stadium-total span {
+			font-size: large;
+		}
+	
     }
 
     /* Large Devices, Wide Screens */
