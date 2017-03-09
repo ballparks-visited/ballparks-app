@@ -75,7 +75,7 @@ module.exports = function(app) {
 	});
 
 	app.get('/test', function(req, res) {
-		res.sendfile('./public/indexkarlo.html');
+		res.sendfile('./public/indexjay.html');
 	});
 
 	// frontend routes =========================================================

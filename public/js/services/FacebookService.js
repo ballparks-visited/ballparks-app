@@ -1,4 +1,4 @@
-app.factory("FacebookService",function($q, Facebook) {
+app.factory("FacebookService",function($q, Facebook, AuthService) {
 	var service = {};
 
 	service.login = function() {
@@ -13,7 +13,7 @@ app.factory("FacebookService",function($q, Facebook) {
 			}
 		},
 		{
-			scope: 'publish_actions', 
+			scope: 'publish_actions,user_friends,read_custom_friendlists', 
 			return_scopes: true
 		});
 
@@ -52,8 +52,18 @@ app.factory("FacebookService",function($q, Facebook) {
 	
 	service.getFriends = function() {
 		var deferred = $q.defer();
-		
-		deferred.resolve("hello world");
+		var userID = AuthService.getUserID();
+
+		console.log(userID);
+
+		Facebook.api('/' + userID + '/friends', function(response) {
+			if(!response || response.error) {
+				deferred.reject('Error occured');
+			}
+			else {
+				deferred.resolve(response);
+			}
+		});
 
 		return deferred.promise;
 	};
