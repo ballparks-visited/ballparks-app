@@ -75,9 +75,45 @@
 					<div id="map"></div>
 				</div>
 			</div>
-			
-		
 
+		<!----------------------------------------------------
+		*                   Search Button                    *
+		----------------------------------------------------->
+
+		<div class="container-fluid">
+		  
+		  <div class="row">
+		    <div class="col-md-3"></div> <!-- Blank space left of button -->
+		    	    
+		    <div id="searchinput" class="col-md-6">
+		      <form class="form-wrapper cf" style=" margin-bottom:15px">
+			<input  type="text" style="width: 75%; device-width; height: 72px" placeholder="Search by Name..." list="datalist">
+			<datalist id="datalist">
+			  <option value="Fenway bPark">
+			  <option value="AT&T Park">
+			  <option value="Busch Stadium">
+			  <option value="Chase Field">
+			  <option value="Citi Field">
+			  <option value="Citizens Bank Park">
+			  <option value="Comerica Park">
+			  <option value="Coors Field">
+			  <option value="Great American Ball Park">
+			</datalist>
+			<button id="button" type="button" onclick="#" style="width: 25%;">Search
+		      </form>
+		    </div>
+		    <div class="col-md-3"></div> <!-- Blank space right of button -->
+		  </div> <!--end row-->
+		  <!-- <div class="row"> -->
+		  <!--   <div class="col-md-3"></div> <\!-- Blank space left of button -\-> -->
+		  <!--   <div id="searchbutton" class="col-md-6"> -->
+		  <!--     <button  type="button" class="btn btn-primary btn-lg btn-block" onclick="$('#searchinput').show();$('#dropbutton').show();$('#searchbutton').hide();" style="margin-bottom:15px">+Add A Ballpark</button> -->
+		  <!--   </div> -->
+		  <!--   <div class="col-md-3"></div> <\!-- Blank space left of button -\-> -->
+		  <!-- </div> -->
+		  
+		</div> <!-- end Search Button container-fluid -->	
+		
 		<!----------------------------------------------------
 		*               Display of Park Info                 *
 		----------------------------------------------------->
@@ -275,45 +311,6 @@
 				</div> <!-- end of park list row -->
 			</div> <!-- end of park list container -->
 
-			
-			<!----------------------------------------------------
-			*                   Search Button                    *
-			----------------------------------------------------->
-
-			<div class="container-fluid">
-				<div class="row">
-					<div class="col-md-3"></div> <!-- Blank space left of button -->
-
-					<div id="searchbutton" class="col-md-6">
-						<button  type="button" class="btn btn-primary btn-lg btn-block" onclick="$('#searchinput').show();$('#dropbutton').show();$('#searchbutton').hide();">+Add A Ballpark</button>
-					</div>
-				 
-					<div id="searchinput" class="col-md-6" style="display:none;">
-						<form class="form-wrapper cf">
-							<input  type="text" style="width: 75%; device-width; height: 72px;" placeholder="Search by Name..." list="datalist">
-							<datalist id="datalist">
-								<option value="Fenway Park">
-								<option value="AT&T Park">
-								<option value="Busch Stadium">
-								<option value="Chase Field">
-								<option value="Citi Field">
-								<option value="Citizens Bank Park">
-								<option value="Comerica Park">
-								<option value="Coors Field">
-								<option value="Great American Ball Park">
-							</datalist>
-							<button id="dropbutton" type="button" data-toggle="dropdown" style="display:none;width: 25%">Search by
-							<span class="caret"></span></button>
-							<ul class="dropdown-menu dropdown-menu-right">
-							  <li><a href="#">Name</a></li>
-							  <li><a href="#">City</a></li>
-							  <li><a href="#">Alias</a></li>
-							</ul>
-						</form>
-					</div>
-					<div class="col-md-3"></div> <!-- Blank space right of button -->
-				</div> <!--end row-->
-			</div> <!-- end Search Button container-fluid -->
 		</div> <!-- end of map, parks list, and search -->
 		
 		<!----------------------------------------------------
