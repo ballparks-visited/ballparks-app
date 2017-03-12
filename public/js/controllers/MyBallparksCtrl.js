@@ -33,7 +33,7 @@ app.controller('MyBallparksController', function($scope, $window, UserService, B
 	}
 
 	// output search results
-	$scope.searchMode = true;
+	// $scope.searchMode = true;
 	$scope.showSearchResults = function(event, searchInput) {
 		if(searchInput.length > 1) {
 			$scope.searchMatches = ballparks.filter(function(el) {
