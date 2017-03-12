@@ -1,18 +1,18 @@
 var PromiseIO = require('promised-io/promise');
 var Deferred = PromiseIO.Deferred;
 
-var stadiumDAO = require('../dao/stadiumDAO');
+var ballparkDAO = require('../dao/ballparkDAO');
 
 /* ====================================================================================================== */
 /* ======================================= [ Public Functions ] ========================================= */
 /* ====================================================================================================== */
 
-function getStadiums() {
+function getBallparks() {
 	var deferred = new Deferred();
 
-	stadiumDAO.readStadiums(0, 10)
-	.then(function(stadiums) {
-		deferred.resolve(stadiums);
+	ballparkDAO.readBallparks(0, 0)
+	.then(function(ballparks) {
+		deferred.resolve(ballparks);
 	},
 	function(err) {
 		deferred.reject(err);
@@ -21,4 +21,20 @@ function getStadiums() {
 	return deferred;
 }
 
-module.exports.getStadiums = getStadiums;
+function getBallparkById(ids) {
+	var deferred = new Deferred();
+
+	ballparkDAO.readBallparkById(ids)
+	.then(function(ballparks) {
+		deferred.resolve(ballparks);
+	},
+	function(err) {
+		deferred.reject(err);
+	});
+
+	return deferred;
+}
+
+
+module.exports.getBallparks = getBallparks;
+module.exports.getBallparkById = getBallparkById;

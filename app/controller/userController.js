@@ -3,6 +3,7 @@ var Deferred = PromiseIO.Deferred;
 
 var userDAO = require('../dao/userDAO');
 var facebookService = require('../service/facebookService');
+var ballparkDAO = require('../dao/ballparkDAO');
 
 /* ====================================================================================================== */
 /* ======================================= [ Public Functions ] ========================================= */
@@ -41,6 +42,34 @@ function getUsers() {
 	return deferred;
 }
 
+function getUserById(userId) {
+	var deferred = new Deferred();
+	
+	userDAO.readUserById(userId)
+	.then(function(user) {
+		deferred.resolve(user);
+	},
+	function(err) {
+		deferred.reject(err);
+	});
+
+	return deferred;
+}
+
+function addUserBallpark(userId, params) {
+	var deferred = new Deferred();
+	
+	userDAO.addUserBallpark(userId, params.ballparkId, params.dateVisited)
+	.then(function(user) {
+		deferred.resolve(user);
+	},
+	function(err) {
+		deferred.reject(err);
+	});
+
+	return deferred;
+}
+
 function testFBpost() {
 
 	return facebookService.testFBpost();
@@ -49,4 +78,6 @@ function testFBpost() {
 
 module.exports.addNewUser = addNewUser;
 module.exports.getUsers = getUsers;
+module.exports.getUserById = getUserById;
+module.exports.addUserBallpark = addUserBallpark;
 module.exports.testFBpost = testFBpost;

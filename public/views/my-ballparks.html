@@ -18,38 +18,37 @@
 		<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 		<div class="container-fluid">
 			<div class="row">
-				<div class="col-md-3"></div> <!-- Blank space left of button -->
-				<div id="searchinput" class="col-md-6">
-					<form class="form-wrapper cf" style=" margin-bottom:15px">
-						<input  type="text" style="width: 75%; device-width; height: 72px" placeholder="Search by Name..." list="datalist">
-						<datalist id="datalist">
-							<option value="Fenway bPark" />
-							<option value="AT&T Park" />
-							<option value="Busch Stadium" />
-							<option value="Chase Field" />
-							<option value="Citi Field" />
-							<option value="Citizens Bank Park" />
-							<option value="Comerica Park" />
-							<option value="Coors Field" />
-							<option value="Great American Ball Park" />
-						</datalist>
-						<button id="button" type="button" onclick="#" style="width: 25%;">Search</button>
-					</form>
+				<div ng-if="!searchMode" id="searchbutton" ng-click="showSearch();" class="col-md-12">
+					<button type="button" class="btn btn-primary btn-lg btn-block">+Add A Ballpark</button>
 				</div>
-				<div class="col-md-3"></div> <!-- Blank space right of button -->
+				<div ng-if="searchMode" class="col-md-12">
+					<input type="text" id="searchinput" class="form-control" style="height:54px;" ng-focus="true" ng-model="searchInput" ng-keyup="showSearchResults($event, searchInput)" />
+				</div>
 			</div> <!--end row-->
+			<div class="row" ng-if="searchMatches">
+				<div class="col-md-12">
+					<ul class="list-group">
+						<li class="list-group-item" ng-repeat="match in searchMatches">
+							{{ match.primary_name }}
+							<span style="float:right;"><a href="#" ng-click="addBallpark(match._id)">+Add Ballpark</a></span>
+						</li>
+					</ul>
+				</div>
+			</div>
 		</div> <!-- end Search Button container-fluid -->
+		<br/>
 
 		<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 		<!-- [ OUTPUT VISITED BALLPARKS ] -->
 		<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 		<div id="container-fluid">
 			<div class="row" id="parkbg">
-				<div class="col-lg-4 col-sm-6 col-xs-12" > <!-- Park info box -->
+				
+				<div class="col-lg-4 col-sm-6 col-xs-12" ng-repeat="ballpark in ballparks" > <!-- Park info box -->
 					<div class="container" id="park">
 						<div class="row">
 							<div class="col-xs-12">
-								<h1>Minute Maid Ballpark</h1>
+								<h1>{{ ballpark.data.primary_name }}</h1>
 							</div>				
 						</div>
 						
@@ -65,7 +64,7 @@
 							<div class="col-md-4 col-xs-12">
 							 
 								<dl>
-									 Visited on 2/6/2014
+									 Visited on {{ moment(ballpark.dateVisited).format('M/D/YYYY') }}
 									 &lt;Stadium Details&gt;
 								</dl>
 							</div>
@@ -73,166 +72,7 @@
 					</div>
 				</div>	
 			
-				<div class="col-lg-4 col-sm-6 col-xs-12" > <!-- Park info box -->
-					<div class="container" id="park">
-						<div class="row">
-							<div class="col-xs-12">
-								<h1>Minute Maid Ballpark</h1>
-							</div>				
-						</div>
-						
-						<div class="row">
-							<div class="col-lg col-md-8 col-xs-12 col-border" id="park-image-box">
-								
-								<a class="thumbnail" href="#" >
-								 <!--can't figure how to use relative path name for the image file, in bootstrap-->
-								 <img class="img-responsive" src="http://ballparknerd.com/wp-content/uploads/2016/03/23-Minute-Maid-Park.jpg">
-								</a>
-							</div>
-							
-							<div class="col-lg col-md-4 col-xs-12">
-							 
-								<dl>
-									 Visited on 2/6/2014
-									 &lt;Stadium Details&gt;
-								</dl>
-							</div>
-						</div>
-					</div>
-				</div>		
 			
-				<div class="col-lg-4 col-sm-6 col-xs-12">
-					<div class="container" id="park">
-						<div class="row">
-							<div class="col-xs-12">
-								<h1>Globe Life Park</h1>
-							</div>				
-						</div>
-						<div class="row">
-							<div class="col-lg col-md-8 col-xs-12 col-border" id="park-image-box">
-								<a class="thumbnail" href="#" >
-								<img class="img-responsive" src="http://ballparknerd.com/wp-content/uploads/2016/03/24-Globe-Life-Park.jpg">
-								</a>
-							</div>
-						
-
-					 
-							 <div class="col-lg col-md-4 col-xs-12">
-								 <dl>
-									 Visited on 6/24/2015
-									 &lt;Stadium Details&gt;
-								 </dl>
-							 </div>
-						</div>
-					</div>
-				 </div>
-				
-				<div class="col-lg-4 col-sm-6 col-xs-12">
-					<div class="container" id="park">
-						<div class="row">
-							<div class="col-xs-12">
-								<h1>Safeco Field</h1>
-							</div>				
-						</div>
-						<div class="row">
-							<div class="col-lg col-md-8 col-xs-12 col-border" id="park-image-box">
-							   <a class="thumbnail" href="#" >
-								<img class="img-responsive" src="http://ballparknerd.com/wp-content/uploads/2016/03/04-Safeco-Field.jpg">
-							   </a>
-							</div>
-					 
-							<div class="col-lg-4 col-md-6 col-xs-12">
-							   <dl>
-								 Visited on 2/14/2000
-								 &lt;Stadium Details&gt;
-							   </dl>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-lg-4 col-sm-6 col-xs-12">
-					<div class="container" id="park">
-						<div class="row">
-							<div class="col-xs-12">
-								<h1>Oakland Coliseum</h1>
-							</div>				
-						</div>
-						
-						<div class="row">
-							<div class="col-lg col-md-8 col-xs-12 col-border" id="park-image-box">
-								
-								<a class="thumbnail" href="#" >
-								 <!--can't figure how to use relative path name for the image file, in bootstrap-->
-								 <img class="img-responsive" src="http://ballparknerd.com/wp-content/uploads/2016/03/29-O.Co-Coliseum-300x225.jpg">
-								</a>
-							</div>
-							
-							<div class="col-lg col-md-4 col-xs-12">
-							 
-								<dl>
-									 Visited on 9/14/1989
-									 &lt;Stadium Details&gt;
-								</dl>
-							</div>
-						</div>
-					</div>	
-				</div>
-					
-				<div class="col-lg-4 col-sm-6 col-xs-12">
-					<div class="container" id="park">
-						<div class="row">
-							<div class="col-xs-12">
-								<h1>Chase Field</h1>
-							</div>				
-						</div>
-						
-						<div class="row">
-							<div class="col-lg col-md-8 col-xs-12 col-border">
-								
-								<a class="thumbnail" href="#" >
-								 <!--can't figure how to use relative path name for the image file, in bootstrap-->
-								 <img class="img-responsive" src="http://ballparknerd.com/wp-content/uploads/2016/03/26-Chase-Field-300x161.jpg">
-								</a>
-							</div>
-							
-							<div class="col-lg col-md-4 col-xs-12">
-							 
-								<dl>
-									 Visited on 11/19/2005
-									 &lt;Stadium Details&gt;
-								</dl>
-							</div>
-						</div>
-					</div>	
-				</div>
-					
-				<div class="col-lg-4 col-sm-6 col-xs-12">
-					<div class="container" id="park">
-						<div class="row">
-							<div class="col-xs-12">
-								<h1>Oriole Park at Camden Yards</h1>
-							</div>				
-						</div>
-						
-						<div class="row">
-							<div class="col-lg col-md-8 col-xs-12 col-border">
-								<a class="thumbnail" href="#" >
-								 <!--can't figure how to use relative path name for the image file, in bootstrap-->
-								 <img  class="img-responsive" src="http://ballparknerd.com/wp-content/uploads/2016/03/02-Camden-Yards.jpg">
-								</a>
-							</div>
-							
-							<div class="col-lg col-md-4 col-xs-12">
-							 
-								<dl>
-									 Visited on 3/22/1998
-									 &lt;Stadium Details&gt;
-								</dl>
-							</div>
-						</div>
-					</div>	
-				</div>
 			</div> <!-- end of park list row -->
 		</div> <!-- end of park list container -->
 

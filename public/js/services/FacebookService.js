@@ -69,7 +69,7 @@ app.factory("FacebookService",function($q, Facebook, AuthService) {
 	
 	service.getFriends = function() {
 		var deferred = $q.defer();
-		var userID = AuthService.getUserID();
+		var userID = AuthService.getUserId();
 
 		console.log(userID);
 

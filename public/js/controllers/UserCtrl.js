@@ -5,7 +5,10 @@ app.controller('UserController', function($scope, $http, UserService) {
 	$scope.loadUsers = function() {
 		$scope.loadUserMessage = 'Loading...';
 		UserService.loadUsers()
-		.then(function(response){ $scope.users = response.data; });
+		.then(function(response){
+			$scope.users = response.data;
+			console.log(response);
+		});
 	};
 
 });
