@@ -77,6 +77,9 @@ module.exports = function(app) {
 	app.get('/test', function(req, res) {
 		res.sendfile('./public/indexjay.html');
 	});
+	app.get('/test2', function(req, res) {
+		res.sendfile('./public/viewfriend.html');
+	});
 
 	// frontend routes =========================================================
 	// route to handle all angular requests
