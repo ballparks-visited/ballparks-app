@@ -1,6 +1,6 @@
 var passport = require('passport');
 var userController = require('./controller/userController');
-var stadiumController = require('./controller/stadiumController');
+var ballparkController = require('./controller/ballparkController');
 var authController = require('./controller/authController');
 
 module.exports = function(app) {
@@ -8,19 +8,47 @@ module.exports = function(app) {
 	// server routes ===========================================================
 	// handle things like api calls
 	// authentication routes
-	// app.get('/api/v1/user/:userId', function(req, res) {
-	// 	userDAO.readUserById(req.params.userId, {
-	// 		"success": function(user) {
-	// 			res.send(user);
-	// 		},
-	// 		"error": function(err) {
-	// 			console.log(err);
-	// 			res.json(err);
-	// 		}
+
+	app.get('/api/v1/users/:userId', function(req, res) {
+		userController.getUserById(req.params.userId)
+		.then(function(userResult) {
+			res.send(userResult);
+			res.end();
+		},
+		function(err) {
+			console.error(err);
+			res.send(err);
+			res.end();
+		});
+	});
+
+	// app.get('/api/v1/users', passport.authenticate('jwt', { session: false}), function(req, res) {
+	// 	userController.getUsers()
+	// 	.then(function(userResult) {
+	// 		res.send(userResult);
+	// 		res.end();
+	// 	},
+	// 	function(err) {
+	// 		console.error(err);
+	// 		res.send(err);
+	// 		res.end();
 	// 	});
 	// });
 
-	app.get('/api/v1/users', passport.authenticate('jwt', { session: false}), function(req, res) {
+	app.post('/api/v1/users/:userId/ballparks', function(req, res) {
+		userController.addUserBallpark(req.params.userId, req.body)
+		.then(function(userResult) {
+			res.send(userResult);
+			res.end();
+		},
+		function(err) {
+			console.error(err);
+			res.send(err);
+			res.end();
+		});
+	});
+
+	app.get('/api/v1/users', function(req, res) {
 		userController.getUsers()
 		.then(function(userResult) {
 			res.send(userResult);
@@ -61,8 +89,8 @@ module.exports = function(app) {
 		});
 	});
 
-	app.get('/api/v1/stadiums', function(req, res) {
-		stadiumController.getStadiums()
+	app.get('/api/v1/ballparks', function(req, res) {
+		ballparkController.getBallparks()
 		.then(function(result) {
 			res.send(result);
 			res.end();

@@ -10,13 +10,17 @@ var Schema = mongoose.Schema;
 var UserSchema = new Schema({
 	first_name:       { type: String, required: true },
 	last_name:        { type: String, required: true },
-	fb_id:            { type: Number, required: true, unique: true },
+	fb_id:            { type: String, required: true, unique: true },
 	access_token:     { type: String, required: true },
 	token_expire:     { type: String, required: true },
 	permissions:      { type: String, required: true },
 	signed_request:   { type: String, required: true },
-	dateCreated:      { type: Date},
-	dateModified:     { type: Date}
+	dateCreated:      { type: Date },
+	dateModified:     { type: Date },
+	ballparks:        [{
+						data: { type: Schema.ObjectId, ref: 'Ballpark' },
+						dateVisited: { type: Date }
+					  }]
 });
 
 UserSchema.pre('save', function(next){
@@ -83,16 +87,47 @@ function readUsers(skip, count) {
 }
 
 //READ user by id
-function readUserById(id, callbacks){
-	return UserModel.findById(id, function (err, user) {
+function readUserById(id){
+	var deferred = new Deferred();
+	
+	UserModel.findOne({'fb_id': id}).populate('ballparks.data').exec('find', function (err, user) {
 		if (!err) {
-			if(!isInTest) console.log('[GET]   Get user: ' + user._id);
-			callbacks.success(user);
+			if(!isInTest) console.log('[GET]   Get user: ' + user[0]._id);
+			deferred.resolve(user[0]);
 		} else {
 			if(!isInTest) console.log(err);
-			callbacks.error(err);
+			deferred.reject(err);
 		}
 	});
+
+	return deferred.promise;
+}
+
+//UPDATE user
+function addUserBallpark(id, ballparkId, dateVisited){
+	var deferred = new Deferred();
+
+	UserModel.findOne({'fb_id': id} , function (err, user) {
+		if (!err) {
+
+			user.ballparks.push({ "dateVisited": dateVisited, "data": ballparkId });
+			
+			return user.save(function (err) {
+				if (!err) {
+					if(!isInTest) console.log("[UDP]   Updated user: " + user._id);
+					deferred.resolve(user);
+				} else {
+					if(!isInTest) console.log(err);
+					deferred.reject(err);
+				}
+			});
+		} else {
+			if(!isInTest) console.log(err);
+			deferred.reject(err);
+		}
+	});
+
+	return deferred.promise;
 }
 
 
@@ -119,6 +154,7 @@ function readUserById(id, callbacks){
 module.exports.upsertUserByFBId = upsertUserByFBId;
 module.exports.readUsers = readUsers;
 module.exports.readUserById = readUserById;
+module.exports.addUserBallpark = addUserBallpark;
 // module.exports.deleteUser = deleteUser;
 
 /* ====================================================================================================== */
