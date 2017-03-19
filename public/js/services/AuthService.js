@@ -31,17 +31,22 @@ app.factory("AuthService",function($q, UserService, jwtHelper) {
 		return this.token;
 	};
 
-	service.getUserID = function() {
+	service.getUserId = function() {
 		return jwtHelper.decodeToken(service.getToken()).fb_id;
 	};
 	
+	service.isTokenValid = function() {
+		var token = service.getToken();
+
+		return token !== ''
+				// && !jwtHelper.isTokenExpired()
+		;
+	};
+
 	/* ====================================================================================================== */
 	/* ======================================= [ Private Functions ] ======================================== */
 	/* ====================================================================================================== */
 
-	function isTokenValid() {
-		return true; /*TODO: add logic here*/
-	}
 	
 	return service;
 });

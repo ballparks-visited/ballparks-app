@@ -17,5 +17,16 @@ app.factory('UserService', ['$http', function($http) {
 		});
 	};
 
+	service.getUserById = function(id) {
+		return $http.get("/api/v1/users/"+id);
+	};
+
+	service.addBallpark = function(id, ballparkId, date) {
+		return $http.post("/api/v1/users/"+id+"/ballparks", {
+			"ballparkId": ballparkId,
+			"dateVisited": date
+		});
+	};
+
 	return service;
 }]);

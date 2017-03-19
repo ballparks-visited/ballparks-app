@@ -22,7 +22,7 @@ app.controller('MainController', function($scope, $window, UserService, Facebook
 			AuthService.setToken(jwt.data);
 
 			// redirect to main page
-			$window.location.href = '/my-ballparks'
+			$window.location.href = '/my-ballparks';
 		});
 	};
 

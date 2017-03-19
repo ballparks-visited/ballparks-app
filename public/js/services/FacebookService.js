@@ -49,10 +49,27 @@ app.factory("FacebookService",function($q, Facebook, AuthService) {
 		});
 		return deferred.promise;
 	};
+
+	service.getUserPhoto = function(userID) {
+		var deferred = $q.defer();
+		
+		Facebook.api('/' + userID + '/picture', {
+			"height": 250
+			,"width": 250
+		}, function(response) {
+			if(!response || response.error) {
+				deferred.reject('Error occured');
+			}
+			else {
+				deferred.resolve(response);
+			}
+		});
+		return deferred.promise;
+	};
 	
 	service.getFriends = function() {
 		var deferred = $q.defer();
-		var userID = AuthService.getUserID();
+		var userID = AuthService.getUserId();
 
 		console.log(userID);
 
