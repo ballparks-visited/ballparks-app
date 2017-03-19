@@ -1,410 +1,170 @@
-
-<div class="container-fluid" id="main">
-	<div class="col-md-9 col-sm-12" id="bodywrap"> <!-- Column for map, park info, & add park button -->
+<div class="container-fluid" id="main-container">
+	<div class="row">
+		<div class="col-sm-12 col-md-9" id="main-content">
 	
-		<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-		<!-- [ OUTPUT BALLPARK MAP ] -->
-		<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-		<div class="row">
-			<div class="col-sm-12" id="map-container">
-				<ng-map id="map" center="37.971602,-96.1510076" zoom="4" scrollwheel="false">
-					<marker position="32.7003659,-96.6822543" title="Hello World!"></marker>
-				</ng-map>
-			</div>
-		</div>
-
-		<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-		<!-- [ OUTPUT BALLPARK SEARCH ] -->
-		<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-		<div class="container-fluid">
+			<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+			<!-- [ OUTPUT BALLPARK MAP ] -->
+			<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 			<div class="row">
-				<div ng-if="!searchMode" id="searchbutton" ng-click="showSearch();" class="col-md-12">
-					<button type="button" class="btn btn-primary btn-lg btn-block">+Add A Ballpark</button>
-				</div>
-				<div ng-if="searchMode" class="col-md-12">
-					<input type="text" id="searchinput" class="form-control" style="height:54px;" ng-focus="true" ng-model="searchInput" ng-keyup="showSearchResults($event, searchInput)" />
-				</div>
-			</div> <!--end row-->
-			<div class="row" ng-if="searchMatches">
-				<div class="col-md-12">
-					<ul class="list-group">
-						<li class="list-group-item" ng-repeat="match in searchMatches">
-							{{ match.primary_name }}
-							<span style="float:right;"><a href="#" ng-click="addBallpark(match._id)">+Add Ballpark</a></span>
-						</li>
-					</ul>
+				<div class="col-sm-12" id="map-container">
+					<ng-map id="map" center="37.971602,-96.1510076" zoom="4" scrollwheel="false">
+						<marker position="32.7003659,-96.6822543" title="Hello World!"></marker>
+					</ng-map>
 				</div>
 			</div>
-		</div> <!-- end Search Button container-fluid -->
-		<br/>
 
-		<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-		<!-- [ OUTPUT VISITED BALLPARKS ] -->
-		<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-		<div id="container-fluid">
-			<div class="row" id="parkbg">
+			<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+			<!-- [ OUTPUT BALLPARK SEARCH ] -->
+			<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+			<div class="row">
+				<div class="col-sm-12" id="search-name">
+					<div class="col-md-4 col-md-push-8" id="sb-search" class="sb-search">
+						<div class="input-group stylish-input-group">
+							<input type="text" class="form-control"  placeholder="Search" list="datalist">
+								<datalist id="datalist">
+									<option value="Fenway Park">
+									<option value="AT&T Park">
+									<option value="Busch Stadium">
+									<option value="Chase Field">
+									<option value="Citi Field">
+									<option value="Citizens Bank Park">
+									<option value="Comerica Park">
+									<option value="Coors Field">
+									<option value="Great American Ball Park">
+								</datalist>
+							<span class="input-group-addon">
+								<button type="submit">
+									<span class="glyphicon glyphicon-search"></span>
+								</button>  
+							</span>
+						</div>
+					</div>
+					<div class="col-md-8 col-md-pull-4" id="name"><h1>Parks [FName has] visited</h1> <!-- User: "I have", Friend: "FName has" -->
+					</div>
+				</div>
+			</div>
+
+			<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+			<!-- [ OUTPUT SELECTED BALLPARK UPON SELECTION ] -->
+			<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+			<div class="row"> <!-- Hidden on load, toggles open if park is selected, has a toggle to close -->
+				<div class="col-sm-12" id="selection-panel">
+					<div class="row">
+						<div class="col-sm-12" id="selection-name">
+							<h2>[Park Name]</h2>
+						</div>								
+					</div>
+					
+					<div class="row">
+						<div class="col-sm-8" id="selection-img">
+							<!-- Image will need to be supplied dynamically from database -->
+							<img class="img-responsive" src="./images/minute-maid-park.jpg">
+						</div>
+						<div class="col-sm-4 no-padding">
+							<ul class="selection-info">
+								<li> <h4>Location:</h4> 	</li> <!-- Set these to display as in-line block so they will wrap within row -->
+								<li> [Arlington, TX]		</li> <!-- Width: 100% on xs, 50% on sm and up -->
+								<li> <h4>League:</h4>		</li>
+								<li> [American League]		</li>
+								<li> <h4>Home Team:</h4>	</li>
+								<li> [Texas Rangers]		</li>
+							</ul>
+						</div>
+					</div>
+					
+					<div class="row">
+						<div class="col-xs-12" id="selection-visits"> <!-- hide if from view if selected park has not been added by user -->
+							<ul class="selection-dates">
+								<li>Dates visited:</li> 
+								<li>[01/01/2017]</li>		
+								<li>[01/02/2017]</li>
+								<li>[01/03/2017]</li>
+								<li>[01/04/2017]</li>
+							</ul>
+						</div>
+					</div>							
 				
-				<div class="col-lg-4 col-sm-6 col-xs-12" ng-repeat="ballpark in ballparks" > <!-- Park info box -->
-					<div class="container" id="park">
+					<div class="col-sm-8 col-sm-offset-2">
+						<button type = "button" class = "btn btn-primary btn-lg btn-block">
+							Add Ballpark
+						</button>
+					</div>
+				</div>
+			</div>
+			
+			<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+			<!-- [ OUTPUT VISITED BALLPARKS ] -->
+			<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+			<div class="row" id="visited-parks">
+			
+				<!-- ******************* New Park Box ******************* -->
+				<div class="col-sm-6 col-lg-4 park" ng-repeat="i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]"> <!-- Original ng-repeat code removed for test: ng-repeat="ballpark in ballparks"-->
+					<div class="visited-box">
 						<div class="row">
-							<div class="col-xs-12">
-								<h1>{{ ballpark.data.primary_name }}</h1>
-							</div>				
+							<div class="col-sm-12">
+								<h3>{{ ballpark.data.primary_name }}</h3>
+							</div>
 						</div>
 						
 						<div class="row">
-							<div class="col-md-8 col-xs-12 col-border" id="park-image-box">
-								
-								<a class="thumbnail" href="#" >
-								 <!--can't figure how to use relative path name for the image file, in bootstrap-->
-								 <img class="img-responsive" src="http://ballparknerd.com/wp-content/uploads/2016/03/23-Minute-Maid-Park.jpg">
-								</a>
+							<div class="col-sm-12">
+								<!-- Image will need to be supplied dynamically from database -->
+								<img class="img-responsive park-img" src="./images/minute-maid-park.jpg">
 							</div>
-							
-							<div class="col-md-4 col-xs-12">
-							 
-								<dl>
-									 Visited on {{ moment(ballpark.dateVisited).format('M/D/YYYY') }}
-									 &lt;Stadium Details&gt;
-								</dl>
+							<div class="col-sm-12">
+								<div class="row visited-info">
+									<div class="col-xs-6"> <h4>Location:</h4> 	 [City, State]	</div>
+									<div class="col-xs-6 no-left-padding"> <h4>League:</h4>		 [League Name]	</div>
+									<div class="col-xs-6"> <h4>Home Team:</h4>	 [Team Name]	</div>
+									<div class="col-xs-6 no-left-padding"> <h4>Last Visited:</h4>	 {{ moment(ballpark.dateVisited).format('M/D/YYYY') }}	</div>
+								</div>
 							</div>
 						</div>
 					</div>
 				</div>	
-			
-			
-			</div> <!-- end of park list row -->
-		</div> <!-- end of park list container -->
+				<div class="clearfix visible-sm-block visible-md-block" ng-if="($index+1)%2==0"></div> <!-- This is needed every time the visited parks wraps to a new line on a small/medium screen (Every 2 info boxes) -->
+				<div class="clearfix visible-lg-block" ng-if="($index+1)%3==0"></div> <!-- This is needed every time the visited parks wraps to a new line on a large screen (Every 3rd info box) -->
+				<div ng-repeat-end=""></div>
+			</div> <!-- End of visited parks area -->
+		</div> <!-- End of map, search, selected park, and visited parks area -->
 
-	</div><!-- end of main column -->
-
-	<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-	<!-- [ OUTPUT FRIENDS ] -->
-	<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-	<div class="col-md-3 col-sm-12" id="friendwrap"> 
-		<!--Container for friends-->
-		<div class="container">
-			<div class="row" id="friendtitle">
-				<div class="col-md-12" style="padding: 0px 30px 5px">
-				<h1>My Friends </h1>	
-				</div>
-			</div>
-	
-			<div class="row no-gutter" id="friendsrow">			
-				<div class="col-md-12 col-sm-4 col-xs-6 col-border vertical-align" > <!-- friend box -->
-					<div class="col-xs-4" id="friendbox">
-						<div id="friend-photo">
-							<div class="widewrapper">
-								<a class="thumbnail" href="viewfriend.html" >
-									<!--can't figure how to use relative path name for the image file, in bootstrap-->
-									<img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-xs-8" id="friend-stadium-total">
-						<div class="container">
-							<div class="row no-gutter">
-								<div class="col-xs-2"><span class="glyphicon glyphicon-globe"></span></div>
-								<div class="col-xs-10" id="visited-text"><b> 6 Stadiums</b><br></div>
-							</div>
-							<div class="row no-gutter">
-								<div class="col-xs-2"><span class="glyphicon glyphicon-resize-small"></span></div>
-								<div class="col-xs-10" id="visited-text"> 2 Common</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-12 col-sm-4 col-xs-6 col-border vertical-align" > <!-- friend box -->
-					<div class="col-xs-4" id="friendbox">
-						<div id="friend-photo">
-							<div class="widewrapper">
-								<a class="thumbnail" href="viewfriend.html" >
-									<!--can't figure how to use relative path name for the image file, in bootstrap-->
-									<img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-xs-8" id="friend-stadium-total">
-						<div class="container">
-							<div class="row no-gutter">
-								<div class="col-xs-2"><span class="glyphicon glyphicon-globe"></span></div>
-								<div class="col-xs-10" id="visited-text"><b> 6 Stadiums</b><br></div>
-							</div>
-							<div class="row no-gutter">
-								<div class="col-xs-2"><span class="glyphicon glyphicon-resize-small"></span></div>
-								<div class="col-xs-10" id="visited-text"> 2 Common</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-12 col-sm-4 col-xs-6 col-border vertical-align" > <!-- friend box -->
-					<div class="col-xs-4" id="friendbox">
-						<div id="friend-photo">
-							<div class="widewrapper">
-								<a class="thumbnail" href="viewfriend.html" >
-									<!--can't figure how to use relative path name for the image file, in bootstrap-->
-									<img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-xs-8" id="friend-stadium-total">
-						<div class="container">
-							<div class="row no-gutter">
-								<div class="col-xs-2"><span class="glyphicon glyphicon-globe"></span></div>
-								<div class="col-xs-10" id="visited-text"><b> 6 Stadiums</b><br></div>
-							</div>
-							<div class="row no-gutter">
-								<div class="col-xs-2"><span class="glyphicon glyphicon-resize-small"></span></div>
-								<div class="col-xs-10" id="visited-text"> 2 Common</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-12 col-sm-4 col-xs-6 col-border vertical-align" > <!-- friend box -->
-					<div class="col-xs-4" id="friendbox">
-						<div id="friend-photo">
-							<div class="widewrapper">
-								<a class="thumbnail" href="viewfriend.html" >
-									<!--can't figure how to use relative path name for the image file, in bootstrap-->
-									<img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-xs-8" id="friend-stadium-total">
-						<div class="container">
-							<div class="row no-gutter">
-								<div class="col-xs-2"><span class="glyphicon glyphicon-globe"></span></div>
-								<div class="col-xs-10" id="visited-text"><b> 6 Stadiums</b><br></div>
-							</div>
-							<div class="row no-gutter">
-								<div class="col-xs-2"><span class="glyphicon glyphicon-resize-small"></span></div>
-								<div class="col-xs-10" id="visited-text"> 2 Common</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-12 col-sm-4 col-xs-6 col-border vertical-align" > <!-- friend box -->
-					<div class="col-xs-4" id="friendbox">
-						<div id="friend-photo">
-							<div class="widewrapper">
-								<a class="thumbnail" href="viewfriend.html" >
-									<!--can't figure how to use relative path name for the image file, in bootstrap-->
-									<img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-xs-8" id="friend-stadium-total">
-						<div class="container">
-							<div class="row no-gutter">
-								<div class="col-xs-2"><span class="glyphicon glyphicon-globe"></span></div>
-								<div class="col-xs-10" id="visited-text"><b> 6 Stadiums</b><br></div>
-							</div>
-							<div class="row no-gutter">
-								<div class="col-xs-2"><span class="glyphicon glyphicon-resize-small"></span></div>
-								<div class="col-xs-10" id="visited-text"> 2 Common</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-12 col-sm-4 col-xs-6 col-border vertical-align" > <!-- friend box -->
-					<div class="col-xs-4" id="friendbox">
-						<div id="friend-photo">
-							<div class="widewrapper">
-								<a class="thumbnail" href="viewfriend.html" >
-									<!--can't figure how to use relative path name for the image file, in bootstrap-->
-									<img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-xs-8" id="friend-stadium-total">
-						<div class="container">
-							<div class="row no-gutter">
-								<div class="col-xs-2"><span class="glyphicon glyphicon-globe"></span></div>
-								<div class="col-xs-10" id="visited-text"><b> 6 Stadiums</b><br></div>
-							</div>
-							<div class="row no-gutter">
-								<div class="col-xs-2"><span class="glyphicon glyphicon-resize-small"></span></div>
-								<div class="col-xs-10" id="visited-text"> 2 Common</div>
-							</div>
-						</div>
-					</div>
-				</div>
-		
-				<div class="col-md-12 col-sm-4 col-xs-6 col-border vertical-align" > <!-- friend box -->
-					<div class="col-xs-4" id="friendbox">
-						<div id="friend-photo">
-							<div class="widewrapper">
-								<a class="thumbnail" href="viewfriend.html" >
-									<!--can't figure how to use relative path name for the image file, in bootstrap-->
-									<img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-xs-8" id="friend-stadium-total">
-						<div class="container">
-							<div class="row no-gutter">
-								<div class="col-xs-2"><span class="glyphicon glyphicon-globe"></span></div>
-								<div class="col-xs-10" id="visited-text"><b> 6 Stadiums</b><br></div>
-							</div>
-							<div class="row no-gutter">
-								<div class="col-xs-2"><span class="glyphicon glyphicon-resize-small"></span></div>
-								<div class="col-xs-10" id="visited-text"> 2 Common</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-12 col-sm-4 col-xs-6 col-border vertical-align" > <!-- friend box -->
-					<div class="col-xs-4" id="friendbox">
-						<div id="friend-photo">
-							<div class="widewrapper">
-								<a class="thumbnail" href="viewfriend.html" >
-									<!--can't figure how to use relative path name for the image file, in bootstrap-->
-									<img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-xs-8" id="friend-stadium-total">
-						<div class="container">
-							<div class="row no-gutter">
-								<div class="col-xs-2"><span class="glyphicon glyphicon-globe"></span></div>
-								<div class="col-xs-10" id="visited-text"><b> 6 Stadiums</b><br></div>
-							</div>
-							<div class="row no-gutter">
-								<div class="col-xs-2"><span class="glyphicon glyphicon-resize-small"></span></div>
-								<div class="col-xs-10" id="visited-text"> 2 Common</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-12 col-sm-4 col-xs-6 col-border vertical-align" > <!-- friend box -->
-					<div class="col-xs-4" id="friendbox">
-						<div id="friend-photo">
-							<div class="widewrapper">
-								<a class="thumbnail" href="viewfriend.html" >
-									<!--can't figure how to use relative path name for the image file, in bootstrap-->
-									<img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-xs-8" id="friend-stadium-total">
-						<div class="container">
-							<div class="row no-gutter">
-								<div class="col-xs-2"><span class="glyphicon glyphicon-globe"></span></div>
-								<div class="col-xs-10" id="visited-text"><b> 6 Stadiums</b><br></div>
-							</div>
-							<div class="row no-gutter">
-								<div class="col-xs-2"><span class="glyphicon glyphicon-resize-small"></span></div>
-								<div class="col-xs-10" id="visited-text"> 2 Common</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-12 col-sm-4 col-xs-6 col-border vertical-align" > <!-- friend box -->
-					<div class="col-xs-4" id="friendbox">
-						<div id="friend-photo">
-							<div class="widewrapper">
-								<a class="thumbnail" href="viewfriend.html" >
-									<!--can't figure how to use relative path name for the image file, in bootstrap-->
-									<img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-xs-8" id="friend-stadium-total">
-						<div class="container">
-							<div class="row no-gutter">
-								<div class="col-xs-2"><span class="glyphicon glyphicon-globe"></span></div>
-								<div class="col-xs-10" id="visited-text"><b> 6 Stadiums</b><br></div>
-							</div>
-							<div class="row no-gutter">
-								<div class="col-xs-2"><span class="glyphicon glyphicon-resize-small"></span></div>
-								<div class="col-xs-10" id="visited-text"> 2 Common</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-12 col-sm-4 col-xs-6 col-border vertical-align" > <!-- friend box -->
-					<div class="col-xs-4" id="friendbox">
-						<div id="friend-photo">
-							<div class="widewrapper">
-								<a class="thumbnail" href="viewfriend.html" >
-									<!--can't figure how to use relative path name for the image file, in bootstrap-->
-									<img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-xs-8" id="friend-stadium-total">
-						<div class="container">
-							<div class="row no-gutter">
-								<div class="col-xs-2"><span class="glyphicon glyphicon-globe"></span></div>
-								<div class="col-xs-10" id="visited-text"><b> 6 Stadiums</b><br></div>
-							</div>
-							<div class="row no-gutter">
-								<div class="col-xs-2"><span class="glyphicon glyphicon-resize-small"></span></div>
-								<div class="col-xs-10" id="visited-text"> 2 Common</div>
-							</div>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-12 col-sm-4 col-xs-6 col-border vertical-align" > <!-- friend box -->
-					<div class="col-xs-4" id="friendbox">
-						<div id="friend-photo">
-							<div class="widewrapper">
-								<a class="thumbnail" href="viewfriend.html" >
-									<!--can't figure how to use relative path name for the image file, in bootstrap-->
-									<img src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-								</a>
-							</div>
-						</div>
-					</div>
-					
-					<div class="col-xs-8" id="friend-stadium-total">
-						<div class="container">
-							<div class="row no-gutter">
-								<div class="col-xs-2"><span class="glyphicon glyphicon-globe"></span></div>
-								<div class="col-xs-10" id="visited-text"><b> 6 Stadiums</b><br></div>
-							</div>
-							<div class="row no-gutter">
-								<div class="col-xs-2"><span class="glyphicon glyphicon-resize-small"></span></div>
-								<div class="col-xs-10" id="visited-text"> 2 Common</div>
-							</div>
-						</div>
+		<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+		<!-- [ OUTPUT FRIENDS ] -->
+		<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+		<div class="col-sm-12 col-md-3" id="friends-panel">
+			<div id="friends-bg">
+				<div class="row no-padding" id="friends-title">
+					<div class="col-sm-12">
+						<h2>Friends</h2>
 					</div>
 				</div>
 				
-			</div> <!--end of Friends row-->	      
-		</div> <!--end of Friends container-->
-	</div> <!-- end of friends section column --> 
-
-</div>
+				<div class="row">
+				
+					<!-- ************** Friend Box ************* -->
+					<div class="col-xs-6 col-sm-4 col-md-12 friend" ng-repeat="i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]">
+						<div class="row vertical-align">
+							<div class="col-xs-6 col-sm-4">
+								<img class="img-responsive" src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
+								[FrFName]
+							</div>
+							<div class="col-xs-6 col-sm-8 friend-info">
+								<div class="row">
+									<div class="col-xs-6 col-sm-2"><span class="glyphicon glyphicon-globe"></span></div>
+									<div class="col-xs-6 col-sm-10" id="visited-text"><b> [6]<span class="hidden-word"> Visited</span></b><br></div>
+								</div>
+								<div class="row">
+									<div class="col-xs-6 col-sm-2"><span class="glyphicon glyphicon-resize-small"></span></div>
+									<div class="col-xs-6 col-sm-10" id="visited-text"> [2]<span class="hidden-word"> Matches</span></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="clearfix visible-sm-block" ng-if="($index+1)%3==0"></div>
+					<div ng-repeat-end=""></div>
+				</div> <!-- End of friend boxes area -->
+			</div> <!-- End of friends-bg -->
+		</div> <!-- End of friends panel -->
+		
+	</div> <!-- End of main container row -->
+</div> <!-- End of main-container -->

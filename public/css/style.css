@@ -1,176 +1,33 @@
 body{
-    background: #f5f5dc;
-    color: ##6b5038;
+    background: #fff9ca;
+    color: #6b5038;
 }
 
-h1, h2, h3, h4, h5 {
- text-align: center;
- font-family: 'Lobster', cursive;
+h1, h2, h3{
+	text-align: center;
+	font-family: 'Lobster', cursive;
+	text-shadow: 0.02em 0.02em 0.05em #333;
 }
 
-.navbar, .navbar-inverse {
-    background: #005511;
+h2, h3 {
+	margin: 10px 0;
 }
 
-.navbar-inverse, .navbar-header .navbar-brand, .navbar-inverse .navbar-nav>li>a, .navbar-header .navbar-brand>a {
-    color:#FFFFFF;
+h3 {
+	color: #b3e9ff;
 }
 
-.navbar-inverse .navbar-nav>li>a:hover, .navbar-header .navbar-brand>a:hover {
-    color:#DDD;
-    text-align: center;
+ul {
+	list-style-type: none;
+	padding: 0;
 }
 
-.navbar-brand {
-    font-family: 'Eczar', serif;
-    font-size: x-large;
-    }
-
-.container{
-    width:100%;
+.no-padding{
+	padding:0;
 }
 
-/* Add Ballpark Button */
-
-    .btn-primary:hover,
-    .btn-primary:focus,
-    .btn-primary:active,
-    .btn-primary{
-    
-    color: white;
-    /* background-color: red; */
-    background-color: #7d0000;
-    border-color: black;
-    font-size:x-large;
-    font-weight: bold;
-}
-
-/* TOP NAV BAR */
-.navbar-inverse {
-    /* brik/ivy */
-    background-color: #306127;
-    border-color: #ffffff;
-}
-
-.navbar-inverse .navbar-brand:focus, .navbar-inverse .navbar-brand:hover {
-    color: #fff;
-    background-color: transparent;
-}
-
-/* current tab -white*/
-.navbar-inverse .navbar-brand {
-    color: #fff;
-}
-
-/* other tab -yellowish*/
-.navbar-inverse .navbar-nav > li > a {
-    color: #fffacc;
-}
-
-/* END NAV BAR */
-
-#main {
-    padding:0;
-}
-
-#bodywrap {
-    margin-bottom: 15px;
-}
-
-#map{
-    height:60vh;
-    margin-bottom: 15px;
-}
-
-#friendtitle{
-    color: #fff;
-    background: #87563a;
-}
-
-#friendbox {
-    padding: 10px;
-}
-#friendsrow [class*="col-md-12"] {
-    border-bottom: 2px solid #99CCDD;
-}
-
-#friend-photo .thumbnail{
-    margin:0;
-}
-
-#friendwrap{
-    color: #fff;
-    background: #546b40;
-    padding: 0;
-}
-
-#friendwrap h2{
-    font-size: medium;
-    text-align: top;
-}
-
-#park {
-    background: #87563a;
-    margin-bottom: 5%;
-    padding: 0 3%;
-    height: 100%;
-    color: #ffffff;
-    font-size: large;
-}
-
-#park h1 {
-    font-family: 'Lobster', cursive;
-    margin-top: 10px;
-    font-size: x-large;
-}
-
-#friendtitle h1 {
-    margin-top: 10px;
-}
-
-#park img {
-    width: 100%;
-    height:auto;
-}
-
-#friend-stadium-total{
-    margin: 0;
-    padding: 0;
-    v-align: middle;    
-}
-
-#friend-stadium-total h2 {
-    text-align:left;
-    font-size:medium;
-    margin:0;
-}
-
-#visited-text{
-    padding-left:5px;
-    display: inline-block;
-}
-
-#friend-stadium-total .col-xs-2 {
-    display:block;
-    vertical-align:middle;
-}
-
-#friend-stadium-total span {
-    display:inline-block;
-    font-size: small;
-    text-align:center;
-    vertical-align:middle;
-}
-
-/*==========================search button=============================*/
-
-a {
-    color: #ccc;
-}
-
-.no-gutter > [class*="col-"]{
-    padding: 0;
-    margin: 0;
+.no-left-padding{
+	padding-left:0;
 }
 
 .vertical-align {
@@ -178,133 +35,209 @@ a {
     align-items: center;
 }
 
-/*-------------------------------------*/
-
-.cf:before, .cf:after{
-  content:"";
-  display:table;
-}
-
-.cf:after{
-  clear:both;
-}
-
-.cf{
-  zoom:1;
-}
-
-/*-------------------------------------*/   
-
-.form-wrapper {
-  
-    background: rgba(0,0,0,.2);
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    border-radius: 10px;
-    -moz-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
-    -webkit-box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
-    box-shadow: 0 1px 1px rgba(0,0,0,.4) inset, 0 1px 0 rgba(255,255,255,.2);
+#wrapper {
+	border: 5px solid #fff9ca;
 }
 
 
-
-.form-wrapper input:focus {
-    color: black;
-    outline: 0;
-    background: #fff;
-    -moz-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
-    -webkit-box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
-    box-shadow: 0 0 2px rgba(0,0,0,.8) inset;
+/*==================================================
+=                  Navigation Bar                  =
+==================================================*/
+.navbar {
+    background: #3f5030;
 }
 
-.form-wrapper input::-webkit-input-placeholder {
-   color: #999;
-   font-weight: normal;
-   font-style: italic;
+.navbar-header .navbar-brand, .navbar-header .navbar-brand>a {
+    color:#fff9ca;
 }
 
-.form-wrapper input:-moz-placeholder {
-    color: #999;
-    font-weight: normal;
-    font-style: italic;
+.navbar-header .navbar-brand>a:hover {
+	color:#fff;
 }
 
-.form-wrapper input:-ms-input-placeholder {
-    color: #999;
-    font-weight: normal;
-    font-style: italic;
-}    
-
-.form-wrapper button {
-    overflow: visible;
-    position: relative;
-    float: right;
-    border: 0;
-    padding: 0;
-    cursor: pointer;
-    height: 72px;
-    width: 110px;
-    font: bold 15px/40px 'lucida sans', 'trebuchet MS', 'Tahoma';
-    color: #fff;
-    text-transform: uppercase;
-    /* background: #d83c3c; */
-/* baseball stiches shade darker*/
-    background: #7d0000;
-    -moz-border-radius: 0 3px 3px 0;
-    -webkit-border-radius: 0 3px 3px 0;
-    border-radius: 0 3px 3px 0;      
-    text-shadow: 0 -1px 0 rgba(0, 0 ,0, .3);
-}   
-  
-.form-wrapper button:hover{     
-    /*background: #e54040;*/
-    /* baseball stiches shade lighter*/
-    background: #8B0000;
-}   
-  
-.form-wrapper button:active,
-.form-wrapper button:focus{   
-    /* background: #c42f2f; */
-    background: #8B0000;
+.navbar-default .navbar-brand:focus, .navbar-default .navbar-brand:hover {
+	color: #fff;
 }
 
-.form-wrapper button:before {
-    content: '';
-    position: absolute;
-    border-width: 8px 8px 8px 0;
-    border-style: solid solid solid none;
-    /* border-color: transparent #d83c3c transparent; */
-    border-color: transparent #7d0000 transparent;
-    top: 12px;
-    left: -6px;
+/* Styling for words in the brand name */
+#ballparks {
+	font-family: 'Alegreya SC', serif;
+	font-size: larger;
 }
 
-.form-wrapper button:hover:before{
-    /* border-right-color: #e54040; */
-    border-right-color: #8B0000;
+#i-visited {
+	font-family: 'Lato', sans-serif;
+	font-size: medium;
+} /* End of brand name styling */
+
+/* Links */
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover { /* Active navbar link */
+	background-color: #4b6039;
+	color: #fdffa5;
 }
 
-.form-wrapper button:focus:before{
-    /* border-right-color: #c42f2f; */
-    border-right-color: #8B0000;
-}    
-
-.form-wrapper button::-moz-focus-inner {
-    border: 0;
-    padding: 0;
-}
-.byline p{
-  text-align:center;
-  color:#c6c6c6;
-  font: bold 18px Arial, Helvetica, Sans-serif;
-  text-shadow: 0 2px 3px rgba(0,0,0,0.1);
+.navbar-default .navbar-nav>li>a { /* Inactive navbar link */
+	color: #fff9ca;
 }
 
-.byline p a{
-  color:#d83c3c;
-  text-decoration:none;
+.navbar-default .navbar-nav>li>a:hover { /* Inactive navbar link */
+	color: #fff;
 }
-/*end of search button*/
+	
+/*==================================================
+=                   Main Content                   =
+==================================================*/
+
+	#map{
+		height:60vh;
+		margin-bottom: 15px;
+	}
+	
+	#main-container {
+		padding:0;
+		overflow:hidden;
+	}
+	
+	/*==================================================
+	=            User First name and Search            =
+	==================================================*/
+	
+	#name {
+		margin: 15px 0;
+	}
+	#name > h1 {
+		text-align: left;
+		display:inline;
+		font-size: x-large;
+		font-family: "lato", sans-serif;		
+	}
+	
+	.stylish-input-group .input-group-addon{
+    background: white !important; 
+	}
+	.stylish-input-group .form-control{
+		border-right:0; 
+		box-shadow:0 0 0; 
+		border-color:#ccc;
+	}
+	.stylish-input-group button{
+		border:0;
+		background:transparent;
+	}
+	
+	.btn-primary {
+		background:#6f0000;
+		border-color:black;
+	}
+	
+	.btn-primary:hover, .btn-primary:focus {
+		background:#7d0000;
+		border-color:black;
+	}
+	
+	/*==================================================
+	=            Selected and Visited Parks            =
+	==================================================*/
+	
+	#selection-panel {
+		display:none;    /* This panel should only be displayed when a park has been selected through search or clicking on a map location */
+		margin-bottom: 15px;
+		padding-bottom: 15px;
+	}
+	
+	#selection-panel, .visited-box {
+		background: #87563a;
+		color:#fff9ca;
+		font-size: large;
+	}
+	
+	.park img, #selection-panel img {
+		width: 100%;
+		height: auto;
+	}
+	
+	.selection-dates li {
+		display: inline-flex;
+		padding-right: 10px;
+	}
+	
+	.park {
+		display: flex;
+	}
+	
+	#visited-parks {
+		display: flex;
+		flex-wrap: wrap;
+		align-items: stretch;
+	}
+	
+	.visited-box {		
+		margin-bottom: 15px;
+		padding: 0 5px 5px 5px;
+	}
+	
+	.visited-box h3 {
+		/* background: #b2e8ff;
+		color: #87563a; */
+		padding: 5px;
+		margin-top: 4px;
+		margin-bottom: 4px;
+		text-shadow: 0.02em 0.02em 0.05em #333;
+
+	}
+	
+	.visited-box img {
+		margin-bottom: 5px;
+	}
+	
+	.visited-box>div>div {
+		height: 100%;
+	}
+	
+	.visited-info {
+		font-size: medium;
+	}
+
+	.visited-info h4 {
+		display:inline;
+	}
+
+		
+	/*==================================================
+	=                   Friends List                   =
+	==================================================*/
+	
+	#friends-bg > .row {
+		margin: 0;
+	}
+	
+	#friends-panel {
+		background: #546b40;
+		color: #fff9ca;
+	}
+	
+	#friends-title {
+		background: #87563a;
+		border-bottom: 2px solid rgba(255, 249, 202, 0.58);
+	}
+	
+	.friend {
+		border: 2px solid rgba(255, 249, 202, 0.58);
+		padding: 10px 15px;
+	}
+	
+	.friend-info {
+		font-size: large;
+	}
+	
+	.hidden-word {
+		display: none;
+	}
+	
+	#visited-text {
+		padding-right:0;
+	}
+
 
 /*==================================================
 =            Bootstrap 3 Media Queries             =
@@ -319,53 +252,60 @@ a {
 
     /* Extra Small Devices, Phones */ 
     @media only screen and (min-width : 480px) {
-
+		.friend-info {
+			font-size: x-large;
+		}
     }
 
     /* Small Devices, Tablets */
     @media only screen and (min-width : 768px) {
-        #visited-text{
-            font-size: medium;
-        }
-    
-        #friend-stadium-total span {
-            font-size: medium;
-        }
-    
-    }
+		
+		.visited-info h4 {
+			padding-left: 0;
+		}
+		
+		.visited-info, .visited-info h4 {
+			font-size:medium;
+		}
+		
+		.visited-info > div {
+			padding-right:0;
+		}
+		
+		.hidden-word {
+			display: inline-block;
+		}
+		
+		.friend-info {
+			font-size: medium;
+			padding:0;
+		}
+	}
 
     /* Medium Devices, Desktops */
     @media only screen and (min-width : 992px) {
-        #main{
-            margin-right: 15px;
-        }
-        #bodywrap{
-            padding-right: 15px;
-        }
-
-        #park{
-            height: 35vh;
-        }
-
-        #park img {
-
-        }
-        
-        #friend-stadium-total, #friend-stadium-total h2 {
-            padding: 0;
-        }
-        
-        #visited-text{
-            font-size: large;
-        }
-    
-        #friend-stadium-total span {
-            font-size: large;
-        }
-    
+		#main-content {
+			padding-right: 15px;
+		}
+		
+		#friends-bg > .row {
+			margin: 0 -15px;
+		}
+	
+		#friends-panel {
+			padding-left: 15px;
+		}
+		
+		.friend-info {
+			font-size: large;
+		}
+		
     }
 
     /* Large Devices, Wide Screens */
     @media only screen and (min-width : 1200px) {
+		.friend-info {
+			font-size: x-large;
+		}
 
     }
