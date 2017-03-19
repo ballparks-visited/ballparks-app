@@ -64,6 +64,8 @@ ul {
 #ballparks {
 	font-family: 'Alegreya SC', serif;
 	font-size: xx-large;
+	text-shadow: 0.05em 0.03em 0.05em #980000;
+    color: #ffd0b4;
 }
 
 #plain {
@@ -74,6 +76,8 @@ ul {
 #i-visited {
 	font-family: 'Lobster', cursive;
 	font-size: x-large;
+	color: #88bdff;
+    text-shadow: 0.1em 0.1em 0.05em #000000;
 } /* End of brand name styling */
 
 /* Links */
@@ -108,6 +112,13 @@ ul {
 =            User First name and Search            =
 ==================================================*/
 
+#name-row {
+	background: rgba(163, 204, 255, 0.39);
+    margin-right: 0px;
+    margin-left: 0px;
+    margin-bottom: 15px;
+}
+
 #name {
 	margin: 15px 0;
 }
@@ -115,13 +126,20 @@ ul {
 	text-align: left;
 	display:inline;
 	font-size: x-large;
-	font-family: "lato", sans-serif;		
+	font-family: "lato", sans-serif;
+	text-shadow: 0.03em 0.03em 0.03em #70e0ff;
 }
 
 #fname {
 	font-family: 'Lobster', cursive;
 	font-size: xx-large;
+	color: #7d0000;
+    text-shadow: 0.02em 0.02em 0.05em #a65226;
 } 
+
+#sb-search {
+	   padding-top: 18px;
+}
 
 .stylish-input-group .input-group-addon{
 background: white !important; 
@@ -230,6 +248,10 @@ background: white !important;
 #friends-title {
 	background: #87563a;
 	border-bottom: 2px solid rgba(255, 249, 202, 0.58);
+}
+
+#friends-title h2 {
+	text-shadow: 0.1em 0.12em 0.2em rgb(48, 68, 121);
 }
 
 .friend {
