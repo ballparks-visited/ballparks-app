@@ -206,12 +206,11 @@ background: white !important;
 }
 
 .visited-box h3 {
-	/* background: #b2e8ff;
-	color: #87563a; */
+	color: #fff; 
 	padding: 5px;
 	margin-top: 4px;
 	margin-bottom: 4px;
-	text-shadow: 0.02em 0.02em 0.05em #333;
+	text-shadow: 0.05em 0.05em 0.15em #39327e;
 
 }
 
@@ -247,6 +246,7 @@ background: white !important;
 
 #friends-title {
 	background: #87563a;
+	color:white;
 	border-bottom: 2px solid rgba(255, 249, 202, 0.58);
 }
 
