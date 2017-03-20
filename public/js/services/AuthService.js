@@ -34,6 +34,10 @@ app.factory("AuthService",function($q, UserService, jwtHelper) {
 	service.getUserId = function() {
 		return jwtHelper.decodeToken(service.getToken()).fb_id;
 	};
+
+	service.getUserToken = function() {
+		return jwtHelper.decodeToken(service.getToken()).access_token;
+	};
 	
 	service.isTokenValid = function() {
 		var token = service.getToken();
