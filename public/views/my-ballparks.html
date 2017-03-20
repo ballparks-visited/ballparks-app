@@ -8,7 +8,7 @@
 			<div class="row">
 				<div class="col-sm-12" id="map">
 					<ng-map id="map" center="37.971602,-96.1510076" zoom="4" scrollwheel="false">
-						<marker position="32.7003659,-96.6822543" title="Hello World!"></marker>
+						<marker position="{{ ballpark.data.latitude }},{{ ballpark.data.longitude }}" title="{{ ballpark.data.primary_name }}" ng-repeat="ballpark in userBallparks"></marker>
 					</ng-map>
 				</div>
 			</div>
@@ -19,27 +19,20 @@
 			<div class="row" id="name-row">
 				<div class="col-sm-12" id="search-name">
 					<div class="col-md-4 col-md-push-8" id="sb-search" class="sb-search">
+						
 						<div class="input-group stylish-input-group">
-							<input type="text" class="form-control"  placeholder="Search" list="datalist">
-								<datalist id="datalist">
-									<option value="Fenway Park">
-									<option value="AT&T Park">
-									<option value="Busch Stadium">
-									<option value="Chase Field">
-									<option value="Citi Field">
-									<option value="Citizens Bank Park">
-									<option value="Comerica Park">
-									<option value="Coors Field">
-									<option value="Great American Ball Park">
-								</datalist>
+							<input type="text" class="form-control" placeholder="Search" list="datalist" ng-model="searchName" />
+							<datalist id="datalist">
+								<option value="{{ ballpark.primary_name }}" ng-repeat="ballpark in ballparks">
+							</datalist>
 							<span class="input-group-addon">
-								<button type="submit">
+								<button type="button" ng-click="searchBallpark(searchName)">
 									<span class="glyphicon glyphicon-search"></span>
 								</button>  
 							</span>
 						</div>
 					</div>
-					<div class="col-md-8 col-md-pull-4" id="name"><h1>Parks <span id="fname">FName</span> has <em>visited</em></h1> <!-- User: "I have", Friend: "FName has" -->
+					<div class="col-md-8 col-md-pull-4" id="name"><h1>Parks <span id="fname">{{ user.first_name }}</span> has <em>visited</em></h1> <!-- User: "I have", Friend: "FName has" -->
 					</div>
 				</div>
 			</div>
@@ -47,11 +40,11 @@
 			<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 			<!-- [ OUTPUT SELECTED BALLPARK UPON SELECTION ] -->
 			<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-			<div class="row"> <!-- Hidden on load, toggles open if park is selected, has a toggle to close -->
+			<div class="row" ng-if="selectedBallpark"> <!-- Hidden on load, toggles open if park is selected, has a toggle to close -->
 				<div class="col-sm-12" id="selection-panel">
 					<div class="row">
 						<div class="col-sm-12" id="selection-name">
-							<h2>[Park Name]</h2>
+							<h2>{{ selectedBallpark.primary_name }}</h2>
 						</div>								
 					</div>
 					
@@ -62,12 +55,14 @@
 						</div>
 						<div class="col-sm-4 no-padding">
 							<ul class="selection-info">
-								<li> <h4>Location:</h4> 	</li> <!-- Set these to display as in-line block so they will wrap within row -->
-								<li> [Arlington, TX]		</li> <!-- Width: 100% on xs, 50% on sm and up -->
-								<li> <h4>League:</h4>		</li>
-								<li> [American League]		</li>
-								<li> <h4>Home Team:</h4>	</li>
-								<li> [Texas Rangers]		</li>
+								<li><h4>Location:</h4></li> <!-- Set these to display as in-line block so they will wrap within row -->
+								<li>{{ selectedBallpark.city }}, {{ selectedBallpark.state }}</li> <!-- Width: 100% on xs, 50% on sm and up -->
+								
+								<li><h4>League:</h4></li>
+								<li>{{ selectedBallpark.league }}</li>
+								
+								<li><h4>Home Team:</h4>	</li>
+								<li>{{ selectedBallpark.home_team }}</li>
 							</ul>
 						</div>
 					</div>
@@ -85,7 +80,8 @@
 					</div>							
 				
 					<div class="col-sm-8 col-sm-offset-2">
-						<button type = "button" class = "btn btn-primary btn-lg btn-block">
+						<input type="date" name="dateVisited" value="{{ moment().format('YYYY-MM-DD') }}" style="color: black;" ng-model="dateVisited" />
+						<button type="button" class="btn btn-primary btn-lg" ng-click="addBallpark(selectedBallpark._id, dateVisited)">
 							Add Ballpark
 						</button>
 					</div>
@@ -98,7 +94,7 @@
 			<div class="row" id="visited-parks">
 			
 				<!-- ******************* New Park Box ******************* -->
-				<div class="col-sm-6 col-lg-4 park" ng-repeat="ballpark in ballparks"> <!-- Original ng-repeat code removed for test: ng-repeat="ballpark in ballparks"-->
+				<div class="col-sm-6 col-lg-4 park" ng-repeat="ballpark in userBallparks"> <!-- Original ng-repeat code removed for test: ng-repeat="ballpark in ballparks"-->
 					<div class="visited-box">
 						<div class="row">
 							<div class="col-sm-12">
@@ -113,10 +109,10 @@
 							</div>
 							<div class="col-sm-12">
 								<div class="row visited-info">
-									<div class="col-xs-6"> <h4>Location:</h4> 	 City{{ ballpark.data.city }}, State{{ ballpark.data.state }}	</div>
-									<div class="col-xs-6 no-left-padding"> <h4>League:</h4>		 {{ ballpark.data.league }}	</div>
-									<div class="col-xs-6"> <h4>Home Team:</h4>	 {{ ballpark.data.home_team }}	</div>
-									<div class="col-xs-6 no-left-padding"> <h4>Last Visited:</h4>	 {{ moment(ballpark.dateVisited).format('M/D/YYYY') }}	</div>
+									<div class="col-xs-6"> <h4>Location:</h4> 	 City{{ ballpark.data.city }}, State{{ ballpark.data.state }}</div>
+									<div class="col-xs-6 no-left-padding"> <h4>League:</h4> {{ ballpark.data.league }}</div>
+									<div class="col-xs-6"> <h4>Home Team:</h4> {{ ballpark.data.home_team }}</div>
+									<div class="col-xs-6 no-left-padding"> <h4>Last Visited:</h4> {{ moment(ballpark.dateVisited).format('M/D/YYYY') }}</div>
 								</div>
 							</div>
 						</div>
@@ -142,20 +138,20 @@
 				<div class="row">
 				
 					<!-- ************** Friend Box ************* -->
-					<div class="col-xs-6 col-sm-4 col-md-12 friend" ng-repeat="i in [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]">
+					<div class="col-xs-6 col-sm-4 col-md-12 friend" ng-repeat="friend in friends">
 						<div class="row vertical-align">
 							<div class="col-xs-6 col-sm-4">
-								<img class="img-responsive" src="http://snf-661282.vm.okeanos.grnet.gr/web/LDAusers2/images/avatar.jpg">
-								[FrFName]
+								<img class="img-responsive" src="{{ friend.photoURL }}">
+								{{ friend.first_name }}
 							</div>
 							<div class="col-xs-6 col-sm-8 friend-info">
 								<div class="row">
 									<div class="col-xs-6 col-sm-2"><span class="glyphicon glyphicon-globe"></span></div>
-									<div class="col-xs-6 col-sm-10" id="visited-text"><b> [6]<span class="hidden-word"> Visited</span></b><br></div>
+									<div class="col-xs-6 col-sm-10" id="visited-text"><b> {{ friend.numBallparks }} <span class="hidden-word">Visited</span></b><br></div>
 								</div>
 								<div class="row">
 									<div class="col-xs-6 col-sm-2"><span class="glyphicon glyphicon-resize-small"></span></div>
-									<div class="col-xs-6 col-sm-10" id="visited-text"> [2]<span class="hidden-word"> Matches</span></div>
+									<div class="col-xs-6 col-sm-10" id="visited-text"> {{ friend.matches }} <span class="hidden-word">Matches</span></div>
 								</div>
 							</div>
 						</div>
