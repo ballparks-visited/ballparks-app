@@ -28,5 +28,9 @@ app.factory('UserService', ['$http', function($http) {
 		});
 	};
 
+	service.getFriendData = function(ids) {
+		return $http.get("/api/v1/users?userId=" + ids);
+	}
+
 	return service;
 }]);
