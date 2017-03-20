@@ -169,7 +169,6 @@ background: white !important;
 ==================================================*/
 
 #selection-panel {
-	display:none;    /* This panel should only be displayed when a park has been selected through search or clicking on a map location */
 	margin-bottom: 15px;
 	padding-bottom: 15px;
 }
