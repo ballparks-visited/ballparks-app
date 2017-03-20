@@ -69,11 +69,16 @@ function upsertUserByFBId(user) {
 }
 
 //READ all users
-function readUsers(skip, count) {
+function readUsers(userIds) {
 	var deferred = new Deferred();
 
-	UserModel.find()
-	.sort('-dateCreated').skip(skip).limit(count).exec('find', function (err, users) {
+	var query = {};
+	if(typeof userIds !== 'undefined') {
+		query.fb_id = {$in: userIds.split(',')};
+	}
+
+	UserModel.find(query)
+	.sort('-dateCreated').exec('find', function (err, users) {
 		if (!err) {
 			if(!isInTest) console.log('[GET]   Get users: ' + users.length);
 			deferred.resolve(users);
