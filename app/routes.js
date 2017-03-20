@@ -49,7 +49,7 @@ module.exports = function(app) {
 	});
 
 	app.get('/api/v1/users', function(req, res) {
-		userController.getUsers()
+		userController.getUsers(req.query.userId)
 		.then(function(userResult) {
 			res.send(userResult);
 			res.end();

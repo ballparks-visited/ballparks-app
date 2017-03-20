@@ -28,10 +28,10 @@ function addNewUser(user) {
 	return deferred;
 }
 
-function getUsers() {
+function getUsers(userIds) {
 	var deferred = new Deferred();
 
-	userDAO.readUsers(0, 10)
+	userDAO.readUsers(userIds)
 	.then(function(users) {
 		deferred.resolve(users);
 	},
