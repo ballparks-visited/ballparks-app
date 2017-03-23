@@ -40,7 +40,7 @@
 			<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 			<!-- [ OUTPUT SELECTED BALLPARK UPON SELECTION ] -->
 			<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-			<div class="row" ng-if="selectedBallpark"> <!-- Hidden on load, toggles open if park is selected, has a toggle to close -->
+			<div class="row" id="selected-row" ng-if="selectedBallpark"> <!-- Hidden on load, toggles open if park is selected, has a toggle to close -->
 				<div class="col-sm-12" id="selection-panel">
 					<div class="row">
 						<div class="col-sm-12" id="selection-name">
@@ -53,17 +53,12 @@
 							<!-- Image will need to be supplied dynamically from database -->
 							<img class="img-responsive" src="./images/minute-maid-park.jpg">
 						</div>
-						<div class="col-sm-4 no-padding">
-							<ul class="selection-info">
-								<li><h4>Location:</h4></li> <!-- Set these to display as in-line block so they will wrap within row -->
-								<li>{{ selectedBallpark.city }}, {{ selectedBallpark.state }}</li> <!-- Width: 100% on xs, 50% on sm and up -->
-								
-								<li><h4>League:</h4></li>
-								<li>{{ selectedBallpark.league }}</li>
-								
-								<li><h4>Home Team:</h4>	</li>
-								<li>{{ selectedBallpark.home_team }}</li>
-							</ul>
+						<div class="col-sm-4 no-padding" id="selection-info">
+							
+							<div class="col-xs-6 col-sm-12"> <h4>Location:</h4> 	 {{ selectedBallpark.city }}, {{ selectedBallpark.state }}City, State</div>
+							<div class="col-xs-6 col-sm-12"> <h4>League:</h4> {{ selectedBallpark.league }}</div>
+							<div class="col-xs-6 col-sm-12"> <h4>Home Team:</h4> {{ selectedBallpark.home_team }}</div>
+
 						</div>
 					</div>
 					
@@ -79,9 +74,11 @@
 						</div>
 					</div>							
 				
-					<div class="col-sm-8 col-sm-offset-2">
+					<div class="col-sm-8 col-sm-offset-2" id="add-remove-park">
+						<label> Choose date of visit: 
 						<input type="date" name="dateVisited" value="{{ moment().format('YYYY-MM-DD') }}" style="color: black;" ng-model="dateVisited" />
-						<button type="button" class="btn btn-primary btn-lg" ng-click="addBallpark(selectedBallpark._id, dateVisited)">
+						</label>
+						<button type="submit" class="btn btn-primary btn-lg" ng-click="addBallpark(selectedBallpark._id, dateVisited)">
 							Add Ballpark
 						</button>
 					</div>
