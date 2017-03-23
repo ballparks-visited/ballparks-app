@@ -16,6 +16,10 @@ h2, h3 {
 h3 {
 	color: #b3e9ff;
 }
+h4 {
+    font-size: larger;
+	font-weight: bold;
+}
 
 ul {
 	list-style-type: none;
@@ -168,9 +172,18 @@ background: white !important;
 =            Selected and Visited Parks            =
 ==================================================*/
 
+
+#selected-row {
+	margin-right: 0;
+}
+
 #selection-panel {
 	margin-bottom: 15px;
 	padding-bottom: 15px;
+}
+
+#selection-panel .row {
+	margin:0;
 }
 
 #selection-panel, .visited-box {
@@ -179,9 +192,35 @@ background: white !important;
 	font-size: large;
 }
 
+#add-remove-park {
+	display:flex;
+}
+
+#add-remove-park label {
+	color: #9ed9ff;
+}
+
+#add-remove-park input {
+	width:auto;
+	padding-left: 2%;
+}
+
+#add-remove-park button {
+	width: 100%;
+}
+
 .park img, #selection-panel img {
 	width: 100%;
 	height: auto;
+}
+
+#selection-panel h4 {
+    font-size: larger;
+    letter-spacing: 2px;
+}
+
+#selection-info > div {
+	padding-bottom: 15px;
 }
 
 .selection-dates li {
@@ -189,22 +228,12 @@ background: white !important;
 	padding-right: 10px;
 }
 
-.park {
-	display: flex;
-}
-
-#visited-parks {
-	display: flex;
-	flex-wrap: wrap;
-	align-items: stretch;
-}
-
 .visited-box {		
 	margin-bottom: 15px;
 	padding: 0 5px 5px 5px;
 }
 
-.visited-box h3 {
+.visited-box h3, #selection-name h2 {
 	color: #fff; 
 	padding: 5px;
 	margin-top: 4px;
@@ -225,8 +254,11 @@ background: white !important;
 	font-size: medium;
 }
 
+.visited-info > div {
+	padding-bottom: 15px;
+}
 .visited-info h4 {
-	display:inline;
+	margin: 5px 0px;
 }
 
 	
@@ -292,6 +324,16 @@ background: white !important;
     /* Small Devices, Tablets */
     @media only screen and (min-width : 768px) {
 		
+		.park {
+			display: flex;
+		}
+		
+		#visited-parks {
+			display: flex;
+			flex-wrap: wrap;
+			align-items: stretch;
+		}
+				
 		.visited-info h4 {
 			padding-left: 0;
 		}
