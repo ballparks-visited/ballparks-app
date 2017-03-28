@@ -115,7 +115,16 @@ function addUserBallpark(id, ballparkId, dateVisited){
 	UserModel.findOne({'fb_id': id} , function (err, user) {
 		if (!err) {
 
-			user.ballparks.push({ "dateVisited": dateVisited, "data": ballparkId });
+			// make sure this ballpark is not already added
+			var addBallpark = true;
+			for (var i = 0; i < user.ballparks.length; i++) {
+				if(user.ballparks[i].data == ballparkId) {
+					addBallpark = false;
+				}
+			}
+			if(addBallpark) {
+				user.ballparks.push({ "dateVisited": dateVisited, "data": ballparkId });
+			}
 			
 			return user.save(function (err) {
 				if (!err) {
