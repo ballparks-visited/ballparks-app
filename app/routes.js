@@ -22,20 +22,7 @@ module.exports = function(app) {
 		});
 	});
 
-	// app.get('/api/v1/users', passport.authenticate('jwt', { session: false}), function(req, res) {
-	// 	userController.getUsers()
-	// 	.then(function(userResult) {
-	// 		res.send(userResult);
-	// 		res.end();
-	// 	},
-	// 	function(err) {
-	// 		console.error(err);
-	// 		res.send(err);
-	// 		res.end();
-	// 	});
-	// });
-
-	app.post('/api/v1/users/:userId/ballparks', function(req, res) {
+	app.post('/api/v1/users/:userId/ballparks', passport.authenticate('jwt', { session: false}), function(req, res) {
 		userController.addUserBallpark(req.params.userId, req.body)
 		.then(function(userResult) {
 			res.send(userResult);

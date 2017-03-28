@@ -9,6 +9,17 @@ var app = angular.module('ballparksApp', [
 	// use the shortcut in the initialize method directly.
 	FacebookProvider.init('1272641912758292');
 })
+.config(function Config($httpProvider, jwtOptionsProvider) {
+    // Please note we're annotating the function so that the $injector works when the file is minified
+    jwtOptionsProvider.config({
+      tokenGetter: ['AuthService', function(AuthService) {
+        return AuthService.getToken();
+      }]
+      ,authPrefix: 'JWT '
+    });
+
+    $httpProvider.interceptors.push('jwtInterceptor');
+  })
 .directive('ngFocus', function($timeout) {
 	return {
 		scope : {
