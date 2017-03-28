@@ -23,16 +23,23 @@ module.exports = function(app) {
 	});
 
 	app.post('/api/v1/users/:userId/ballparks', passport.authenticate('jwt', { session: false}), function(req, res) {
-		userController.addUserBallpark(req.params.userId, req.body)
-		.then(function(userResult) {
-			res.send(userResult);
+		if(req.params.userId !== req.user.fb_id) {
+			// unauthenticated user
+			res.status(401);
 			res.end();
-		},
-		function(err) {
-			console.error(err);
-			res.send(err);
-			res.end();
-		});
+		}
+		else {
+			userController.addUserBallpark(req.params.userId, req.body)
+			.then(function(userResult) {
+				res.send(userResult);
+				res.end();
+			},
+			function(err) {
+				console.error(err);
+				res.send(err);
+				res.end();
+			});
+		}
 	});
 
 	app.get('/api/v1/users', function(req, res) {
