@@ -42,7 +42,7 @@ app.factory("AuthService",function($q, UserService, jwtHelper) {
 	service.isTokenValid = function() {
 		var token = service.getToken();
 
-		return token !== ''
+		return typeof token !== 'undefined' && token !== null && token !== ''
 				// && !jwtHelper.isTokenExpired()
 		;
 	};
