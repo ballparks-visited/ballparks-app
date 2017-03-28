@@ -2,7 +2,7 @@ app.controller('MyBallparksController', function($scope, $window, UserService, B
 	// Authenticate the user
 	if(!AuthService.isTokenValid()) {
 		// redirect to login
-		$window.location.href = '/login?invalid_token';
+		$window.location.href = '/?invalid_token';
 	}
 
 	// Make moment library available in templates
@@ -30,6 +30,7 @@ app.controller('MyBallparksController', function($scope, $window, UserService, B
 	// load user friends
 	FacebookService.getFriends()
 	.then(function(response) {
+
 		$scope.friends = response.data;
 
 		return response.data.map(function(el) {
@@ -102,10 +103,13 @@ app.controller('MyBallparksController', function($scope, $window, UserService, B
 	// 	}
 	// }
 
-	$scope.searchBallpark = function(ballparkName) {
+	$scope.searchBallpark = function(searchKey) {
 		for(var i = 0; i < ballparks.length; i++) {
-			if(ballparks[i].primary_name.toLowerCase().indexOf(ballparkName.toLowerCase()) !== -1) {
+			if(ballparks[i].primary_name.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1
+				|| ( ballparks[i].home_team !== null && ballparks[i].home_team.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1 )
+			) {
 				$scope.selectedBallpark = ballparks[i];
+				$scope.searchName = "";
 				break;
 			}
 		}
