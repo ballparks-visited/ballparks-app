@@ -1,6 +1,7 @@
 <div class="container-fluid" id="main-container">
 	<div class="row">
-		<div class="col-sm-12 col-md-9" id="main-content">
+		
+		<div class="{{ mainColumnClass }}" id="main-content">
 
 			<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 			<!-- [ OUTPUT BALLPARK MAP ] -->
@@ -21,16 +22,7 @@
 					<div class="col-md-4 col-md-push-8" id="sb-search" class="sb-search">
 
 						<div class="input-group stylish-input-group">
-							<input type="text" class="form-control" placeholder="Search" list="datalist" ng-model="searchName" />
-							<datalist id="datalist">
-								<option value="{{ ballpark.primary_name }}" ng-repeat="ballpark in ballparks">
-								<option value="{{ ballpark.home_team }}" ng-repeat="ballpark in ballparks">
-							</datalist>
-							<span class="input-group-addon">
-								<button type="button" ng-click="searchBallpark(searchName)">
-									<span class="glyphicon glyphicon-search"></span>
-								</button>
-							</span>
+							
 						</div>
 					</div>
 					<div class="col-md-8 col-md-pull-4" id="name"><h1>Parks <span id="fname">{{ user.first_name }}</span> has <em>visited</em></h1> <!-- User: "I have", Friend: "FName has" -->
@@ -125,7 +117,7 @@
 		<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 		<!-- [ OUTPUT FRIENDS ] -->
 		<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-		<div class="col-sm-12 col-md-3" id="friends-panel">
+		<div class="col-sm-12 col-md-3" id="friends-panel" ng-if="showFriends">
 			<div id="friends-bg">
 				<div class="row no-padding" id="friends-title">
 					<div class="col-sm-12">
