@@ -20,6 +20,10 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 			templateUrl: 'views/my-ballparks.html',
 			controller: 'MyBallparksController'
 		})
+		.when('/user/:userId', {
+			templateUrl: 'views/user-ballparks.html',
+			controller: 'UserBallparksController'
+		})
 		;
 
 	$locationProvider.html5Mode(true);
