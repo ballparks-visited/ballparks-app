@@ -42,6 +42,26 @@ module.exports = function(app) {
 		}
 	});
 
+	app.delete('/api/v1/users/:userId/ballparks/:ballparkId', passport.authenticate('jwt', { session: false}), function(req, res) {
+		if(req.params.userId !== req.user.fb_id) {
+			// unauthenticated user
+			res.status(401);
+			res.end();
+		}
+		else {
+			userController.removeUserBallpark(req.params.userId, req.params.ballparkId)
+			.then(function(userResult) {
+				res.send(userResult);
+				res.end();
+			},
+			function(err) {
+				console.error(err);
+				res.send(err);
+				res.end();
+			});
+		}
+	});
+
 	app.get('/api/v1/users', function(req, res) {
 		userController.getUsers(req.query.userId)
 		.then(function(userResult) {

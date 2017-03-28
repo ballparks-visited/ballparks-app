@@ -70,6 +70,20 @@ function addUserBallpark(userId, params) {
 	return deferred;
 }
 
+function removeUserBallpark(userId, ballparkId) {
+	var deferred = new Deferred();
+	
+	userDAO.removeUserBallpark(userId, ballparkId)
+	.then(function(user) {
+		deferred.resolve(user);
+	},
+	function(err) {
+		deferred.reject(err);
+	});
+
+	return deferred;
+}
+
 function testFBpost() {
 
 	return facebookService.testFBpost();
@@ -80,4 +94,5 @@ module.exports.addNewUser = addNewUser;
 module.exports.getUsers = getUsers;
 module.exports.getUserById = getUserById;
 module.exports.addUserBallpark = addUserBallpark;
+module.exports.removeUserBallpark = removeUserBallpark;
 module.exports.testFBpost = testFBpost;
