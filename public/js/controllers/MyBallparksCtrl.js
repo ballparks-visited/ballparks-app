@@ -80,28 +80,6 @@ app.controller('MyBallparksController', function($scope, $window, UserService, B
 			}
 		}
 	}
-	
-
-	// $scope.showSearch = function() {
-	// 	if(typeof ballparks !== 'undefined') {
-	// 		$scope.searchMode = true;
-	// 	}
-	// }
-
-	// output search results
-	// $scope.searchMode = true;
-	// $scope.showSearchResults = function(event, searchInput) {
-	// 	if(searchInput.length > 1) {
-	// 		$scope.searchMatches = ballparks.filter(function(el) {
-	// 			return el.primary_name.toLowerCase().indexOf(searchInput) !== -1
-	// 					|| el.home_team.toLowerCase().indexOf(searchInput) !== -1;
-	// 			// TODO: exclude stadiums already visited
-	// 		});
-	// 	}
-	// 	else {
-	// 		$scope.searchMatches = null
-	// 	}
-	// }
 
 	$scope.searchBallpark = function(searchKey) {
 		for(var i = 0; i < ballparks.length; i++) {
@@ -129,7 +107,19 @@ app.controller('MyBallparksController', function($scope, $window, UserService, B
 		.then(function() {
 			$scope.selectedBallpark = null;
 		});
+	};
 
+	// remove a ballpark
+	$scope.removeBallpark = function(ballparkId) {
+		var remove = confirm('Are You Sure?');
+
+		if(remove) {
+			UserService.removeBallpark(AuthService.getUserId(), ballparkId)
+			.then(function() {
+			// reload the user after the ballpark is removed
+			return loadUser();
+		})
+		}
 	};
 
 });

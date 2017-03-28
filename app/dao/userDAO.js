@@ -144,6 +144,42 @@ function addUserBallpark(id, ballparkId, dateVisited){
 	return deferred.promise;
 }
 
+// remove user ballpark
+function removeUserBallpark(id, ballparkId){
+	var deferred = new Deferred();
+
+	UserModel.findOne({'fb_id': id} , function (err, user) {
+		if (!err) {
+
+			// make sure this ballpark is not already added
+			var removeIndex = -1;
+			for (var i = 0; i < user.ballparks.length; i++) {
+				if(user.ballparks[i].data == ballparkId) {
+					removeIndex = i;
+				}
+			}
+			if(removeIndex >= 0) {
+				user.ballparks.splice(removeIndex, 1);
+			}
+			
+			return user.save(function (err) {
+				if (!err) {
+					if(!isInTest) console.log("[UDP]   Updated user: " + user._id);
+					deferred.resolve(user);
+				} else {
+					if(!isInTest) console.log(err);
+					deferred.reject(err);
+				}
+			});
+		} else {
+			if(!isInTest) console.log(err);
+			deferred.reject(err);
+		}
+	});
+
+	return deferred.promise;
+}
+
 
 //DELETE user
 // function deleteUser(id, callbacks){
@@ -169,6 +205,7 @@ module.exports.upsertUserByFBId = upsertUserByFBId;
 module.exports.readUsers = readUsers;
 module.exports.readUserById = readUserById;
 module.exports.addUserBallpark = addUserBallpark;
+module.exports.removeUserBallpark = removeUserBallpark;
 // module.exports.deleteUser = deleteUser;
 
 /* ====================================================================================================== */

@@ -28,6 +28,11 @@ app.factory('UserService', ['$http', function($http) {
 		});
 	};
 
+	service.removeBallpark = function(id, ballparkId) {
+		console.log(ballparkId);
+		return $http.delete("/api/v1/users/"+id+"/ballparks/"+ballparkId, {});
+	};
+
 	service.getFriendData = function(ids) {
 		return $http.get("/api/v1/users?userId=" + ids);
 	}
