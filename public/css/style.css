@@ -107,7 +107,10 @@ ul {
 	margin-bottom: 15px;
 }
 
-ng-map {display:block; height:385px}
+ng-map#map {
+    	height:60vh;
+	margin-bottom: 15px;
+}
 
 #main-container {
 	padding:0;

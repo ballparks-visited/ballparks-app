@@ -27,21 +27,39 @@ app.controller('MyBallparksController', function($scope, $window, UserService, B
 		$scope.ballparks = response.data;
 	});
 
-    //ng-map Marker clusterer
-    NgMap.getMap().then(function (map) {
-        $scope.map = map;
-        $scope.initMarkerClusterer();
+    //NgMap Marker-Clusterer
+    vm = this;
+    vm.dynMarkers = []
+    NgMap.getMap('map').then(function (map) {
+	var bounds = new google.maps.LatLngBounds();
+	for (var k in map.customMarkers) {
+            var cm = map.customMarkers[k];
+            vm.dynMarkers.push(cm);
+            bounds.extend(cm.getPosition());
+	};
+	var mcOptions = { imagePath: 'https://cdn.rawgit.com/googlemaps/js-marker-clusterer/gh-pages/images/m' };
+	vm.markerClusterer = new MarkerClusterer(map, vm.dynMarkers, mcOptions);
+	map.setCenter(bounds.getCenter());
+	map.fitBounds(bounds);
+	// ==== below is for all initMarker Clusterer
+	$scope.map = map;
+	initMarkerClusterer();
+	console.log('map initialized');
+    }).catch(function(map){
+        console.error('map error: ', map);
     });
 
-    $scope.initMarkerClusterer = function () {
-	// Try changing the below scope
-	var markers = $scope.ballparks.map(function (userballpark) {
-            return $scope.createMarker(userballpark);
+    // ===== Co/Uncomment initMarkerClusterer to only view marker-cluster of current-login-user =====
+    initMarkerClusterer = function () {
+    	var markers = $scope.ballparks.map(function (oneofmanyballpark) {
+            return $scope.createMarker(oneofmanyballpark);
         });
         var mcOptions = { imagePath: 'https://cdn.rawgit.com/googlemaps/js-marker-clusterer/gh-pages/images/m' };
-        return new MarkerClusterer($scope.map, markers, mcOptions);
+    	   // without putting McOptions cluster-img-with-radiating-design
+    	   // only shows on cluster with ballparks that had been visited by log-in-user
+        return new MarkerClusterer($scope.map, markers, {});
     };
-
+    // ===== Co/Uncomment me too to only view mrk-clu of current user ====
     $scope.createMarker = function (usrbp) {
         var marker = new google.maps.Marker({
             position: new google.maps.LatLng(usrbp.latitude, usrbp.longitude),
@@ -53,7 +71,6 @@ app.controller('MyBallparksController', function($scope, $window, UserService, B
         });
         return marker;
     }
-    // loadUser();
     
 	// load user friends
 	FacebookService.getFriends()

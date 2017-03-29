@@ -6,14 +6,22 @@
 			<!-- [ OUTPUT BALLPARK MAP ] -->
 			<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 			<div class="row">
-				<div class="col-sm-12" id="map" style="height:385px;">
-					<ng-map default-style="true" center="37.971602,-96.1510076" zoom="4" scrollwheel="false">
-					  <info-window id="myInfoWindow">
-					    <div ng-non-bindable>
-					      <h4>{{ userBallparkMarker.primary_name }}</h4>
+				<div class="col-sm-12" id="map">
+					<ng-map id="map"  center="37.971602,-96.1510076" zoom="4" scrollwheel="false">
+					  <custom-marker position="[{{ ballpark.data.latitude }}, {{ ballpark.data.longitude }}]" title="{{ ballpark.data.primary_name }}" ng-repeat="ballpark in userBallparks">
+					    <div class="cm">
+					      <!-- put a cool design for markers d-d-->
+					      <!-- does not have a marker img -->
+					      <h2>{{ballpark.data.primary_name}}</h2><br>
 					    </div>
-					  </info-window>
-					  <!-- <marker position="{{ ballpark.data.latitude }},{{ ballpark.data.longitude }}" title="{{ ballpark.data.primary_name }}" ng-repeat="ballpark in userBallparks"></marker> -->
+					  </custom-marker>
+					  
+					  <!-- info-box upon marker click,for ea Ballpark in the db; Creates err: could not find map-->
+					  <!-- <info-window id="myInfoWindow"> -->
+					  <!--   <div ng-non-bindable> -->
+					  <!--     <h4>{{ userBallparkMarker.primary_name }}</h4> -->
+					  <!--   </div> -->
+					  <!-- </info-window> -->
 					</ng-map>
 				</div>
 			</div>
