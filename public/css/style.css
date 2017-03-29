@@ -107,6 +107,8 @@ ul {
 	margin-bottom: 15px;
 }
 
+ng-map {display:block; height:385px}
+
 #main-container {
 	padding:0;
 	overflow:hidden;
@@ -381,5 +383,4 @@ background: white !important;
 		.friend-info {
 			font-size: x-large;
 		}
-
     }

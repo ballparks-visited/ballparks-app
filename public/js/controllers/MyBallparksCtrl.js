@@ -1,5 +1,5 @@
-app.controller('MyBallparksController', function($scope, $window, UserService, BallparkService, AuthService, FacebookService) {
-	// Authenticate the user
+app.controller('MyBallparksController', function($scope, $window, UserService, BallparkService, AuthService, FacebookService, NgMap) {
+    // Authenticate the user
 	if(!AuthService.isTokenValid()) {
 		// redirect to login
 		$window.location.href = '/?invalid_token';
@@ -13,12 +13,12 @@ app.controller('MyBallparksController', function($scope, $window, UserService, B
 		return UserService.getUserById(AuthService.getUserId())
 		.then(function(response) {
 			$scope.userBallparks = response.data.ballparks;
-			$scope.user = response.data;
+		    $scope.user = response.data;
 			calculateBallparkMatches();
 		});
 	};
 	loadUser();
-
+    
 	// load ballparks
 	var ballparks;
 	BallparkService.loadBallparks()
@@ -27,6 +27,34 @@ app.controller('MyBallparksController', function($scope, $window, UserService, B
 		$scope.ballparks = response.data;
 	});
 
+    //ng-map Marker clusterer
+    NgMap.getMap().then(function (map) {
+        $scope.map = map;
+        $scope.initMarkerClusterer();
+    });
+
+    $scope.initMarkerClusterer = function () {
+	// Try changing the below scope
+	var markers = $scope.ballparks.map(function (userballpark) {
+            return $scope.createMarker(userballpark);
+        });
+        var mcOptions = { imagePath: 'https://cdn.rawgit.com/googlemaps/js-marker-clusterer/gh-pages/images/m' };
+        return new MarkerClusterer($scope.map, markers, mcOptions);
+    };
+
+    $scope.createMarker = function (usrbp) {
+        var marker = new google.maps.Marker({
+            position: new google.maps.LatLng(usrbp.latitude, usrbp.longitude),
+            title: usrbp.primary_name
+        });
+        google.maps.event.addListener(marker, 'click', function () {
+            $scope.userBallparkMarker = usrbp;
+            $scope.map.showInfoWindow('myInfoWindow', this);
+        });
+        return marker;
+    }
+    // loadUser();
+    
 	// load user friends
 	FacebookService.getFriends()
 	.then(function(response) {
