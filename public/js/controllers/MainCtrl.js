@@ -12,7 +12,6 @@ app.controller('MainController', function($scope, $window, UserService, Facebook
 			return FacebookService.getUserData();
 		})
 		.then(function(response) {
-			console.log(response);
 			$scope.last_name = response.last_name;
 			return response;
 		})
