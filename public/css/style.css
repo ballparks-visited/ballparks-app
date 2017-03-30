@@ -266,6 +266,8 @@ background: white !important;
 	padding:0;
 	margin-top: 20px;
 }
+
+
 /*==================================================
 =                   Friends List                   =
 ==================================================*/
@@ -382,6 +384,10 @@ background: white !important;
 		
 		#main-container > .row {
 			display: flex;
+		}
+		
+		.fb-wrapper {
+			padding:0;
 		}
 		
     }
