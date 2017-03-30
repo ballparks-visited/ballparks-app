@@ -64,12 +64,17 @@
 						</div>
 					</div>
 
-					<div class="col-sm-8 col-sm-offset-2" id="add-remove-park">
+					<div class="col-sm-8 col-sm-offset-2" id="add-remove-park" ng-if="addMode">
 						<label> Choose date of visit:
 						<input type="date" name="dateVisited" value="{{ moment().format('YYYY-MM-DD') }}" style="color: black;" ng-model="dateVisited" />
 						</label>
 						<button type="submit" class="btn btn-primary btn-lg" ng-click="addBallpark(selectedBallpark._id, dateVisited)">
 							Add Ballpark
+						</button>
+					</div>
+					<div class="col-sm-8 col-sm-offset-2" id="add-remove-park" ng-if="!addMode">
+						<button type="submit" class="btn btn-primary btn-lg" ng-click="removeBallpark(selectedBallpark._id, true)">
+							Remove Ballpark
 						</button>
 					</div>
 				</div>
