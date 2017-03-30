@@ -19,15 +19,15 @@
 			<div class="row" id="name-row">
 				<div class="col-sm-12" id="search-name">
 					<div class="col-md-4 col-md-push-8" id="sb-search" class="sb-search">
-						<div class="input-group stylish-input-group">						
-							<input type="text" class="form-control" placeholder="Search" list="datalist" ng-model="searchName" />
+						<div class="input-group">						
+							<input type="text" class="form-control" placeholder="Search" list="datalist" ng-model="searchName" ng-enter="searchBallpark(searchName)" />
 							<datalist id="datalist">
 								<option value="{{ ballpark.primary_name }}" ng-repeat="ballpark in ballparks">
 								<option value="{{ ballpark.home_team }}" ng-repeat="ballpark in ballparks">
 							</datalist>
-							<span class="input-group-addon">
-								<button type="button" ng-click="searchBallpark(searchName)">
-									<span class="glyphicon glyphicon-search"></span>
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-primary" ng-click="searchBallpark(searchName)">
+									<span class="glyphicon glyphicon-search"></span> Find Ballpark
 								</button>
 							</span>
 						</div>
@@ -42,7 +42,7 @@
 			<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 			<!-- [ OUTPUT SELECTED BALLPARK UPON SELECTION ] -->
 			<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-			<div class="row" id="selected-row" ng-if="selectedBallpark" ng-show="show"> <!-- Hidden on load, toggles open if park is selected, has a toggle to close -->
+			<div class="row" id="selected-row" ng-if="selectedBallpark"> <!-- Hidden on load, toggles open if park is selected, has a toggle to close -->
 				<div class="col-sm-12 img-rounded" id="selection-panel">
 					<div class="row">
 						<div class="col-sm-12" id="selection-name">
