@@ -174,12 +174,12 @@ background: white !important;
 
 
 #selected-row {
-	margin-right: 0;
+	margin: 0;
 }
 
 #selection-panel {
 	margin-bottom: 15px;
-	padding-bottom: 15px;
+	padding: 0 0 15px 0;
 }
 
 #selection-panel .row {
@@ -194,6 +194,7 @@ background: white !important;
 
 #add-remove-park {
 	display:flex;
+	padding: 10px 0;
 }
 
 #add-remove-park label {
@@ -261,7 +262,10 @@ background: white !important;
 	margin: 5px 0px;
 }
 
-	
+.fb-share-button {
+	padding:0;
+	margin-top: 20px;
+}
 /*==================================================
 =                   Friends List                   =
 ==================================================*/
@@ -354,6 +358,7 @@ background: white !important;
 			font-size: medium;
 			padding:0;
 		}
+		
 	}
 
     /* Medium Devices, Desktops */
@@ -368,10 +373,15 @@ background: white !important;
 	
 		#friends-panel {
 			padding-left: 15px;
+			margin-bottom: 15px;
 		}
 		
 		.friend-info {
 			font-size: large;
+		}
+		
+		#main-container > .row {
+			display: flex;
 		}
 		
     }
