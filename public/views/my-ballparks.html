@@ -32,10 +32,9 @@
 							</span>
 						</div>
 					</div>
-					<div class="col-xs-9 col-sm-11 col-md-7 col-md-pull-4" id="name"><h1>Parks <span id="fname">{{ user.first_name }}</span> has <em>visited</em></h1> <!-- User: "I have", Friend: "FName has" -->
+					<div class="col-xs-9 col-sm-10 col-md-6 col-md-pull-4" id="name"><h1>Parks <span id="fname">{{ user.first_name }}</span> has <em>visited</em></h1> <!-- User: "I have", Friend: "FName has" -->
 					</div>
-					<div class="col-xs-3 col-sm-1 col-md-1 col-md-pull-4 fb-wrapper"><div class="pull-right fb-share-button" data-href="https://stadiums-visited.herokuapp.com/my-ballparks" data-layout="button" data-size="large" data-mobile-iframe="true">
-					<a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fstadiums-visited.herokuapp.com%2Fmy-ballparks&amp;src=sdkpreparse">Share</a></div></div>
+					<div class="col-xs-3 col-sm-2 col-md-2 col-md-pull-4 fb-wrapper"><a href="#" id="fb-button"><img src="/images/FB-logo.png"><span id="fb-share">Share</span></a></div>
 				</div>
 			</div>
 
@@ -87,7 +86,7 @@
 
 				<!-- ******************* New Park Box ******************* -->
 				<div class="col-sm-6 col-lg-4 park" ng-repeat="ballpark in userBallparks"> <!-- Original ng-repeat code removed for test: ng-repeat="ballpark in ballparks"-->
-					<div class="visited-box img-rounded">
+					<div class="visited-box">
 						<div class="row">
 							<div class="col-sm-12">
 								<h3>{{ ballpark.data.primary_name }} <a href="#" ng-click="removeBallpark(ballpark.data._id)" style="color: white;"><span class="glyphicon glyphicon-remove" style="float: right;"></span></a></h3>
