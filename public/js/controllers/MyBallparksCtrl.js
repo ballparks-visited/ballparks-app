@@ -1,6 +1,7 @@
 app.controller('MyBallparksController', function($scope, $window, UserService, BallparkService, AuthService, FacebookService) {
 	// Authenticate the user
 	if(!AuthService.isTokenValid()) {
+		AuthService.clearToken();
 		// redirect to login
 		$window.location.href = '/?invalid_token';
 	}
@@ -88,14 +89,13 @@ app.controller('MyBallparksController', function($scope, $window, UserService, B
 			) {
 				$scope.selectedBallpark = ballparks[i];
 				$scope.searchName = "";
-				$scope.show=true; //Added for toggle of results
 				break;
 			}
 		}
 	}
 	
 	$scope.hideSelection = function(){
-		$scope.show=false;
+		$scope.selectedBallpark = null;
 	}
 
 	// add a ballpark
