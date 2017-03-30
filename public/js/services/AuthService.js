@@ -24,6 +24,11 @@ app.factory("AuthService",function($q, UserService, jwtHelper) {
 		localStorage.setItem('stadium-jwt', token);
 	};
 
+	service.clearToken = function() {
+		localStorage.setItem('stadium-jwt', '');
+		this.token = '';
+	};
+
 	service.getToken = function() {
 		if(typeof this.token === 'undefined') {
 			this.token = localStorage.getItem('stadium-jwt');
@@ -41,7 +46,6 @@ app.factory("AuthService",function($q, UserService, jwtHelper) {
 	
 	service.isTokenValid = function() {
 		var token = service.getToken();
-
 		return typeof token !== 'undefined' && token !== null && token !== ''
 				// && !jwtHelper.isTokenExpired()
 		;
