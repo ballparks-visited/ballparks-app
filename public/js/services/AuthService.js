@@ -45,10 +45,22 @@ app.factory("AuthService",function($q, UserService, jwtHelper) {
 	};
 	
 	service.isTokenValid = function() {
+		var tokenData;
 		var token = service.getToken();
-		return typeof token !== 'undefined' && token !== null && token !== ''
-				// && !jwtHelper.isTokenExpired()
-		;
+		var isBlank = typeof token === 'undefined' || token === null || token === '';
+		if(isBlank) {
+			return false;
+		}
+
+		try {
+			tokenData = jwtHelper.decodeToken(service.getToken());;
+		}
+		catch(e) {
+			return false;
+		}
+
+		return !jwtHelper.isTokenExpired(token)
+		
 	};
 
 	/* ====================================================================================================== */
