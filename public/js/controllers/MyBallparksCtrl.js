@@ -88,9 +88,14 @@ app.controller('MyBallparksController', function($scope, $window, UserService, B
 			) {
 				$scope.selectedBallpark = ballparks[i];
 				$scope.searchName = "";
+				$scope.show=true; //Added for toggle of results
 				break;
 			}
 		}
+	}
+	
+	$scope.hideSelection = function(){
+		$scope.show=false;
 	}
 
 	// add a ballpark

@@ -19,8 +19,7 @@
 			<div class="row" id="name-row">
 				<div class="col-sm-12" id="search-name">
 					<div class="col-md-4 col-md-push-8" id="sb-search" class="sb-search">
-
-						<div class="input-group stylish-input-group">
+						<div class="input-group stylish-input-group">						
 							<input type="text" class="form-control" placeholder="Search" list="datalist" ng-model="searchName" />
 							<datalist id="datalist">
 								<option value="{{ ballpark.primary_name }}" ng-repeat="ballpark in ballparks">
@@ -33,26 +32,27 @@
 							</span>
 						</div>
 					</div>
-					<div class="col-md-8 col-md-pull-4" id="name"><h1>Parks <span id="fname">{{ user.first_name }}</span> has <em>visited</em></h1> <!-- User: "I have", Friend: "FName has" -->
+					<div class="col-xs-10 col-sm-11 col-md-7 col-md-pull-4" id="name"><h1>Parks <span id="fname">{{ user.first_name }}</span> has <em>visited</em></h1> <!-- User: "I have", Friend: "FName has" -->
 					</div>
+					<div class="col-xs-2 col-sm-1 col-md-1 col-md-pull-4 fb-share-button" data-href="https://stadiums-visited.herokuapp.com/my-ballparks" data-layout="button" data-size="large" data-mobile-iframe="true"><a class="fb-xfbml-parse-ignore" target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fstadiums-visited.herokuapp.com%2Fmy-ballparks&amp;src=sdkpreparse">Share</a></div>
 				</div>
 			</div>
 
 			<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 			<!-- [ OUTPUT SELECTED BALLPARK UPON SELECTION ] -->
 			<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
-			<div class="row" id="selected-row" ng-if="selectedBallpark"> <!-- Hidden on load, toggles open if park is selected, has a toggle to close -->
-				<div class="col-sm-12" id="selection-panel">
+			<div class="row" id="selected-row" ng-if="selectedBallpark" ng-show="show"> <!-- Hidden on load, toggles open if park is selected, has a toggle to close -->
+				<div class="col-sm-12 img-rounded" id="selection-panel">
 					<div class="row">
 						<div class="col-sm-12" id="selection-name">
-							<h2>{{ selectedBallpark.primary_name }}</h2>
+							<h2>{{ selectedBallpark.primary_name }} <a href="#" ng-click="hideSelection()" style="color: white;"><span class="glyphicon glyphicon-remove" style="float: right;"></span></a></h2>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="col-sm-8" id="selection-img">
 							<!-- Image will need to be supplied dynamically from database -->
-							<img class="img-responsive" src="./images/minute-maid-park.jpg">
+							<img class="img-responsive img-rounded" src="./images/minute-maid-park.jpg">
 						</div>
 						<div class="col-sm-4 no-padding" id="selection-info">
 
@@ -60,18 +60,6 @@
 							<div class="col-xs-6 col-sm-12"> <h4>League:</h4> {{ selectedBallpark.league }}</div>
 							<div class="col-xs-6 col-sm-12"> <h4>Home Team:</h4> {{ selectedBallpark.home_team }}</div>
 
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-xs-12" id="selection-visits"> <!-- hide if from view if selected park has not been added by user -->
-							<ul class="selection-dates">
-								<li>Dates visited:</li>
-								<li>[01/01/2017]</li>
-								<li>[01/02/2017]</li>
-								<li>[01/03/2017]</li>
-								<li>[01/04/2017]</li>
-							</ul>
 						</div>
 					</div>
 
@@ -93,7 +81,7 @@
 
 				<!-- ******************* New Park Box ******************* -->
 				<div class="col-sm-6 col-lg-4 park" ng-repeat="ballpark in userBallparks"> <!-- Original ng-repeat code removed for test: ng-repeat="ballpark in ballparks"-->
-					<div class="visited-box">
+					<div class="visited-box img-rounded">
 						<div class="row">
 							<div class="col-sm-12">
 								<h3>{{ ballpark.data.primary_name }} <a href="#" ng-click="removeBallpark(ballpark.data._id)" style="color: white;"><span class="glyphicon glyphicon-remove" style="float: right;"></span></a></h3>
