@@ -87,8 +87,12 @@ app.controller('MyBallparksController', function($scope, $window, UserService, B
 			if(ballparks[i].primary_name.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1
 				|| ( ballparks[i].home_team !== null && ballparks[i].home_team.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1 )
 			) {
+				var userMatches = $scope.userBallparks.filter(function(el) {
+					return el.data._id === ballparks[i]._id;
+				});
 				$scope.selectedBallpark = ballparks[i];
 				$scope.searchName = "";
+				$scope.addMode = userMatches.length === 0;
 				break;
 			}
 		}
@@ -115,15 +119,20 @@ app.controller('MyBallparksController', function($scope, $window, UserService, B
 	};
 
 	// remove a ballpark
-	$scope.removeBallpark = function(ballparkId) {
+	$scope.removeBallpark = function(ballparkId, closeSearch) {
 		var remove = confirm('Are You Sure?');
 
 		if(remove) {
 			UserService.removeBallpark(AuthService.getUserId(), ballparkId)
 			.then(function() {
-			// reload the user after the ballpark is removed
-			return loadUser();
-		})
+				// reload the user after the ballpark is removed
+				return loadUser();
+			})
+			.then(function() {
+				if(closeSearch) {
+					$scope.selectedBallpark = null;
+				}
+			});
 		}
 	};
 
