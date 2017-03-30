@@ -130,7 +130,7 @@
 				<div class="row">
 
 					<!-- ************** Friend Box ************* -->
-					<div class="col-xs-6 col-sm-4 col-md-12 friend" ng-repeat="friend in friends">
+					<div class="col-xs-6 col-sm-4 col-md-12 friend" ng-repeat="friend in friends" ng-if="friend.ballparks">
 						<div class="row vertical-align">
 							<div class="col-xs-6 col-sm-4">
 								<a href="/user/{{ friend.id }}">
