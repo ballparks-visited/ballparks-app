@@ -110,6 +110,7 @@ ul {
 	justify-content:space-between;
 	display:flex;
 	flex-wrap:wrap;
+	width:100%;
 }
 
 .login-content {
@@ -475,6 +476,8 @@ background: white !important;
 			display:flex;
 			flex-wrap:wrap;
 		}
+		
+		
 
 		
 		
@@ -509,6 +512,10 @@ background: white !important;
 		
 		#top-login-hide {
 			display:none;
+		}
+		
+		.login-column {
+			width:33.3333333333%;
 		}
 		
     }
