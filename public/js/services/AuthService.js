@@ -24,6 +24,11 @@ app.factory("AuthService",function($q, UserService, jwtHelper) {
 		localStorage.setItem('stadium-jwt', token);
 	};
 
+	service.clearToken = function() {
+		localStorage.setItem('stadium-jwt', '');
+		this.token = '';
+	};
+
 	service.getToken = function() {
 		if(typeof this.token === 'undefined') {
 			this.token = localStorage.getItem('stadium-jwt');
@@ -40,11 +45,22 @@ app.factory("AuthService",function($q, UserService, jwtHelper) {
 	};
 	
 	service.isTokenValid = function() {
+		var tokenData;
 		var token = service.getToken();
+		var isBlank = typeof token === 'undefined' || token === null || token === '';
+		if(isBlank) {
+			return false;
+		}
 
-		return typeof token !== 'undefined' && token !== null && token !== ''
-				// && !jwtHelper.isTokenExpired()
-		;
+		try {
+			tokenData = jwtHelper.decodeToken(service.getToken());;
+		}
+		catch(e) {
+			return false;
+		}
+
+		return !jwtHelper.isTokenExpired(token)
+		
 	};
 
 	/* ====================================================================================================== */

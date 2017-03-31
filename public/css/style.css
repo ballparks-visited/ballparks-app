@@ -179,12 +179,12 @@ background: white !important;
 
 
 #selected-row {
-	margin-right: 0;
+	margin: 0;
 }
 
 #selection-panel {
 	margin-bottom: 15px;
-	padding-bottom: 15px;
+	padding: 0 0 15px 0;
 }
 
 #selection-panel .row {
@@ -199,6 +199,7 @@ background: white !important;
 
 #add-remove-park {
 	display:flex;
+	padding: 10px 0;
 }
 
 #add-remove-park label {
@@ -236,6 +237,7 @@ background: white !important;
 .visited-box {		
 	margin-bottom: 15px;
 	padding: 0 5px 5px 5px;
+	border-radius: 6px;
 }
 
 .visited-box h3, #selection-name h2 {
@@ -244,11 +246,11 @@ background: white !important;
 	margin-top: 4px;
 	margin-bottom: 4px;
 	text-shadow: 0.05em 0.05em 0.15em #39327e;
-
 }
 
 .visited-box img {
 	margin-bottom: 5px;
+	border-radius: 3px;
 }
 
 .visited-box>div>div {
@@ -266,7 +268,32 @@ background: white !important;
 	margin: 5px 0px;
 }
 
-	
+.fb-wrapper {
+	margin: 18px 0 15px 0;
+}
+
+#fb-button {
+	float:right;
+	display:block;
+	background-color:white;
+	height:34px;
+	border: 1px solid #3b579d;
+	border-radius: 7px;
+	text-decoration: none;
+}
+
+#fb-button img {
+	height:100%;
+	width:auto;
+}
+
+#fb-share {
+	display:none;
+	padding:5px;
+	font-weight:700;
+}
+
+
 /*==================================================
 =                   Friends List                   =
 ==================================================*/
@@ -324,6 +351,12 @@ background: white !important;
 		.friend-info {
 			font-size: x-large;
 		}
+		
+		#fb-share {
+			display:inline;
+			padding:5px;
+			font-weight:700;
+		}
     }
 
     /* Small Devices, Tablets */
@@ -359,6 +392,9 @@ background: white !important;
 			font-size: medium;
 			padding:0;
 		}
+		
+		
+		
 	}
 
     /* Medium Devices, Desktops */
@@ -373,10 +409,19 @@ background: white !important;
 	
 		#friends-panel {
 			padding-left: 15px;
+			margin-bottom: 15px;
 		}
 		
 		.friend-info {
 			font-size: large;
+		}
+		
+		#main-container > .row {
+			display: flex;
+		}
+		
+		.fb-wrapper {
+			padding:0;
 		}
 		
     }

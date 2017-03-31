@@ -3,6 +3,14 @@
 <head>
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	
+	<!-- Info for Facebook -->
+	<meta property="fb:app_id"        content="277298212684065" />
+	<meta property="og:url"           content="https://stadiums-visited.herokuapp.com/my-ballparks" />
+	<meta property="og:type"          content="website" />
+	<meta property="og:title"         content="Ballparks I've Visited" />
+	<meta property="og:description"   content="Baseball Park visitation tracking app" />
+	<meta property="og:image"         content="https://stadiums-visited.herokuapp.com/images/screenshot.png" />
 
 	<base href="/">
 
@@ -38,13 +46,23 @@
 	<script src="js/services/MapService.js"></script>
 	<script src="js/controllers/MainCtrl.js"></script>
 	<script src="js/controllers/HeaderController.js"></script>
-	<script src="js/controllers/UserCtrl.js"></script>
-	<script src="js/controllers/FriendCtrl.js"></script>
 	<script src="js/controllers/MyBallparksCtrl.js"></script>
 	<script src="js/controllers/UserBallparksCtrl.js"></script>
 
 </head>
 <body ng-app="ballparksApp" >
+
+<!-- Added for Facebook Share functionality -->
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1&version=v2.8&appId=1272641912758292";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script> <!-- End of Facebook Code -->
+
+
 	<div id="wrapper">
 		<div class="hidden-xs">&nbsp;</div>
 		<nav class="navbar navbar-default" ng-controller="HeaderController">
@@ -57,16 +75,15 @@
 						<span class="icon-bar"></span>
 						<span class="icon-bar"></span>
 					</button>
-					<a class="navbar-brand" href="#"><span id="ballparks">Ballparks </span> <span id="plain">I've</span> <span id="i-visited"> <em>Visited</em></span></a>
+					<a class="navbar-brand" href="/my-ballparks"><span id="ballparks">Ballparks </span> <span id="plain">I've</span> <span id="i-visited"> <em>Visited</em></span></a>
 				</div>
 
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="collapse navbar-collapse" id="ballpark-nav">
 					<ul class="nav navbar-nav">
-						<li ng-class="{ active: isActive('/my-ballparks')}"><a href="/my-ballparks">My Ballparks</a></li>
-						<li ng-class="{ active: isActive('/')}"><a href="/">Login</a></li>
-						<li ng-class="{ active: isActive('/users')}"><a href="/users">Users</a></li>
-						<li ng-class="{ active: isActive('/friends')}"><a href="/friends">Friends</a></li>
+						<li ng-if="isLoggedIn()" ng-class="{ active: isActive('/my-ballparks')}"><a href="/my-ballparks">My Ballparks</a></li>
+						<li ng-if="!isLoggedIn()" ng-class="{ active: isActive('/')}"><a href="/">Login</a></li>
+						<li ng-if="isLoggedIn()"><a href="#" ng-click="logout()">Logout</a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
 			</div><!-- /.container-fluid -->

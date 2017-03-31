@@ -32,22 +32,22 @@
 			<div class="row" id="name-row">
 				<div class="col-sm-12" id="search-name">
 					<div class="col-md-4 col-md-push-8" id="sb-search" class="sb-search">
-
-						<div class="input-group stylish-input-group">
-							<input type="text" class="form-control" placeholder="Search" list="datalist" ng-model="searchName" />
+						<div class="input-group">						
+							<input type="text" class="form-control" placeholder="Search" list="datalist" ng-model="searchName" ng-enter="searchBallpark(searchName)" />
 							<datalist id="datalist">
 								<option value="{{ ballpark.primary_name }}" ng-repeat="ballpark in ballparks">
 								<option value="{{ ballpark.home_team }}" ng-repeat="ballpark in ballparks">
 							</datalist>
-							<span class="input-group-addon">
-								<button type="button" ng-click="searchBallpark(searchName)">
-									<span class="glyphicon glyphicon-search"></span>
+							<span class="input-group-btn">
+								<button type="button" class="btn btn-primary" ng-click="searchBallpark(searchName)">
+									<span class="glyphicon glyphicon-search"></span> Find Ballpark
 								</button>
 							</span>
 						</div>
 					</div>
-					<div class="col-md-8 col-md-pull-4" id="name"><h1>Parks <span id="fname">{{ user.first_name }}</span> has <em>visited</em></h1> <!-- User: "I have", Friend: "FName has" -->
+					<div class="col-xs-9 col-sm-10 col-md-6 col-md-pull-4" id="name"><h1>Parks <span id="fname">{{ user.first_name }}</span> has <em>visited</em></h1> <!-- User: "I have", Friend: "FName has" -->
 					</div>
+					<div class="col-xs-3 col-sm-2 col-md-2 col-md-pull-4 fb-wrapper"><a href="#" id="fb-button"><img src="/images/FB-logo.png"><span id="fb-share">Share</span></a></div>
 				</div>
 			</div>
 
@@ -55,17 +55,17 @@
 			<!-- [ OUTPUT SELECTED BALLPARK UPON SELECTION ] -->
 			<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 			<div class="row" id="selected-row" ng-if="selectedBallpark"> <!-- Hidden on load, toggles open if park is selected, has a toggle to close -->
-				<div class="col-sm-12" id="selection-panel">
+				<div class="col-sm-12 img-rounded" id="selection-panel">
 					<div class="row">
 						<div class="col-sm-12" id="selection-name">
-							<h2>{{ selectedBallpark.primary_name }}</h2>
+							<h2>{{ selectedBallpark.primary_name }} <a href="#" ng-click="hideSelection()" style="color: white;"><span class="glyphicon glyphicon-remove" style="float: right;"></span></a></h2>
 						</div>
 					</div>
 
 					<div class="row">
 						<div class="col-sm-8" id="selection-img">
 							<!-- Image will need to be supplied dynamically from database -->
-							<img class="img-responsive" src="./images/minute-maid-park.jpg">
+							<img class="img-responsive img-rounded" src="./images/minute-maid-park.jpg">
 						</div>
 						<div class="col-sm-4 no-padding" id="selection-info">
 
@@ -76,24 +76,17 @@
 						</div>
 					</div>
 
-					<div class="row">
-						<div class="col-xs-12" id="selection-visits"> <!-- hide if from view if selected park has not been added by user -->
-							<ul class="selection-dates">
-								<li>Dates visited:</li>
-								<li>[01/01/2017]</li>
-								<li>[01/02/2017]</li>
-								<li>[01/03/2017]</li>
-								<li>[01/04/2017]</li>
-							</ul>
-						</div>
-					</div>
-
-					<div class="col-sm-8 col-sm-offset-2" id="add-remove-park">
+					<div class="col-sm-8 col-sm-offset-2" id="add-remove-park" ng-if="addMode">
 						<label> Choose date of visit:
 						<input type="date" name="dateVisited" value="{{ moment().format('YYYY-MM-DD') }}" style="color: black;" ng-model="dateVisited" />
 						</label>
 						<button type="submit" class="btn btn-primary btn-lg" ng-click="addBallpark(selectedBallpark._id, dateVisited)">
 							Add Ballpark
+						</button>
+					</div>
+					<div class="col-sm-8 col-sm-offset-2" id="add-remove-park" ng-if="!addMode">
+						<button type="submit" class="btn btn-primary btn-lg" ng-click="removeBallpark(selectedBallpark._id, true)">
+							Remove Ballpark
 						</button>
 					</div>
 				</div>
@@ -149,7 +142,7 @@
 				<div class="row">
 
 					<!-- ************** Friend Box ************* -->
-					<div class="col-xs-6 col-sm-4 col-md-12 friend" ng-repeat="friend in friends">
+					<div class="col-xs-6 col-sm-4 col-md-12 friend" ng-repeat="friend in friends" ng-if="friend.ballparks">
 						<div class="row vertical-align">
 							<div class="col-xs-6 col-sm-4">
 								<a href="/user/{{ friend.id }}">

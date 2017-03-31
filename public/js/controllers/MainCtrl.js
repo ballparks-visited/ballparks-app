@@ -1,5 +1,10 @@
 app.controller('MainController', function($scope, $window, UserService, FacebookService, AuthService, Facebook) {
 
+	// redirect to my-ballparks if logged in
+	if(AuthService.isTokenValid()) {
+		$window.location.href = '/my-ballparks';
+	}
+
 	$scope.login = function() {
 		FacebookService.login()
 		.then(function(response) {
@@ -7,7 +12,6 @@ app.controller('MainController', function($scope, $window, UserService, Facebook
 			return FacebookService.getUserData();
 		})
 		.then(function(response) {
-			console.log(response);
 			$scope.last_name = response.last_name;
 			return response;
 		})
@@ -23,11 +27,6 @@ app.controller('MainController', function($scope, $window, UserService, Facebook
 
 			// redirect to main page
 			$window.location.href = '/my-ballparks';
-		});
-	};
-
-	$scope.logout = function() {
-		Facebook.logout(function(response) {
 		});
 	};
 
