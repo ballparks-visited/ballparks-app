@@ -43,7 +43,84 @@ ul {
 	border: 5px solid #fff9ca;
 }
 
+/*==================================================
+=                    Login Page                    =
+==================================================*/
+#login-description {
+    margin: 0px 3px;
+    background-color: white;
+    padding: 15px;
+    box-shadow: 0 0 3px grey;
+}
 
+#login-description h1 {
+	margin-top:0;
+}
+
+#login-description #ballparks {
+	color: #ec4c42;
+    text-shadow: 0.01em 0.03em 0.05em #000
+}
+
+#login-description #i-visited {
+	text-shadow: 0.02em 0.03em 0.05em #4c4c4c;
+    font-size: xx-large;
+    color: steelblue;
+}
+
+.login-content {
+	background-color:steelblue;
+	border-radius: 5px;
+	padding: 15px;
+	padding-bottom: 0px;
+	margin-bottom: 15px;
+	width:100%;
+}
+
+.login-content p {
+	padding-top: 15px;
+	width: 100%;
+	font-family: 'Lato' sans-serif;
+	font-size:large;
+	text-align:center;
+	color: white;
+}
+
+.img-login {
+    margin-left: auto;
+    margin-right: auto;
+	max-width: 600px;
+}
+
+.img-login img {
+	border: 10px solid white;
+    border-radius: 8px;
+    box-shadow: 0em 0em 1em #575757;
+}
+
+.btn-login {
+	display: block;
+	margin-left: auto;
+    margin-right: auto;
+	font-size: x-large;
+	width: 200px;
+}
+
+.login-column {
+	justify-content:space-between;
+	display:flex;
+	flex-wrap:wrap;
+	width:100%;
+}
+
+.login-content {
+	display:flex;
+	flex-wrap:wrap;
+}
+
+#top-login-hide {
+	display:block;
+}
 /*==================================================
 =                  Navigation Bar                  =
 ==================================================*/
@@ -268,6 +345,8 @@ background: white !important;
 	margin: 5px 0px;
 }
 
+/* Facebook Button */
+
 .fb-wrapper {
 	margin: 18px 0 15px 0;
 }
@@ -277,8 +356,6 @@ background: white !important;
 	display:block;
 	background-color:white;
 	height:34px;
-	border: 1px solid #3b579d;
-	border-radius: 7px;
 	text-decoration: none;
 }
 
@@ -289,8 +366,6 @@ background: white !important;
 
 #fb-share {
 	display:none;
-	padding:5px;
-	font-weight:700;
 }
 
 
@@ -356,6 +431,15 @@ background: white !important;
 			display:inline;
 			padding:5px;
 			font-weight:700;
+			vertical-align:middle;
+		}
+		
+		#fb-button {
+			border-radius: 3px;
+			border: 1px solid #3b579d;
+		}
+		#fb-button img {
+			padding: 5px 0 5px 5px;
 		}
     }
 
@@ -393,6 +477,13 @@ background: white !important;
 			padding:0;
 		}
 		
+		.login-row {
+			display:flex;
+			flex-wrap:wrap;
+		}
+		
+		
+
 		
 		
 	}
@@ -422,6 +513,14 @@ background: white !important;
 		
 		.fb-wrapper {
 			padding:0;
+		}
+		
+		#top-login-hide {
+			display:none;
+		}
+		
+		.login-column {
+			width:33.3333333333%;
 		}
 		
     }

@@ -1,9 +1,38 @@
 <div class="row">
 	<div class="col-md-12">
-		<h1>Ballparks I've Visited</h1>
-		
-		<p>
-			<button class="btn btn-primary" ng-click="login()">Login</button>
-		</p>
+		<div id="login-description">
+			<h1><span id="ballparks">Ballparks</span> <span id="plain"> I've </span><span id="i-visited">Visited</span></h1>
+			
+			<p id="top-login-hide">
+				<button class="btn btn-primary btn-login" ng-click="login()">Login</button>
+			</p>
+			
+			<div class="row login-row">
+				<div class="col-md-4 login-column">
+					<div class="login-content">
+						<div class="img-login"><img class="img-responsive" src="/images/add-park.png"></div>
+						<p>Add Major League Baseball parks to your map</p>
+					</div>
+				</div>
+				
+				<div class="col-md-4 login-column">
+					<div class="login-content">
+						<div class="img-login"><img class="img-responsive" src="/images/visited-parks.png"></div>
+						<p>View your parks in detail</p>
+					</div>
+				</div>
+				
+				<div class="col-md-4 login-column">
+					<div class="login-content">
+						<div class="img-login"><img class="img-responsive" src="/images/friends-parks.png"></div>
+						<p>See parks your Facebook friends visited</p>
+					</div>
+				</div>
+			</div>
+			
+			<p>
+				<button class="btn btn-primary btn-login" ng-click="login()">Login</button>
+			</p>
+		</div>
 	</div>
 </div>
