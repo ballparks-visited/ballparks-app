@@ -54,7 +54,7 @@ ul {
 }
 
 #login-description h1 {
-	margin-top:0;
+	display:none;
 }
 
 #login-description #ballparks {
@@ -89,7 +89,7 @@ ul {
 .img-login {
     margin-left: auto;
     margin-right: auto;
-	max-width: 600px;
+	max-width: 450px;
 }
 
 .img-login img {
@@ -352,6 +352,11 @@ background: white !important;
 	background-color:white;
 	height:34px;
 	text-decoration: none;
+	color: #3b579d;
+}
+
+#fb-button:hover {
+	box-shadow:0 0 0.4em #8b99bd;
 }
 
 #fb-button img {
@@ -431,7 +436,7 @@ background: white !important;
 		
 		#fb-button {
 			border-radius: 3px;
-			border: 1px solid #3b579d;
+			border: 1px solid #7c91c5;
 		}
 		#fb-button img {
 			padding: 5px 0 5px 5px;
@@ -478,8 +483,6 @@ background: white !important;
 		}
 		
 		
-
-		
 		
 	}
 
@@ -516,6 +519,15 @@ background: white !important;
 		
 		.login-column {
 			width:33.3333333333%;
+		}
+		
+		#login-description h1 {
+			display:block;
+			margin-top:0;
+		}
+		
+		.img-login {
+			max-width:100%;
 		}
 		
     }
