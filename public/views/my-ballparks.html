@@ -86,24 +86,26 @@
 
 				<!-- ******************* New Park Box ******************* -->
 				<div class="col-sm-6 col-lg-4 park" ng-repeat="ballpark in userBallparks"> <!-- Original ng-repeat code removed for test: ng-repeat="ballpark in ballparks"-->
-					<div class="visited-box">
+					<div class="visited-box wrapflex">
 						<div class="row">
 							<div class="col-sm-12">
 								<h3>{{ ballpark.data.primary_name }} <a href="#" ng-click="removeBallpark(ballpark.data._id)" style="color: white;"><span class="glyphicon glyphicon-remove" style="float: right;"></span></a></h3>
 							</div>
 						</div>
 
-						<div class="row">
+						<div class="row wrapflex">
 							<div class="col-sm-12">
 								<!-- Image will need to be supplied dynamically from database -->
 								<img class="img-responsive park-img" src="./images/minute-maid-park.jpg">
 							</div>
-							<div class="col-sm-12">
+							<div class="col-sm-12 wrapflex">
 								<div class="row visited-info">
-									<div class="col-xs-6"> <h4>Location:</h4>{{ ballpark.data.city }}, {{ ballpark.data.state }}</div>
-									<div class="col-xs-6 no-left-padding"> <h4>League:</h4> {{ ballpark.data.league }}</div>
-									<div class="col-xs-6"> <h4>Home Team:</h4> {{ ballpark.data.home_team }}</div>
-									<div class="col-xs-6 no-left-padding"> <h4>Last Visited:</h4> {{ moment(ballpark.dateVisited).format('M/D/YYYY') }}</div>
+									<div class="col-xs-12 vdata-wrapper">
+										<div class="col-xs-6"> <h4>Location:</h4>{{ ballpark.data.city }}, {{ ballpark.data.state }}</div>
+										<div class="col-xs-6 no-left-padding"> <h4>League:</h4> {{ ballpark.data.league }}</div>
+										<div class="col-xs-6"> <h4>Home Team:</h4> {{ ballpark.data.home_team }}</div>
+										<div class="col-xs-6 no-left-padding"> <h4>Last Visited:</h4> {{ moment(ballpark.dateVisited).format('M/D/YYYY') }}</div>
+									</div>
 								</div>
 							</div>
 						</div>
