@@ -54,27 +54,32 @@
 							<!-- Image will need to be supplied dynamically from database -->
 							<img class="img-responsive img-rounded" src="./images/minute-maid-park.jpg">
 						</div>
-						<div class="col-sm-4 no-padding" id="selection-info">
+						<div class="col-sm-4">
+							<div class="row">
+								<div class="col-sm-12 visited-box vdata-wrapper" id="selection-info">
 
-							<div class="col-xs-6 col-sm-12"> <h4>Location:</h4> {{ selectedBallpark.city }}, {{ selectedBallpark.state }}</div>
-							<div class="col-xs-6 col-sm-12"> <h4>League:</h4> {{ selectedBallpark.league }}</div>
-							<div class="col-xs-6 col-sm-12"> <h4>Home Team:</h4> {{ selectedBallpark.home_team }}</div>
+									<div class="col-xs-6 col-sm-12"> <h4>Location:</h4> {{ selectedBallpark.city }}, {{ selectedBallpark.state }}</div>
+									<div class="col-xs-6 col-sm-12"> <h4>League:</h4> {{ selectedBallpark.league }}</div>
+									<div class="col-xs-6 col-sm-12"> <h4>Home Team:</h4> {{ selectedBallpark.home_team }}</div>
 
+								</div>					
+
+								<div class="col-xs-12" id="add-remove-park" ng-if="addMode">
+									<label> Choose date of visit: &ensp;
+									<input type="date" name="dateVisited" value="{{ moment().format('YYYY-MM-DD') }}" style="color: black;" ng-model="dateVisited" />
+									</label>
+									
+									<button type="submit" class="btn btn-primary btn-lg" ng-click="addBallpark(selectedBallpark._id, dateVisited)">
+										Add Ballpark
+									</button>
+								</div>
+								<div class="col-xs-12" id="add-remove-park" ng-if="!addMode">
+									<button type="submit" class="btn btn-primary btn-lg" ng-click="removeBallpark(selectedBallpark._id, true)">
+										Remove Ballpark
+									</button>
+								</div>
+							</div>
 						</div>
-					</div>
-
-					<div class="col-sm-8 col-sm-offset-2" id="add-remove-park" ng-if="addMode">
-						<label> Choose date of visit:
-						<input type="date" name="dateVisited" value="{{ moment().format('YYYY-MM-DD') }}" style="color: black;" ng-model="dateVisited" />
-						</label>
-						<button type="submit" class="btn btn-primary btn-lg" ng-click="addBallpark(selectedBallpark._id, dateVisited)">
-							Add Ballpark
-						</button>
-					</div>
-					<div class="col-sm-8 col-sm-offset-2" id="add-remove-park" ng-if="!addMode">
-						<button type="submit" class="btn btn-primary btn-lg" ng-click="removeBallpark(selectedBallpark._id, true)">
-							Remove Ballpark
-						</button>
 					</div>
 				</div>
 			</div>
@@ -133,7 +138,7 @@
 					<!-- ************** Friend Box ************* -->
 					<div class="col-xs-6 col-sm-4 col-md-12 friend" ng-repeat="friend in friends" ng-if="friend.ballparks">
 						<div class="row vertical-align">
-							<div class="col-xs-6 col-sm-4">
+							<div class="col-xs-6 col-sm-4 friend-left">
 								<a href="/user/{{ friend.id }}">
 									<img class="img-responsive" src="{{ friend.photoURL }}">
 								</a>

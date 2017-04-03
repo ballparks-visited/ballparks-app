@@ -297,8 +297,18 @@ background: white !important;
     letter-spacing: 2px;
 }
 
+#selection-info {
+	padding: 0;
+	padding-left: 15px;
+	margin-bottom: 10px;
+	display: flex;
+    flex-wrap: wrap;
+    margin-top: 15px;
+}
+
 #selection-info > div {
-	padding-bottom: 15px;
+	padding: 0;
+	padding-bottom: 5px;
 }
 
 .selection-dates li {
@@ -310,6 +320,11 @@ background: white !important;
 	background: #87563a;
 	color:#ffffff;
 	font-size: large;
+}
+
+#selection-img img {
+	border: 1px solid white;
+    box-shadow: 0 0 0.1em;
 }
 
 .park img, #selection-panel img {
@@ -329,20 +344,29 @@ background: white !important;
 /* Add and remove park button */
 #add-remove-park {
 	display:flex;
+	flex-flow:column;
+	flex-wrap:wrap;
 	padding: 10px 0;
+	justify-content:center;
 }
 
 #add-remove-park label {
 	color: #9ed9ff;
+	display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
 }
 
 #add-remove-park input {
 	width:auto;
 	padding-left: 2%;
+	max-height:30px;
 }
 
 #add-remove-park button {
-	width: 100%;
+	width: auto;
+    padding-left: 46px;
+    padding-right: 45px;
 }
 
 .visited-box {		
@@ -477,11 +501,22 @@ background: white !important;
 		#fb-button img {
 			padding: 5px 0 5px 5px;
 		}
+		
+		.friend-left {
+			font-size: larger;
+		}
+		#add-remove-park {
+			flex-wrap:wrap;
+		}
+		
     }
 
     /* Small Devices, Tablets */
     @media only screen and (min-width : 768px) {
 		
+		#selection-info {
+			margin-top:0;
+		}
 		.park {
 			display: flex;
 		}
@@ -518,7 +553,13 @@ background: white !important;
 			flex-wrap:wrap;
 		}
 		
+		#add-remove-park {
+			flex-wrap:wrap;
+		}
 		
+		#add-remove-park input {
+			margin-left: 0;
+		}
 		
 	}
 
