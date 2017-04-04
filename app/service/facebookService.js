@@ -34,6 +34,24 @@ function getFBLongLivedToken(shortToken) {
 	return deferred;
 }
 
+// Post Link to Facebook
+function postLink(userId, userToken, message, link) {
+	var deferred = new Deferred();
+
+	fb.setAccessToken(userToken);
+	fb.api('/' + userId + '/feed', 'post', { "link": link, "message": message }, function (res) {
+		if(!res || res.error) {
+			console.log(!res ? 'error occurred' : res.error);
+			deferred.reject(res.error);
+		}
+		else {
+			deferred.resolve(res.id);
+		}
+	});
+	
+	return deferred;
+}
+
 // test FB post
 function testFBpost() {
 
@@ -56,4 +74,5 @@ function testFBpost() {
 }
 
 module.exports.getFBLongLivedToken = getFBLongLivedToken;
+module.exports.postLink = postLink;
 module.exports.testFBpost = testFBpost;

@@ -34,7 +34,7 @@
 					</div>
 					<div class="col-xs-9 col-sm-10 col-md-5 col-md-pull-5 col-lg-6 col-lg-pull-4" id="name"><h1>Parks <span id="fname">{{ user.first_name }}</span> has <em>visited</em></h1> <!-- User: "I have", Friend: "FName has" -->
 					</div>
-					<div class="col-xs-3 col-sm-2 col-md-pull-5 col-lg-pull-4 fb-wrapper"><a href="#" id="fb-button"><img src="/images/FB-logo.png"><span id="fb-share">Share</span></a></div>
+					<div class="col-xs-3 col-sm-2 col-md-pull-5 col-lg-pull-4 fb-wrapper"><a href="#" id="fb-button" ng-click="shareBallparks()"><img src="/images/FB-logo.png"><span id="fb-share">Share</span></a></div>
 				</div>
 			</div>
 
@@ -164,3 +164,19 @@
 
 	</div> <!-- End of main container row -->
 </div> <!-- End of main-container -->
+
+<script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+        <h3 class="modal-title" id="modal-title">Share on Facebook</h3>
+    </div>
+    <div class="modal-body form-group" id="modal-body">
+        <label>Message</label>
+        <textarea class="form-control" rows="5" ng-model="messageText">{{ messageText }}</textarea>
+        <br/>
+        <p class="well"><strong>Link:</strong> {{ messageLink }}</p>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary" type="button" ng-click="$ctrl.ok(messageText, messageLink)">Share Link</button>
+        <button class="btn" type="button" ng-click="$ctrl.cancel()">Cancel</button>
+    </div>
+</script>

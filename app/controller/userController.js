@@ -84,6 +84,20 @@ function removeUserBallpark(userId, ballparkId) {
 	return deferred;
 }
 
+function shareFacebookLink(userId, userToken, data) {
+	var deferred = new Deferred();
+	
+	facebookService.postLink(userId, userToken, data.messageText, data.messageLink)
+	.then(function(response) {
+		deferred.resolve(response);
+	},
+	function(err) {
+		deferred.reject(err);
+	});
+
+	return deferred;
+}
+
 function testFBpost() {
 
 	return facebookService.testFBpost();
@@ -95,4 +109,5 @@ module.exports.getUsers = getUsers;
 module.exports.getUserById = getUserById;
 module.exports.addUserBallpark = addUserBallpark;
 module.exports.removeUserBallpark = removeUserBallpark;
+module.exports.shareFacebookLink = shareFacebookLink;
 module.exports.testFBpost = testFBpost;
