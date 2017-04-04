@@ -1,4 +1,4 @@
-app.controller('MyBallparksController', function($scope, $window, UserService, BallparkService, AuthService, FacebookService) {
+app.controller('MyBallparksController', function($scope, $window, $uibModal, UserService, BallparkService, AuthService, FacebookService) {
 	// Authenticate the user
 	if(!AuthService.isTokenValid()) {
 		AuthService.clearToken();
@@ -136,4 +136,38 @@ app.controller('MyBallparksController', function($scope, $window, UserService, B
 		}
 	};
 
+	// share stadiums
+	$scope.shareBallparks = function() {
+		var modalInstance = $uibModal.open({
+			animation: true,
+			ariaLabelledBy: 'modal-title',
+			ariaDescribedBy: 'modal-body',
+			templateUrl: 'myModalContent.html',
+			size: 'md',
+			controller: 'ModalInstanceCtrl',
+			controllerAs: '$ctrl',
+			resolve: {
+			}
+		});
+
+		modalInstance.result.then(function (data) {
+			UserService.shareLink(AuthService.getUserId(), data.messageText, data.messageLink);
+		});
+	};
+});
+
+
+app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, AuthService) {
+	var $ctrl = this;
+
+	$scope.messageLink = "https://stadiums-visited.herokuapp.com/user/" + AuthService.getUserId();
+	$scope.messageText = "Check out all the ballparks I've been to!";
+
+	$ctrl.ok = function(text, link) {
+		$uibModalInstance.close({messageText: text, messageLink: link});
+	};
+
+	$ctrl.cancel = function () {
+		$uibModalInstance.dismiss();
+	};
 });

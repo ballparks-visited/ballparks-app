@@ -34,7 +34,15 @@ app.factory('UserService', ['$http', function($http) {
 
 	service.getFriendData = function(ids) {
 		return $http.get("/api/v1/users?userId=" + ids);
-	}
+	};
+
+	service.shareLink = function(id, text, link) {
+		return $http.post("/api/v1/users/"+id+"/share-link", {
+			"messageText": text,
+			"messageLink": link
+		});
+	};
+
 
 	return service;
 }]);

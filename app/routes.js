@@ -62,6 +62,26 @@ module.exports = function(app) {
 		}
 	});
 
+	app.post('/api/v1/users/:userId/share-link', passport.authenticate('jwt', { session: false}), function(req, res) {
+		if(req.params.userId !== req.user.fb_id) {
+			// unauthenticated user
+			res.status(401);
+			res.end();
+		}
+		else {
+			userController.shareFacebookLink(req.params.userId, req.user.access_token, req.body)
+			.then(function(response) {
+				res.send(response);
+				res.end();
+			},
+			function(err) {
+				console.error(err);
+				res.send(err);
+				res.end();
+			});
+		}
+	});
+
 	app.get('/api/v1/users', function(req, res) {
 		userController.getUsers(req.query.userId)
 		.then(function(userResult) {
