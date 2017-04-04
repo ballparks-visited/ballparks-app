@@ -3,6 +3,7 @@ var app = angular.module('ballparksApp', [
 	,'facebook'
 	,'ngMap'
 	,'angular-jwt'
+	,'ui.bootstrap'
 ])
 .config(function(FacebookProvider) {
 	// Set your appId through the setAppId method or
