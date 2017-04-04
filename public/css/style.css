@@ -376,7 +376,6 @@ background: white !important;
 }
 
 .visited-box img {
-	margin-bottom: 10px;
     border-radius: 3px;
     border: 1px solid white;
 	box-shadow: 0 0 0.1em;
@@ -395,6 +394,7 @@ background: white !important;
     align-content: stretch;
     padding-left: 15px;
     padding-right: 15px;
+	margin-top:10px;
 }
 
 .visited-info > div {
@@ -416,6 +416,19 @@ background: white !important;
 	padding-top: 10px;
     padding: 10px 5px 0 10px;
     align-items: baseline;
+}
+
+.image-credit {
+	font-size:small;
+}
+
+.image-credit a {
+	color: #97cfff;
+    text-decoration: none;
+}
+
+.image-credit a:focus, a:hover {
+    color: #61c1ff;
 }
 
 .wrapflex {
@@ -455,6 +468,10 @@ background: white !important;
 .friend {
 	border: 2px solid rgba(255, 249, 202, 0.58);
 	padding: 10px 15px;
+}
+
+.friend-left img {
+	padding-bottom: 5px;
 }
 
 .friend-info {
