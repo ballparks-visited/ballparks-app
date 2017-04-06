@@ -86,6 +86,26 @@
 			</div>
 
 			<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+			<!-- [ OUTPUT MULTIPLE SEARCH RESULTS ] -->
+			<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
+			<div class="row" id="selected-row" 	> 
+				<div class="col-sm-12 img-rounded" id="search-results" ng-if="searchResults">
+					<div class="row">
+					<br/>
+						<div class="col-sm-12" id="selection-name" style="">
+							<ul class="list-group" style="margin-bottom: 0">
+							  <li class="list-group-item" style="margin-bottom: 10px; padding-bottom: 40px;" ng-repeat="result in searchResults">
+							  	<span style="float: left; margin-top: 5px;"><strong>{{ result.primary_name }}</strong></span>
+							  	<button class="btn btn-sm btn-primary" style="float: right;" ng-click="searchBallparkById(result._id)">Choose Stadium</button>
+							  </li>
+							</ul>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 			<!-- [ OUTPUT VISITED BALLPARKS ] -->
 			<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 			<div class="row" id="visited-parks">
