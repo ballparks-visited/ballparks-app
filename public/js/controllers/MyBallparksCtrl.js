@@ -83,10 +83,30 @@ app.controller('MyBallparksController', function($scope, $window, $uibModal, Use
 	}
 
 	$scope.searchBallpark = function(searchKey) {
+		$scope.selectedBallpark = null;
+		$scope.searchResults = null;
+
+		var results = [];
 		for(var i = 0; i < ballparks.length; i++) {
-			if(ballparks[i].primary_name.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1
-				|| ( ballparks[i].home_team !== null && ballparks[i].home_team.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1 )
+			if( searchKey.length > 2 && (ballparks[i].primary_name.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1
+				|| ( ballparks[i].home_team !== null && ballparks[i].home_team.toLowerCase().indexOf(searchKey.toLowerCase()) !== -1) )
 			) {
+				results.push(ballparks[i]);
+			}
+		}
+
+		if(results.length === 1) {
+			$scope.searchBallparkById(results[0]._id);
+		}
+		else if (results.length > 0) {
+			$scope.searchResults = results;
+		}
+	}
+
+	$scope.searchBallparkById = function(id) {
+		$scope.searchResults = null;
+		for(var i = 0; i < ballparks.length; i++) {
+			if(ballparks[i]._id === id) {
 				var userMatches = $scope.userBallparks.filter(function(el) {
 					return el.data._id === ballparks[i]._id;
 				});
