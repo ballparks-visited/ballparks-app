@@ -357,6 +357,10 @@ background: white !important;
     color: #004b6b;
 }
 
+.image-column {
+	margin-bottom: 10px;
+}
+
 .image-credit {
 	display:block;
 	padding:8px 15px;
@@ -438,7 +442,6 @@ background: white !important;
     align-content: stretch;
     padding-left: 15px;
     padding-right: 15px;
-	margin-top:10px;
 }
 
 .visited-info > div {
