@@ -51,10 +51,11 @@
 
 					<div class="row">
 						<div class="col-sm-8" id="selection-img" ng-show="selectedBallpark.image_name">
-							<!-- Image will need to be supplied dynamically from database -->
 							<img class="img-responsive img-rounded" src="./images/{{selectedBallpark.image_name}}">
-							<div class="tooltip-i" ng-show="selectedBallpark.image_credit_url" ng-click="selectedBallpark.showElement = !selectedBallpark.showElement"><span class="glyphicon glyphicon-info-sign"></span></div>
-							<span class="image-credit" ng-mouseleave="selectedBallpark.showElement = false" ng-show="selectedBallpark.showElement"><a href="{{selectedBallpark.image_credit_url}}">{{selectedBallpark.image_credit_name}}</a></span>
+							<div class="credit-wrap" ng-show="selectedBallpark.image_credit_url" ng-mouseenter="selectedBallpark.showElement=true" ng-mouseleave="selectedBallpark.showElement=false">
+								<div class="tooltip-i" ng-show="selectedBallpark.image_credit_url" ng-click="selectedBallpark.showElement = !selectedBallpark.showElement"><span class="glyphicon glyphicon-info-sign"></span></div>
+								<span class="image-credit" ng-mouseleave="selectedBallpark.showElement = false" ng-show="selectedBallpark.showElement"><a href="{{selectedBallpark.image_credit_url}}">{{selectedBallpark.image_credit_name}}</a></span>
+							</div>
 						</div>
 						<div class="col-sm-4">
 							<div class="row">
