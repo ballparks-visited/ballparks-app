@@ -121,11 +121,10 @@
 						</div>
 
 						<div class="row wrapflex">
-							<div class="col-sm-12">
-								<!-- Image will need to be supplied dynamically from database -->
+							<div class="col-sm-12 image-column" ng-show="ballpark.data.image_name">
 								<img class="img-responsive park-img" src="./images/{{ballpark.data.image_name}}">
-								<div class="credit-wrap" ng-mouseenter="ballpark.showElement=true" ng-mouseleave="ballpark.showElement=false">
-									<div class="tooltip-i" ng-click="ballpark.showElement = !ballpark.showElement"><span class="glyphicon glyphicon-info-sign"></span></div>
+								<div class="credit-wrap" ng-show="ballpark.data.image_credit_url" ng-mouseenter="ballpark.showElement=true" ng-mouseleave="ballpark.showElement=false">
+									<div class="tooltip-i" ng-show="ballpark.data.image_credit_url" ng-click="ballpark.showElement = !ballpark.showElement"><span class="glyphicon glyphicon-info-sign"></span></div>
 									<span class="image-credit" ng-mouseleave="ballpark.showElement = false" ng-show="ballpark.showElement">Image Credit: <a href="{{ballpark.data.image_credit_url}}">{{ballpark.data.image_credit_name}}</a></span>
 								</div>
 							</div>
