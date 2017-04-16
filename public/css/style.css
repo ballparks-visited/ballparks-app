@@ -358,7 +358,7 @@ background: white !important;
 }
 
 .image-credit {
-	display:none;
+	display:block;
 	padding:8px 15px;
 	position:absolute;
 	bottom:2px;
