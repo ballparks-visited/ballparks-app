@@ -42,11 +42,12 @@
 					</div>
 
 					<div class="row">
-						<div class="col-sm-8" id="selection-img">
-							<!-- Image will need to be supplied dynamically from database -->
+						<div class="col-sm-8" ng-show="selectedBallpark.image_name" id="selection-img">
 							<img class="img-responsive" src="./images/{{selectedBallpark.image_name}}">
-							<div class="tooltip-i"><span class="glyphicon glyphicon-info-sign"></span></div>
-							<span class="image-credit"></span>
+							<div class="credit-wrap" ng-show="ballpark.data.image_credit_url" ng-mouseenter="ballpark.showElement=true" ng-mouseleave="ballpark.showElement=false">
+								<div class="tooltip-i" ng-show="ballpark.data.image_credit_url" ng-click="ballpark.showElement = !ballpark.showElement"><span class="glyphicon glyphicon-info-sign"></span></div>
+								<span class="image-credit" ng-mouseleave="ballpark.showElement = false" ng-show="ballpark.showElement"></span>
+							</div>
 						</div>
 						<div class="col-sm-4 no-padding" id="selection-info">
 
@@ -54,18 +55,6 @@
 							<div class="col-xs-6 col-sm-12"> <h4>League:</h4> {{ selectedBallpark.league }}</div>
 							<div class="col-xs-6 col-sm-12"> <h4>Home Team:</h4> {{ selectedBallpark.home_team }}</div>
 
-						</div>
-					</div>
-
-					<div class="row">
-						<div class="col-xs-12" id="selection-visits"> <!-- hide if from view if selected park has not been added by user -->
-							<ul class="selection-dates">
-								<li>Dates visited:</li>
-								<li>[01/01/2017]</li>
-								<li>[01/02/2017]</li>
-								<li>[01/03/2017]</li>
-								<li>[01/04/2017]</li>
-							</ul>
 						</div>
 					</div>
 
@@ -87,22 +76,23 @@
 
 				<!-- ******************* New Park Box ******************* -->
 				<div class="col-sm-6 col-lg-4 park" ng-repeat="ballpark in userBallparks">
-					<div class="visited-box">
+					<div class="visited-box wrapflex">
 						<div class="row">
 							<div class="col-sm-12">
 								<h3>{{ ballpark.data.primary_name }}</h3>
 							</div>
 						</div>
 
-						<div class="row">
-							<div class="col-sm-12">
-								<!-- Image will need to be supplied dynamically from database -->
+						<div class="row wrapflex">
+							<div class="col-sm-12 image-column" ng-show="ballpark.data.image_name">
 								<img class="img-responsive park-img" src="./images/{{ballpark.data.image_name}}">
-								<div class="tooltip-i"><span class="glyphicon glyphicon-info-sign"></span></div>
-								<span class="image-credit"><a href="{{ballpark.data.image_credit_url}}">{{ballpark.data.image_credit_name}}</a></span>
+								<div class="credit-wrap" ng-show="ballpark.data.image_credit_url" ng-mouseenter="ballpark.showElement=true" ng-mouseleave="ballpark.showElement=false">	
+									<div class="tooltip-i" ng-show="ballpark.data.image_credit_url" ng-click="ballpark.showElement = !ballpark.showElement"><span class="glyphicon glyphicon-info-sign"></span></div>
+									<span class="image-credit" ng-mouseleave="ballpark.showElement = false" ng-show="ballpark.showElement"><a href="{{ballpark.data.image_credit_url}}">{{ballpark.data.image_credit_name}}</a></span>
+								</div>
 							</div>
-							<div class="col-sm-12">
-								<div class="row visited-info wrapflex">
+							<div class="col-sm-12 wrapflex">
+								<div class="row visited-info">
 									<div class="vdata-wrapper">
 										<div class="col-xs-6"> <h4>Location:</h4>{{ ballpark.data.city }}, {{ ballpark.data.state }}</div>
 										<div class="col-xs-6 no-left-padding"> <h4>League:</h4> {{ ballpark.data.league }}</div>
