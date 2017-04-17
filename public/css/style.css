@@ -1,5 +1,5 @@
-body{
-    background: #fff9ca;
+﻿body{
+    background: #fff6e9;
     color: #6b5038;
 }
 
@@ -40,7 +40,11 @@ ul {
 }
 
 #wrapper {
-	border: 5px solid #fff9ca;
+	border: 5px solid #fff6e9;
+}
+
+hr {
+	border-top: 1px solid #e6d8d4;
 }
 
 /*==================================================
@@ -129,7 +133,7 @@ ul {
 }
 
 .navbar-header .navbar-brand, .navbar-header .navbar-brand>a {
-    color:#fff9ca;
+    color:#fff6e9;
 }
 
 .navbar-header .navbar-brand>a:hover {
@@ -162,17 +166,26 @@ ul {
 } /* End of brand name styling */
 
 /* Links */
-.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus, .navbar-default .navbar-nav>.active>a:hover { /* Active navbar link */
-	background-color: #4b6039;
-	color: #fdffa5;
+.navbar-default .navbar-nav>.active>a, .navbar-default .navbar-nav>.active>a:focus {
+    background-color: #3c4c2e;
+    color: #ffe8e8;
+    border: 2px solid rgba(0, 0, 0, 0.16);
+    box-shadow: 0 0 2px #7a8c7e;
+    border-radius: 30px;
+    margin: 5px 0;
+    padding: 10px;
 }
+.navbar-default .navbar-nav>.active>a:hover { /* Active navbar link */
+	color: #ffe8e8;
+    background-color: #455834;}
 
 .navbar-default .navbar-nav>li>a { /* Inactive navbar link */
-	color: #fff9ca;
+	color: #ffe8e8;
 }
 
 .navbar-default .navbar-nav>li>a:hover { /* Inactive navbar link */
 	color: #fff;
+    text-shadow: 0 0 0.5px antiquewhite;
 }
 	
 /*==================================================
@@ -274,6 +287,27 @@ background: white !important;
 	display:none;
 }
 
+/* Facebook Share Dialog */
+.modal-content {
+    background-color: #fff6e9;
+}
+
+.modal-header {
+	background-color: #ddf4ff;
+	border-bottom: 1px solid #c1c1c1;
+}
+
+.modal-title {
+	color: #0156b1;
+    font-family: "lato", sans-serif;
+    font-weight: 600;
+    text-shadow: none;
+}
+.modal-body .well {
+	background-color: rgba(251, 239, 238, 0.86);
+    border: 1px solid #e2d7cd;
+}
+
 /*==================================================
 =            Selected and Visited Parks            =
 ==================================================*/
@@ -344,19 +378,18 @@ background: white !important;
 	line-height: 24px;
     font-size: 24px;
     display: inline-block;
-    background-color: rgba(255, 255, 255, 0.79);
-    color: darkblue;
-    border: 1px solid white;
+	background-color: rgba(255, 255, 255, 0.5);
+    border: 1px solid rgba(255, 255, 255, 0.5);
     text-align: center;
     position: absolute;
-    bottom: 1.5px;
+    bottom: 2px;
     left: 17px;	
 }
 
 .tooltip-i .glyphicon {
     top: 3px;
 	font-size: 23px;
-    color: #004b6b;
+    color: rgba(2, 52, 74, 0.66);
 	line-height:20px;
 }
 
@@ -366,12 +399,13 @@ background: white !important;
 
 .image-credit {
 	display:block;
-	padding:3.3px 8px;
+	padding:3px 8px;
+	min-height:26px;
 	position:absolute;
-	bottom:1.5px;
+	bottom:2px;
 	left:43px;
-	background-color:rgba(6, 48, 63, 0.78);
-	border: 1px solid rgba(255, 255, 255, 0.60);
+	background-color:rgba(6, 48, 63, 0.66);
+	border: 1px solid rgba(255, 255, 255, 0.5);
 	vertical-align:middle;
 }
 
@@ -503,12 +537,18 @@ background: white !important;
 }
 
 .friend {
-	border: 2px solid rgba(255, 249, 202, 0.58);
-	padding: 10px 15px;
+	border-left: 2px solid rgba(35, 35, 35, 0.25);
+    padding: 10px 15px;
+    border-bottom: 2px solid rgba(35, 35, 35, 0.25);
 }
 
 .friend-left img {
-	padding-bottom: 5px;
+	margin-bottom: 2px;
+}
+
+.friend-left img:focus, .friend-left img:hover {
+    outline: -webkit-focus-ring-color auto 5px;
+    outline-color: white;
 }
 
 .friend-info {
