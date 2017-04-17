@@ -181,7 +181,7 @@ app.controller('ModalInstanceCtrl', function ($scope, $uibModalInstance, AuthSer
 	var $ctrl = this;
 
 	$scope.messageLink = "https://stadiums-visited.herokuapp.com/user/" + AuthService.getUserId();
-	$scope.messageText = "Check out all the ballparks I've been to!";
+	$scope.messageText = "";
 
 	$ctrl.ok = function(text, link) {
 		$uibModalInstance.close({messageText: text, messageLink: link});
