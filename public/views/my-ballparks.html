@@ -50,11 +50,11 @@
 					</div>
 
 					<div class="row">
-						<div class="col-sm-8" id="selection-img" ng-show="selectedBallpark.image_name">
-							<img class="img-responsive img-rounded" src="./images/{{selectedBallpark.image_name}}">
-							<div class="credit-wrap" ng-show="selectedBallpark.image_credit_url" ng-mouseenter="selectedBallpark.showElement=true" ng-mouseleave="selectedBallpark.showElement=false">
-								<div class="tooltip-i" ng-show="selectedBallpark.image_credit_url" ng-click="selectedBallpark.showElement = !selectedBallpark.showElement"><span class="glyphicon glyphicon-info-sign"></span></div>
-								<span class="image-credit" ng-mouseleave="selectedBallpark.showElement = false" ng-show="selectedBallpark.showElement"><a href="{{selectedBallpark.image_credit_url}}">{{selectedBallpark.image_credit_name}}</a></span>
+						<div class="col-sm-8" id="selection-img" ng-show="selectedBallpark.photo_filename">
+							<img class="img-responsive img-rounded" src="./images/{{selectedBallpark.photo_filename}}">
+							<div class="credit-wrap" ng-show="selectedBallpark.photo_attribution_html" ng-mouseenter="selectedBallpark.showElement=true" ng-mouseleave="selectedBallpark.showElement=false">
+								<div class="tooltip-i" ng-show="selectedBallpark.photo_attribution_html" ng-click="selectedBallpark.showElement = !selectedBallpark.showElement"><span class="glyphicon glyphicon-info-sign"></span></div>
+								<span class="image-credit" ng-mouseleave="selectedBallpark.showElement = false" ng-show="selectedBallpark.showElement">{{selectedBallpark.photo_attribution_html}}</span>
 							</div>
 						</div>
 						<div class="col-sm-4">
@@ -122,11 +122,11 @@
 						</div>
 
 						<div class="row wrapflex">
-							<div class="col-sm-12 image-column" ng-show="ballpark.data.image_name">
-								<img class="img-responsive park-img" src="./images/{{ballpark.data.image_name}}">
-								<div class="credit-wrap" ng-show="ballpark.data.image_credit_url" ng-mouseenter="ballpark.showElement=true" ng-mouseleave="ballpark.showElement=false">
-									<div class="tooltip-i" ng-show="ballpark.data.image_credit_url" ng-click="ballpark.showElement = !ballpark.showElement"><span class="glyphicon glyphicon-info-sign"></span></div>
-									<span class="image-credit" ng-mouseleave="ballpark.showElement = false" ng-show="ballpark.showElement"><a href="{{ballpark.data.image_credit_url}}">{{ballpark.data.image_credit_name}}</a></span>
+							<div class="col-sm-12 image-column" ng-show="ballpark.data.photo_filename">
+								<img class="img-responsive park-img" src="./images/{{ballpark.data.photo_filename}}">
+								<div class="credit-wrap" ng-show="ballpark.data.photo_attribution_html" ng-mouseenter="ballpark.showElement=true" ng-mouseleave="ballpark.showElement=false">
+									<div class="tooltip-i" ng-show="ballpark.data.photo_attribution_html" ng-click="ballpark.showElement = !ballpark.showElement"><span class="glyphicon glyphicon-info-sign"></span></div>
+									<span class="image-credit" ng-mouseleave="ballpark.showElement = false" ng-show="ballpark.showElement">{{ballpark.data.photo_attribution_html}}</span>
 								</div>
 							</div>
 							<div class="col-sm-12 wrapflex">
