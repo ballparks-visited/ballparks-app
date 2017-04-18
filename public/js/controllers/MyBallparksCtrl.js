@@ -1,4 +1,4 @@
-app.controller('MyBallparksController', function($scope, $window, $uibModal, UserService, BallparkService, AuthService, FacebookService) {
+app.controller('MyBallparksController', function($scope, $window, $uibModal, $sce, UserService, BallparkService, AuthService, FacebookService) {
 	// Authenticate the user
 	if(!AuthService.isTokenValid()) {
 		AuthService.clearToken();
@@ -174,6 +174,8 @@ app.controller('MyBallparksController', function($scope, $window, $uibModal, Use
 			UserService.shareLink(AuthService.getUserId(), data.messageText, data.messageLink);
 		});
 	};
+	
+	$scope.trust = $sce.trustAsHtml;
 });
 
 
