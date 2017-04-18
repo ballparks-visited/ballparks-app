@@ -126,7 +126,7 @@
 								<img class="img-responsive park-img" src="./images/{{ballpark.data.photo_filename}}">
 								<div class="credit-wrap" ng-show="ballpark.data.photo_attribution_html" ng-mouseenter="ballpark.showElement=true" ng-mouseleave="ballpark.showElement=false">
 									<div class="tooltip-i" ng-show="ballpark.data.photo_attribution_html" ng-click="ballpark.showElement = !ballpark.showElement"><span class="glyphicon glyphicon-info-sign"></span></div>
-									<span class="image-credit" ng-mouseleave="ballpark.showElement = false" ng-show="ballpark.showElement">{{ballpark.data.photo_attribution_html}}</span>
+									<span class="image-credit" ng-mouseleave="ballpark.showElement = false" ng-show="ballpark.showElement" ng-bind-html="trust(ballpark.data.photo_attribution_html)"</span>
 								</div>
 							</div>
 							<div class="col-sm-12 wrapflex">
