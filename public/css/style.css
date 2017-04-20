@@ -233,7 +233,7 @@ hr {
 
 /* Search */
 #sb-search {
-	   padding-top: 18px;
+	   padding: 18px 0 0 0;
 }
 
 .stylish-input-group .input-group-addon{
