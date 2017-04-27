@@ -61,6 +61,26 @@ module.exports = function(app) {
 			});
 		}
 	});
+	
+	app.delete('/api/v1/users/:userId', passport.authenticate('jwt', { session: false}), function(req, res) {
+		if(req.params.userId !== req.user.fb_id) {
+			// unauthenticated user
+			res.status(401);
+			res.end();
+		}
+		else {
+			userController.deleteUser(req.params.userId)
+			.then(function(req, res) {
+				res.send('Forwarding Delete User Request');
+				res.end();
+			},
+			function(err) {
+				console.error(err);
+				res.send(err);
+				res.end();
+			});
+		}
+	});
 
 	app.post('/api/v1/users/:userId/share-link', passport.authenticate('jwt', { session: false}), function(req, res) {
 		if(req.params.userId !== req.user.fb_id) {
