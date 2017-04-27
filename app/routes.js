@@ -63,7 +63,7 @@ module.exports = function(app) {
 	});
 	
 
-    app.delete('/api/v1/users/:userId', passport.authenticate('jwt', { session: false}), function(req, res) {
+  /*  app.delete('/api/v1/users/:userId', passport.authenticate('jwt', { session: false}), function(req, res) {
         if(req.params.userId !== req.user.fb_id) {
             // unauthenticated user
             res.status(401);
@@ -81,7 +81,7 @@ module.exports = function(app) {
                 res.end();
             });
         }
-    });
+    }); */
 ​
 
 	app.post('/api/v1/users/:userId/share-link', passport.authenticate('jwt', { session: false}), function(req, res) {
