@@ -182,23 +182,27 @@ function removeUserBallpark(id, ballparkId){
 
 
 //DELETE user
- function deleteUser(id, callbacks){ 											
- 	return UserModel.findById(id, function (err, f) {
- 		if (!err) {
- 			return f.remove(function (err) {
- 				if (!err) {
- 					if(!isInTest) console.log("[DEL]    Deleted user: " + f._id);
- 					callbacks.success(f);
- 				} else {
- 					if(!isInTest) console.log(err);
- 					callbacks.error(err);
- 				}
- 			});
- 		} else {
- 			if(!isInTest) console.log(err);
- 			callbacks.error(err);
- 		}
+ function deleteUser(id){ 		
+	var deferred = new Deferred();
+	
+	UserModel.findByIdAndRemove({'fb_id': id} , function (err, user) {
+		if (!err) {
+			return user.remove(function (err) {
+				if (!err) {
+					if(!isInTest) console.log("[DEL]    Deleted user: " + user._id);
+					deferred.resolve(user);
+				} else {
+					if(!isInTest) console.log(err);
+					deferred.reject(err);
+				}
+			});
+		} else {
+			if(!isInTest) console.log(err);
+			deferred.reject(err);
+		}
  	});
+	
+	return deferred.promise;
  }
 
 module.exports.upsertUserByFBId = upsertUserByFBId;
