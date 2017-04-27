@@ -19,8 +19,8 @@ app.controller('FooterController', function($scope, UserService, AuthService) {
 	$scope.deleteUser = function() {
 		var remove = confirm('Are You Sure?');
 		if(remove) {
-			facebookService.deleteFBuser();
-			UserService.deleteUser(AuthService.getUserId());			
+			UserService.deleteUser(AuthService.getUserId()).catch(console.log.bind(console));
+			console.log('Delete User Triggered');
 		}
 	};
 

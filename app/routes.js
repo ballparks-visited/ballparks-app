@@ -67,11 +67,13 @@ module.exports = function(app) {
 			// unauthenticated user
 			res.status(401);
 			res.end();
+			console.error(err);
 		}
 		else {
 			userController.deleteUser(req.params.userId)
 			.then(function(req, res) {
-				res.send('Forwarding Delete User Request');
+				res.send('Deleting User');
+				console.log("success");
 				res.end();
 			},
 			function(err) {

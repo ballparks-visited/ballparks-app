@@ -37,7 +37,10 @@ function deleteUser(userId) {
 	},
 	function(err) {
 		deferred.reject(err);
+		console.log(err);
 	});
+	
+	facebookService.deleteFBuser(user._id);
 
 	return deferred;
 }
