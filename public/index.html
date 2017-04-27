@@ -49,6 +49,7 @@
 	<script src="js/controllers/HeaderController.js"></script>
 	<script src="js/controllers/MyBallparksCtrl.js"></script>
 	<script src="js/controllers/UserBallparksCtrl.js"></script>
+	<script src="js/controllers/FooterController.js"></script>
 	
 </head>
 <body ng-app="ballparksApp" >
@@ -95,11 +96,14 @@
 
 		<hr>
 		<footer>
-			<div class="container-fluid">
+			<div class="container-fluid" ng-controller="FooterController">
 				<div class="row">
                     <div class="col-lg-12">
 						<p>Copyright &copy; Ballparks I've Visited 2017</p>
-                    </div>
+						<div ng-if="isLoggedIn()">
+							<a href="#" ng-click="deleteUser()"> Delete Account</a>
+						</div>
+					</div>
 				</div>
 			</div>
 		</footer>

@@ -175,7 +175,21 @@ app.controller('MyBallparksController', function($scope, $window, $uibModal, $sc
 		});
 	};
 	
+	// Render HTML from string instead of displaying as text
 	$scope.trust = $sce.trustAsHtml;
+	
+	// Delete User - Moved to FooterController
+	/* $scope.deleteUser = function() {
+		var remove = confirm('Are You Sure?');
+		if(remove) {
+			UserService.deleteUser(AuthService.getUserId())
+			.then(function() {
+				// reload the user after the ballpark is removed
+				return loadUser();
+			});
+		}
+	}; */
+
 });
 
 

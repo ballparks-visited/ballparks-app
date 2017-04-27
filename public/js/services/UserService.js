@@ -42,7 +42,10 @@ app.factory('UserService', ['$http', function($http) {
 			"messageLink": link
 		});
 	};
-
+	
+	service.deleteUser = function(id) {
+         return $http.delete("/api/v1/users/"+id);
+    };
 
 	return service;
 }]);
