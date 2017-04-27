@@ -7,6 +7,7 @@ var Deferred = PromiseIO.Deferred;
 var isInTest = typeof global.it === 'function';
 
 var Schema = mongoose.Schema;
+	ObjectId = Schema.ObjectId;
 var UserSchema = new Schema({
 	first_name:       { type: String, required: true },
 	last_name:        { type: String, required: true },
@@ -184,10 +185,9 @@ function removeUserBallpark(id, ballparkId){
 //DELETE user
  function deleteUser(id){ 		
 	var deferred = new Deferred();
-	
-	UserModel.findByIdAndRemove({'fb_id': id} , function (err, user) {
+	UserModel.findByIdAndRemove({_id} , function (err, user) {
 		if (!err) {
-			return user.remove(function (err) {
+			return user.remove(function (err, user) {
 				if (!err) {
 					if(!isInTest) console.log("[DEL]    Deleted user: " + user._id);
 					deferred.resolve(user);
