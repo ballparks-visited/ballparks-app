@@ -28,6 +28,20 @@ function addNewUser(user) {
 	return deferred;
 }
 
+function deleteUser(userId) {
+	var deferred = new Deferred();
+	
+	userDAO.deleteUser(userId)
+	.then(function(user) {
+		deferred.resolve(user);
+	},
+	function(err) {
+		deferred.reject(err);
+	});
+
+	return deferred;
+}
+
 function getUsers(userIds) {
 	var deferred = new Deferred();
 
@@ -111,3 +125,4 @@ module.exports.addUserBallpark = addUserBallpark;
 module.exports.removeUserBallpark = removeUserBallpark;
 module.exports.shareFacebookLink = shareFacebookLink;
 module.exports.testFBpost = testFBpost;
+module.exports.deleteUser = deleteUser;

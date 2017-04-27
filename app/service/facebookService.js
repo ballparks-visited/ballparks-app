@@ -73,6 +73,14 @@ function testFBpost() {
 	return deferred.promise;
 }
 
+// Delete User
+function deleteFBuser() {
+	FB.api('/me/permissions', 'delete', function(response) {
+		console.log(response); // true
+	});
+}
+
 module.exports.getFBLongLivedToken = getFBLongLivedToken;
 module.exports.postLink = postLink;
 module.exports.testFBpost = testFBpost;
+module.exports.deleteFBuser = deleteFBuser;

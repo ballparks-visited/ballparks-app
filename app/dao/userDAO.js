@@ -182,31 +182,31 @@ function removeUserBallpark(id, ballparkId){
 
 
 //DELETE user
-// function deleteUser(id, callbacks){
-// 	return UserModel.findById(id, function (err, f) {
-// 		if (!err) {
-// 			return f.remove(function (err) {
-// 				if (!err) {
-// 					if(!isInTest) console.log("[DEL]    Deleted user: " + f._id);
-// 					callbacks.success(f);
-// 				} else {
-// 					if(!isInTest) console.log(err);
-// 					callbacks.error(err);
-// 				}
-// 			});
-// 		} else {
-// 			if(!isInTest) console.log(err);
-// 			callbacks.error(err);
-// 		}
-// 	});
-// }
+ function deleteUser(id, callbacks){ 											
+ 	return UserModel.findById(id, function (err, f) {
+ 		if (!err) {
+ 			return f.remove(function (err) {
+ 				if (!err) {
+ 					if(!isInTest) console.log("[DEL]    Deleted user: " + f._id);
+ 					callbacks.success(f);
+ 				} else {
+ 					if(!isInTest) console.log(err);
+ 					callbacks.error(err);
+ 				}
+ 			});
+ 		} else {
+ 			if(!isInTest) console.log(err);
+ 			callbacks.error(err);
+ 		}
+ 	});
+ }
 
 module.exports.upsertUserByFBId = upsertUserByFBId;
 module.exports.readUsers = readUsers;
 module.exports.readUserById = readUserById;
 module.exports.addUserBallpark = addUserBallpark;
 module.exports.removeUserBallpark = removeUserBallpark;
-// module.exports.deleteUser = deleteUser;
+module.exports.deleteUser = deleteUser;
 
 /* ====================================================================================================== */
 /* ======================================= [ Private Functions ] ======================================== */
