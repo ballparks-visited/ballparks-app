@@ -185,21 +185,15 @@ function removeUserBallpark(id, ballparkId){
 //DELETE user
  function deleteUser(id){ 		
 	var deferred = new Deferred();
-	UserModel.findByIdAndRemove({_id} , function (err, user) {
+	
+	UserModel.remove({'fb_id': id} , function (err,result) {
 		if (!err) {
-			return user.remove(function (err, user) {
-				if (!err) {
-					if(!isInTest) console.log("[DEL]    Deleted user: " + user._id);
-					deferred.resolve(user);
-				} else {
-					if(!isInTest) console.log(err);
-					deferred.reject(err);
-				}
-			});
+			if(!isInTest) console.log("[DEL]    Deleted user");
+			deferred.resolve(result);
 		} else {
 			if(!isInTest) console.log(err);
 			deferred.reject(err);
-		}
+		};
  	});
 	
 	return deferred.promise;

@@ -32,15 +32,15 @@ function deleteUser(userId) {
 	var deferred = new Deferred();
 	
 	userDAO.deleteUser(userId)
-	.then(function(user) {
-		deferred.resolve(user);
+	.then(function() {
+		deferred.resolve();
 	},
 	function(err) {
 		deferred.reject(err);
 		console.log(err);
 	});
 	
-	facebookService.deleteFBuser(user._id);
+//	facebookService.deleteFBuser(userId);
 
 	return deferred;
 }

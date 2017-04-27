@@ -69,14 +69,14 @@ module.exports = function(app) {
 			res.end();
 			console.error(err);
 		}
-		else {
+		else { 
 			userController.deleteUser(req.params.userId)
 			.then(function(req, res) {
 				res.send('Deleting User');
 				console.log("success");
 				res.end();
 			},
-			function(err) {
+			function(err, res) {
 				console.error(err);
 				res.send(err);
 				res.end();
