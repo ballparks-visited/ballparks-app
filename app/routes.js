@@ -71,8 +71,8 @@ module.exports = function(app) {
         }
         else {
             userController.deleteUser(req.params.userId)
-            .then(function(result) {
-                res.send(result);
+            .then(function(userResult) {
+                res.send(userResult);
                 res.end();
             },
             function(err) {
