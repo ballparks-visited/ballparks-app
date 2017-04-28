@@ -14,5 +14,13 @@ app.controller('FooterController', function($scope, $window, UserService, AuthSe
 			$window.location.href = '/';
 		}
 	};
+	
+	$scope.privacyLink = function() {
+		$window.location.href = '/privacy-policy';
+	}
+	
+	$scope.tos = function() {
+		$window.location.href = '/terms-of-service';
+	}
 
 });

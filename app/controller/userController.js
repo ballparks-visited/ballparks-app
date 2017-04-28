@@ -33,14 +33,14 @@ function deleteUser(userId) {
 	
 	userDAO.deleteUser(userId)
 	.then(function() {
-		deferred.resolve();
-	},
-	function(err) {
-		deferred.reject(err);
-		console.log(err);
-	});
-	
-//	facebookService.deleteFBuser(userId);
+			deferred.resolve();
+			console.log('User Deleted');
+		},
+		function(err) {
+			deferred.reject(err);
+			console.log(err);
+		}
+	);
 
 	return deferred;
 }
