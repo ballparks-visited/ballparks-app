@@ -6,12 +6,17 @@ app.controller('FooterController', function($scope, $window, UserService, AuthSe
 
 	// Delete User
 	$scope.deleteUser = function() {
-		var remove = confirm('Are You Sure?');
+		var remove = confirm('Are You Sure? This action will permanently delete your data.');
 		if(remove) {
-			UserService.deleteUser(AuthService.getUserId()).catch(console.log.bind(console));
-			console.log('Delete User Triggered');
-			AuthService.clearToken();
-			$window.location.href = '/';
+			UserService.deleteUser(AuthService.getUserId())
+			.then (function() {
+				AuthService.clearToken();
+				console.log('Delete User Triggered');
+				$window.location.href = '/';
+			},
+			function(err) {
+				console.error(err);
+			});
 		}
 	};
 	
