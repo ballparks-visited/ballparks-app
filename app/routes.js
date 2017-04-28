@@ -30,7 +30,7 @@ module.exports = function(app) {
 		}
 		else {
 			userController.addUserBallpark(req.params.userId, req.body)
-			.then(function(userResult) {
+			.then(function() {
 				res.send(userResult);
 				res.end();
 			},
@@ -69,14 +69,14 @@ module.exports = function(app) {
 			res.end();
 			console.error(err);
 		}
-		else { 
+		else {  
 			userController.deleteUser(req.params.userId)
-			.then(function(userResult) {
-				console.log("Deletion Complete");
-				res.send(req.isAuthenticated() ? req.user : '0')
+			.then(function() {
+				res.send('Deleting User');
+				console.log("success");
 				res.end();
 			},
-			function(err, res) {
+			function(err) {
 				console.error(err);
 				res.send(err);
 				res.end();

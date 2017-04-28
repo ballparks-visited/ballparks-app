@@ -24,6 +24,16 @@ app.config(['$routeProvider', '$locationProvider', function($routeProvider, $loc
 			templateUrl: 'views/user-ballparks.html',
 			controller: 'UserBallparksController'
 		})
+		
+		.when('/privacy-policy', {
+			templateUrl: 'views/privacy-policy.html',
+			controller: 'FooterController'
+		})
+		
+		.when('/terms-of-service', {
+			templateUrl: 'views/terms-of-service.html',
+			controller: 'FooterController'
+		})
 		;
 
 	$locationProvider.html5Mode(true);

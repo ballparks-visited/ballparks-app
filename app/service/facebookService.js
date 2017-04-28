@@ -52,6 +52,19 @@ function postLink(userId, userToken, message, link) {
 	return deferred;
 }
 
+// Delete User
+function deleteFBuser(userId, userToken) {
+//	var deferred = new Deferred();
+	
+	fb.setAccessToken(userToken);
+	fb.api('/' + fbID +'/permissions', 'delete', function(response) {
+		console.log(response); // true
+		deferred.resolve();
+	});
+	
+//	return deferred;
+}
+
 // test FB post
 function testFBpost() {
 
@@ -71,13 +84,6 @@ function testFBpost() {
 		deferred.resolve(res.id); /*remove this line*/
 	});
 	return deferred.promise;
-}
-
-// Delete User
-function deleteFBuser() {
-	FB.api('/me/permissions', 'delete', function(response) {
-		console.log(response); // true
-	});
 }
 
 module.exports.getFBLongLivedToken = getFBLongLivedToken;
