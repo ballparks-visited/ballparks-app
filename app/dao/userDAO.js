@@ -185,10 +185,11 @@ function removeUserBallpark(id, ballparkId){
 //DELETE user
  function deleteUser(id){ 		
 	var deferred = new Deferred();
+	var userId = id;
 	
 	UserModel.remove({'fb_id': id} , function (err,result) {
 		if (!err) {
-			if(!isInTest) console.log("[DEL]    Deleted user");
+			if(!isInTest) console.log("[DEL]   Deleted user: " + userId);
 			deferred.resolve(result);
 		} else {
 			if(!isInTest) console.log(err);
