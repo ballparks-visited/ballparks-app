@@ -129,7 +129,7 @@ function addUserBallpark(id, ballparkId, dateVisited){
 			
 			return user.save(function (err) {
 				if (!err) {
-					if(!isInTest) console.log("[UDP]   Updated user: " + user._id);
+					if(!isInTest) console.log("[UPD]   Updated user: " + user._id);
 					deferred.resolve(user);
 				} else {
 					if(!isInTest) console.log(err);
@@ -165,7 +165,7 @@ function removeUserBallpark(id, ballparkId){
 			
 			return user.save(function (err) {
 				if (!err) {
-					if(!isInTest) console.log("[UDP]   Updated user: " + user._id);
+					if(!isInTest) console.log("[UPD]   Updated user: " + user._id);
 					deferred.resolve(user);
 				} else {
 					if(!isInTest) console.log(err);

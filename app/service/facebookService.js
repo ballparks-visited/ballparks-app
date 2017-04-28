@@ -54,15 +54,20 @@ function postLink(userId, userToken, message, link) {
 
 // Delete User
 function deleteFBuser(userId, userToken) {
-//	var deferred = new Deferred();
+	var deferred = new Deferred();
 	
 	fb.setAccessToken(userToken);
-	fb.api('/' + fbID +'/permissions', 'delete', function(response) {
-		console.log(response); // true
-		deferred.resolve();
+	fb.api('/' + userId +'/permissions', 'delete', function (res) {
+		if(!res || res.error) {
+			console.log(!res ? 'error occurred' : res.error);
+			deferred.reject(res.error);
+		}
+		else {
+			deferred.resolve(res.id);
+		}
 	});
 	
-//	return deferred;
+	return deferred;
 }
 
 // test FB post
