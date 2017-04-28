@@ -30,7 +30,7 @@ module.exports = function(app) {
 		}
 		else {
 			userController.addUserBallpark(req.params.userId, req.body)
-			.then(function() {
+			.then(function(userResult) {
 				res.send(userResult);
 				res.end();
 			},
