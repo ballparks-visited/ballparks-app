@@ -71,9 +71,9 @@ module.exports = function(app) {
 		}
 		else { 
 			userController.deleteUser(req.params.userId)
-			.then(function(req, res) {
-				res.send('Deleting User');
-				console.log("success");
+			.then(function(userResult) {
+				console.log("Deletion Complete");
+				res.send(req.isAuthenticated() ? req.user : '0')
 				res.end();
 			},
 			function(err, res) {
@@ -156,13 +156,6 @@ module.exports = function(app) {
 			res.send(err);
 			res.end();
 		});
-	});
-
-	app.get('/test', function(req, res) {
-		res.sendfile('./public/indexjay.html');
-	});
-	app.get('/test2', function(req, res) {
-		res.sendfile('./public/viewfriend.html');
 	});
 
 	// frontend routes =========================================================
