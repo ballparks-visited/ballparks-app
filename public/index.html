@@ -87,7 +87,7 @@
 				<div class="collapse navbar-collapse" id="ballpark-nav">
 					<ul class="nav navbar-nav">
 						<li ng-if="isLoggedIn()" ng-class="{ active: isActive('/my-ballparks')}"><a href="/my-ballparks">My Ballparks</a></li>
-						<li ng-if="!isLoggedIn()" ng-class="{ active: isActive('/')}"><a href="/">Login</a></li>
+						<li ng-if="!isLoggedIn()" ng-class="{ active: isActive('/')}"><a href="/" ng-click="login()">Login</a></li>
 						<li ng-if="isLoggedIn()"><a href="#" ng-click="logout()">Logout</a></li>
 					</ul>
 				</div><!-- /.navbar-collapse -->
