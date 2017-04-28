@@ -28,19 +28,24 @@ function addNewUser(user) {
 	return deferred;
 }
 
-function deleteUser(userId) {
+function deleteUser(userId, userToken) {
 	var deferred = new Deferred();
 	
-	userDAO.deleteUser(userId)
-	.then(function() {
-			deferred.resolve();
-			console.log('User Deleted');
-		},
-		function(err) {
+	facebookService.deleteFBuser(userId, userToken)
+	.then(function(err,result) {
+		if (!err) {
+			userDAO.deleteUser(userId)
+			.then(function() {
+					deferred.resolve();
+				},
+				function(err) {
+					deferred.reject(err);
+				}
+			);
+		} else {
 			deferred.reject(err);
-			console.log(err);
-		}
-	);
+		};
+	});
 
 	return deferred;
 }
