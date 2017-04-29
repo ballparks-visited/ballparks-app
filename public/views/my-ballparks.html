@@ -57,8 +57,8 @@
 
 					<div class="row">
 						<div class="col-sm-8" id="selection-img">
-							<img class="img-responsive img-rounded" src="./images/parks/{{selectedBallpark.photo_filename}}" ng-show="selectedBallpark.data.photo_filename">
-							<img class="img-responsive img-rounded" src="./images/placeholder.png" ng-hide="selectedBallpark.data.photo_filename">
+							<img class="img-responsive img-rounded" src="./images/parks/{{selectedBallpark.photo_filename}}" ng-show="selectedBallpark.photo_filename">
+							<img class="img-responsive img-rounded" src="./images/placeholder.png" ng-hide="selectedBallpark.photo_filename">
 							<div class="credit-wrap" ng-show="selectedBallpark.photo_attribution_html" ng-mouseenter="selectedBallpark.showElement=true" ng-mouseleave="selectedBallpark.showElement=false">
 								<div class="tooltip-i" ng-show="selectedBallpark.photo_attribution_html" ng-click="selectedBallpark.showElement = !selectedBallpark.showElement"><span class="glyphicon glyphicon-info-sign"></span></div>
 								<span class="image-credit" ng-mouseleave="selectedBallpark.showElement = false" ng-show="selectedBallpark.showElement">{{selectedBallpark.photo_attribution_html}}</span>
