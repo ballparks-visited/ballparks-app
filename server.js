@@ -9,7 +9,7 @@ var methodOverride = require('method-override');
 	
 // config files
 var config = require('./config/config');
-var port = process.env.PORT || 8080; // set our port
+var port = process.env.PORT || 80; // set our port
 
 
 // Create the database connection 
