@@ -8,7 +8,7 @@
 			<div class="row">
 				<div class="col-sm-12" id="map">
 					<ng-map id="map" center="37.971602,-96.1510076" zoom="4" scrollwheel="false">
-						<marker position="{{ ballpark.data.latitude }},{{ ballpark.data.longitude }}" title="{{ ballpark.data.primary_name }}" ng-repeat="ballpark in userBallparks"></marker>
+						<marker position="{{ ballpark.data.latitude }},{{ ballpark.data.longitude }}" icon="images/map-icon.png" title="{{ ballpark.data.primary_name }}" ng-repeat="ballpark in userBallparks"></marker>
 					</ng-map>
 				</div>
 			</div>
@@ -33,8 +33,14 @@
 						</div>
 					</div>
 					<div class="col-xs-9 col-sm-10 col-md-5 col-md-pull-5 col-lg-6 col-lg-pull-4" id="name"><h1>Parks <span id="fname">{{ user.first_name }}</span> has <em>visited</em></h1> <!-- User: "I have", Friend: "FName has" -->
+					</div>					
+					<div class="col-xs-3 col-sm-2 col-md-pull-5 col-lg-pull-4 fb-wrapper">
+						<div class="fb-share-button" 
+							data-href="https://www.ballparksvisited.com/user/{{ user.first_name}}"
+							data-layout="button"
+							data-size="large">
+						</div> <!-- <a href="#" id="fb-button" ng-click="shareBallparks()"><img src="/images/FB-logo.png"><span id="fb-share">Share</span></a>-->
 					</div>
-					<div class="col-xs-3 col-sm-2 col-md-pull-5 col-lg-pull-4 fb-wrapper"><a href="#" id="fb-button" ng-click="shareBallparks()"><img src="/images/FB-logo.png"><span id="fb-share">Share</span></a></div>
 				</div>
 			</div>
 
@@ -50,8 +56,9 @@
 					</div>
 
 					<div class="row">
-						<div class="col-sm-8" id="selection-img" ng-show="selectedBallpark.photo_filename">
-							<img class="img-responsive img-rounded" src="./images/{{selectedBallpark.photo_filename}}">
+						<div class="col-sm-8" id="selection-img">
+							<img class="img-responsive img-rounded" src="./images/parks/{{selectedBallpark.photo_filename}}" ng-show="selectedBallpark.data.photo_filename">
+							<img class="img-responsive img-rounded" src="./images/placeholder.png" ng-hide="selectedBallpark.data.photo_filename">
 							<div class="credit-wrap" ng-show="selectedBallpark.photo_attribution_html" ng-mouseenter="selectedBallpark.showElement=true" ng-mouseleave="selectedBallpark.showElement=false">
 								<div class="tooltip-i" ng-show="selectedBallpark.photo_attribution_html" ng-click="selectedBallpark.showElement = !selectedBallpark.showElement"><span class="glyphicon glyphicon-info-sign"></span></div>
 								<span class="image-credit" ng-mouseleave="selectedBallpark.showElement = false" ng-show="selectedBallpark.showElement">{{selectedBallpark.photo_attribution_html}}</span>
@@ -122,8 +129,9 @@
 						</div>
 
 						<div class="row wrapflex">
-							<div class="col-sm-12 image-column" ng-show="ballpark.data.photo_filename">
-								<img class="img-responsive park-img" src="./images/{{ballpark.data.photo_filename}}">
+							<div class="col-sm-12 image-column">
+								<img class="img-responsive park-img" src="./images/parks/{{ballpark.data.photo_filename}}" ng-show="ballpark.data.photo_filename">
+								<img class="img-responsive park-img" src="./images/placeholder.png" ng-hide="ballpark.data.photo_filename">
 								<div class="credit-wrap" ng-show="ballpark.data.photo_attribution_html" ng-mouseenter="ballpark.showElement=true" ng-mouseleave="ballpark.showElement=false">
 									<div class="tooltip-i" ng-show="ballpark.data.photo_attribution_html" ng-click="ballpark.showElement = !ballpark.showElement"><span class="glyphicon glyphicon-info-sign"></span></div>
 									<span class="image-credit" ng-mouseleave="ballpark.showElement = false" ng-show="ballpark.showElement" ng-bind-html="trust(ballpark.data.photo_attribution_html)"></span>
@@ -191,6 +199,7 @@
 	</div> <!-- End of main container row -->
 </div> <!-- End of main-container -->
 
+<!-- Old Facebook Share Box
 <script type="text/ng-template" id="myModalContent.html">
     <div class="modal-header">
         <h3 class="modal-title" id="modal-title">Share on Facebook</h3>
@@ -205,4 +214,4 @@
         <button class="btn btn-primary" type="button" ng-click="$ctrl.ok(messageText, messageLink)">Share Link</button>
         <button class="btn" type="button" ng-click="$ctrl.cancel()">Cancel</button>
     </div>
-</script>
+</script> -->

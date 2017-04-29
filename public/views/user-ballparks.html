@@ -7,9 +7,10 @@
 			<!-- [ OUTPUT BALLPARK MAP ] -->
 			<!-- ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::: -->
 			<div class="row">
-				<div class="col-sm-12" id="map">
+				<div class="col-sm-12" id="map" ng-if="showMap">
 					<ng-map id="map" center="37.971602,-96.1510076" zoom="4" scrollwheel="false">
-						<marker position="{{ ballpark.data.latitude }},{{ ballpark.data.longitude }}" title="{{ ballpark.data.primary_name }}" ng-repeat="ballpark in userBallparks"></marker>
+						<marker position="{{ ballpark.data.latitude }},{{ ballpark.data.longitude }}" icon="images/blue-map-icon.png" title="{{ ballpark.data.primary_name }}" ng-repeat="ballpark in userBallparks"></marker>
+						<marker position="{{ ballpark.data.latitude }},{{ ballpark.data.longitude }}" icon="images/map-icon.png" title="{{ ballpark.data.primary_name }}" ng-repeat="ballpark in myBallparks"></marker>
 					</ng-map>
 				</div>
 			</div>
@@ -42,8 +43,9 @@
 					</div>
 
 					<div class="row">
-						<div class="col-sm-8" ng-show="selectedBallpark.photo_filename" id="selection-img">
-							<img class="img-responsive" src="./images/{{selectedBallpark.photo_filename}}">
+						<div class="col-sm-8" id="selection-img">
+							<img class="img-responsive img-rounded" src="./images/parks/{{selectedBallpark.photo_filename}}" ng-show="selectedBallpark.data.photo_filename">
+							<img class="img-responsive img-rounded" src="./images/placeholder.png" ng-hide="selectedBallpark.data.photo_filename">
 							<div class="credit-wrap" ng-show="ballpark.data.photo_attribution_html" ng-mouseenter="ballpark.showElement=true" ng-mouseleave="ballpark.showElement=false">
 								<div class="tooltip-i" ng-show="ballpark.data.photo_attribution_html" ng-click="ballpark.showElement = !ballpark.showElement"><span class="glyphicon glyphicon-info-sign"></span></div>
 								<span class="image-credit" ng-mouseleave="ballpark.showElement = false" ng-show="ballpark.showElement"></span>
@@ -84,8 +86,9 @@
 						</div>
 
 						<div class="row wrapflex">
-							<div class="col-sm-12 image-column" ng-show="ballpark.data.photo_filename">
-								<img class="img-responsive park-img" src="./images/{{ballpark.data.photo_filename}}">
+							<div class="col-sm-12 image-column">
+								<img class="img-responsive park-img" src="./images/parks/{{ballpark.data.photo_filename}}" ng-show="ballpark.data.photo_filename">
+								<img class="img-responsive park-img" src="./images/placeholder.png" ng-hide="ballpark.data.photo_filename">
 								<div class="credit-wrap" ng-show="ballpark.data.photo_attribution_html" ng-mouseenter="ballpark.showElement=true" ng-mouseleave="ballpark.showElement=false">	
 									<div class="tooltip-i" ng-show="ballpark.data.photo_attribution_html" ng-click="ballpark.showElement = !ballpark.showElement"><span class="glyphicon glyphicon-info-sign"></span></div>
 									<span class="image-credit" ng-mouseleave="ballpark.showElement = false" ng-show="ballpark.showElement">{{ballpark.data.photo_attribution_html}}</span>
