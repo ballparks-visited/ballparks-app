@@ -148,6 +148,11 @@ module.exports = function(app) {
 			res.end();
 		});
 	});
+	
+	// route to handle Facebook page request
+	app.post('/*', function(req, res) {
+		res.redirect('/');
+	});
 
 	// frontend routes =========================================================
 	// route to handle all angular requests
