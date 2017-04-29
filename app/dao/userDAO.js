@@ -96,7 +96,12 @@ function readUsers(userIds) {
 function readUserById(id){
 	var deferred = new Deferred();
 	
-	UserModel.findOne({'fb_id': id}).populate('ballparks.data').exec('find', function (err, user) {
+	var query = {};
+	if(typeof id !== 'undefined') {
+		query.fb_id = id
+	}
+	
+	UserModel.findOne(query).populate('ballparks.data').exec('find', function (err, user) { 
 		if (!err) {
 			if(!isInTest) console.log('[GET]   Get user: ' + user[0]._id);
 			deferred.resolve(user[0]);
@@ -113,7 +118,7 @@ function readUserById(id){
 function addUserBallpark(id, ballparkId, dateVisited){
 	var deferred = new Deferred();
 
-	UserModel.findOne({'fb_id': id} , function (err, user) {
+	UserModel.findOne({'fb_id': id} , function (err, user) { 
 		if (!err) {
 
 			// make sure this ballpark is not already added
