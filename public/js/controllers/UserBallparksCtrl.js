@@ -1,4 +1,4 @@
-app.controller('UserBallparksController', function($scope, $window, $routeParams, UserService, BallparkService, AuthService, FacebookService) {
+app.controller('UserBallparksController', function($scope, $window, $routeParams, $timeout, UserService, BallparkService, AuthService, FacebookService) {
 
 	// Make moment library available in templates
 	$scope.moment = moment;
@@ -12,6 +12,21 @@ app.controller('UserBallparksController', function($scope, $window, $routeParams
 		});
 	};
 	loadUser();
+	
+	// Load the viewer's parks
+	function loadMe() {
+		return UserService.getUserById(AuthService.getUserId())
+		.then(function(response) {
+			$scope.myBallparks = response.data.ballparks;
+			$scope.my = response.data;
+		});
+	};
+	loadMe();
+	
+	// Delay map to prevent gray bug
+	$scope.$evalAsync(function () {
+        $scope.showMap = true;
+    });
 
 	// load ballparks
 	var ballparks;
