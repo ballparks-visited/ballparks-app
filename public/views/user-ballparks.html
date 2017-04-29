@@ -9,8 +9,8 @@
 			<div class="row">
 				<div class="col-sm-12" id="map" ng-if="showMap">
 					<ng-map id="map" center="37.971602,-96.1510076" zoom="4" scrollwheel="false">
-						<marker position="{{ ballpark.data.latitude }},{{ ballpark.data.longitude }}" icon="images/blue-map-icon.png" title="{{ ballpark.data.primary_name }}" ng-repeat="ballpark in userBallparks"></marker>
 						<marker position="{{ ballpark.data.latitude }},{{ ballpark.data.longitude }}" icon="images/map-icon.png" title="{{ ballpark.data.primary_name }}" ng-repeat="ballpark in myBallparks"></marker>
+						<marker position="{{ ballpark.data.latitude }},{{ ballpark.data.longitude }}" icon="images/blue-map-icon.png" title="{{ ballpark.data.primary_name }}" ng-repeat="ballpark in userBallparks"></marker>
 					</ng-map>
 				</div>
 			</div>
