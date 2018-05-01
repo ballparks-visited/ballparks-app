@@ -7,7 +7,7 @@ var User = mongoose.model('User');
 
 
 var opts = {
-	jwtFromRequest: ExtractJwt.fromAuthHeader(),
+	jwtFromRequest: ExtractJwt.fromAuthHeaderWithScheme("jwt"),
 	secretOrKey: config.jwtSecret
 	// issuer: "accounts.examplesoft.com",
 	// audience: "yoursite.net"
