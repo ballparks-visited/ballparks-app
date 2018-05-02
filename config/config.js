@@ -6,8 +6,7 @@ if(typeof process.env.appMode !== 'undefined' && process.env.appMode === 'produc
 		mongo_url : process.env.MONGODB_URI,
 		appId: process.env.FB_APP_ID,
 		appSecret: process.env.FB_APP_SECRET,
-		jwtSecret: ""
-    // jwtSecret: process.env.JWT_SECRET
+		jwtSecret: process.env.JWT_SECRET
 	} 
 } /*
 else {
